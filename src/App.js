@@ -7,6 +7,7 @@ import Login from './Components/Login/Login'
 import Home from './Components/LandingPage/Home'
 import { TokenContext } from './Components/Context/Contexts';
 import SignUp from './Components/SignUp/SignUp';
+import Swal from 'sweetalert2'
 function App() {
   const [token, setToken] = useState(false)
 
@@ -14,7 +15,15 @@ function App() {
     setToken(localStorage.getItem('token'))
     console.log('test')
   }, [token]);
-
+const handleSubmit =() =>{
+  Swal.fire({
+    position: 'center',
+    type: 'success',
+    title: 'Logging out!',
+    showConfirmButton: false,
+    timer: 2500
+  })
+}
   // console.log('Token u there brother?: ', token);
 
   return (
@@ -35,7 +44,7 @@ function App() {
 
         ) : (
           <Link to='/login'>
-            <button onClick={() => {
+            <button type="submit" onClick={() => {
               localStorage.removeItem('token')
               setToken()}} >
               Logout

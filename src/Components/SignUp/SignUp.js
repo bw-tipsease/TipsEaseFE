@@ -63,11 +63,11 @@ export default withFormik({
     validationSchema: Yup.object().shape({
         username: Yup.string()
           .min(3, "Must be 3 characters or more")
-          .max(15, "Must be less than 10 characters")
+          .max(15, "Must be less than 15 characters")
           .required("This field is required"),
         password: Yup.string()
           .min(3, "Must be 3 characters or more")
-          .max(18, "Must be less than 10 characters")
+          .max(18, "Must be less than 18 characters")
           .required("This field is required"),
           passwordConfirmation: Yup.string()
           .oneOf([Yup.ref('password'), null], 'Passwords must match'),
