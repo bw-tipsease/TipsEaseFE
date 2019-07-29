@@ -15,15 +15,7 @@ function App() {
     setToken(localStorage.getItem('token'))
     console.log('test')
   }, [token]);
-const handleSubmit =() =>{
-  Swal.fire({
-    position: 'center',
-    type: 'success',
-    title: 'Logging out!',
-    showConfirmButton: false,
-    timer: 2500
-  })
-}
+
   // console.log('Token u there brother?: ', token);
 
   return (
@@ -67,6 +59,15 @@ const handleSubmit =() =>{
       </div>
     </div>
   );
+  // const handleSubmit =() =>{
+  //   Swal.fire({
+  //     position: 'center',
+  //     type: 'success',
+  //     title: 'Logging out!',
+  //     showConfirmButton: false,
+  //     timer: 2500
+  //   })
+  // }
 }
 
 export default App;

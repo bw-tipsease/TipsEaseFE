@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
-
+//Hey WEB21 students! This is called a class component. They are scary. You have to use the this keyword. Careful.
+//I would stay away from this component if possible
 export default class UploadImg extends Component {
     state = {
         selectedFile:null
