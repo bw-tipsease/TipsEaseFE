@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import { Route, Link } from 'react-router-dom';
 import PrivateRoute from "./Components/SecretData/PrivateRoute"
 
 import Login from './Components/Login/Login'
 
 import Home from './Components/LandingPage/Home'
+import { TokenContext } from './Components/Context/Contexts';
 function App() {
-  const [token, setToken] = useState(null)
+  const [token, setToken] = useState(false)
 
   useEffect(() => {
     setToken(localStorage.getItem('token'))
@@ -37,8 +38,14 @@ function App() {
         )}
       </header>
       <div>
-        <PrivateRoute exact path='/' component={Home} token ={token} />
+      {/* export const TokenContext = createContext(); */}
+        <TokenContext.Provider value={{token,setToken}}>
+        <PrivateRoute exact path='/' component={Home}
+        //  token ={token} 
+         />
         <Route exact path='/login' render={(props) => <Login {...props} setToken={setToken} />} />
+      
+        </TokenContext.Provider>
       </div>
     </div>
   );
