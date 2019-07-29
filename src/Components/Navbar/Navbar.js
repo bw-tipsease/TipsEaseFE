@@ -13,7 +13,7 @@ const NavbarContainer = styled.div`
 `;
 
 const NavLogo = styled.div`
-  font-size: 3.2rem;
+  font-size: 3rem;
   color: #f3e367;
   margin-right: auto;
   font-family: "Ubuntu", sans-serif;
@@ -71,8 +71,21 @@ const Navbar = props => {
         <NavItem to='/about'>About</NavItem>
         <NavItem to='/contact'>Contact</NavItem>
 
-        <NavCta to='/login'>Login</NavCta>
-        <NavCta to='/signup'>Sign Up</NavCta>
+        {token === null ? (
+          <Link to='/login'>
+            Login   
+          </Link>
+
+        ) : (
+          <NavCta to='/login'>
+            <button type="submit" onClick={() => {
+              localStorage.removeItem('token')
+              setToken()}} >
+              Logout
+            </button>
+          </NavCta>
+        )}
+        
       </NavItems>
     </NavbarContainer>
   );

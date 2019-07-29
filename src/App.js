@@ -8,9 +8,11 @@ import Home from './Components/LandingPage/Home'
 import { TokenContext } from './Components/Context/Contexts';
 import SignUp from './Components/SignUp/SignUp';
 import Navbar from './Components/Navbar/Navbar';
+import Worker from './Components/LandingPage/Workers/WorkersGrid'
 import Swal from 'sweetalert2'
 
 import './App.css'
+import WorkersGrid from './Components/LandingPage/Workers/WorkersGrid';
 
 function App() {
   const [token, setToken] = useState(false)
@@ -52,6 +54,9 @@ function App() {
 
 
       </header>
+      <main>
+      <WorkersGrid />
+      </main>
       <div>
       {/* export const TokenContext = createContext(); */}
         <TokenContext.Provider value={{token,setToken}}>
