@@ -6,15 +6,17 @@ import axios from "axios";
 
 import styled from "styled-components"
 import AxiosWithAuth from "./AxiosWithAuth"
-
+//BTW Sap stands for starter app. Is a personal naming convention.Not industry Standard In ANY way.
 const Sap = styled.div`
 font-family: sans-serif;
 text-align: center;
-height: 100%;
+height: 750px;
+
 background-image: url("https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
 background-size: cover;
 background-position: center center;
-background-repeat: none;`
+background-repeat: none;
+`
 
 
 

@@ -19,7 +19,7 @@ function App() {
   return (
     <div >
       <header >
-        <h1>React app</h1>
+        <h1>TipsEase</h1>
         <Link  to='/'>
           LandingPage
         </Link>
