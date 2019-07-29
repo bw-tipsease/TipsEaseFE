@@ -1,2 +1,0 @@
-# TipsEaseFE
-Front end repository
