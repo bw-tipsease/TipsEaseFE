@@ -53,20 +53,21 @@ export default withFormik({
     handleSubmit(values){
     
         Swal.fire({
-            imageUrl: '',
-            imageHeight: 450,
-            imageAlt: 'A tall image'
+            title: 'Now Please Login',
+            imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDOamKMfdxmxQlQsH4_tGp_gfuik8vLENLJl_HxrlswCNvF2Rw',
+            imageHeight: 100,
+            imageAlt: 'userCity'
           })
         console.log(values)
     },
     validationSchema: Yup.object().shape({
         username: Yup.string()
           .min(3, "Must be 3 characters or more")
-          .max(10, "Must be less than 10 characters")
+          .max(15, "Must be less than 10 characters")
           .required("This field is required"),
         password: Yup.string()
           .min(3, "Must be 3 characters or more")
-          .max(10, "Must be less than 10 characters")
+          .max(18, "Must be less than 10 characters")
           .required("This field is required"),
           passwordConfirmation: Yup.string()
           .oneOf([Yup.ref('password'), null], 'Passwords must match'),

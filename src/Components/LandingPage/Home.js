@@ -6,6 +6,9 @@ import axios from "axios";
 
 import styled from "styled-components"
 import AxiosWithAuth from "./AxiosWithAuth"
+import CreateWorkerButton from './CreateWorker/CreateWorkerButton';
+import WorkerCard from './WorkerCard/WorkerCard';
+
 //BTW Sap stands for starter app. Is a personal naming convention.Not industry Standard In ANY way.
 const Sap = styled.div`
 font-family: sans-serif;
@@ -31,7 +34,7 @@ localStorage.getItem('token')
     useEffect(() => {
       setToken(localStorage.getItem('token'))
       console.log('test')
-    }, [token]);
+    }, [token,setToken]);
     const [secretData, setSecretData] = useState([]);
     function setRestricted(res) {
       setSecretData(res);
@@ -63,7 +66,9 @@ localStorage.getItem('token')
     <div>
  <Sap className="App">
 <h1>Private Route</h1>
-        
+{/* <WorkerType/> */}
+<CreateWorkerButton/>
+<WorkerCard/>
 
        </Sap>
     </div>

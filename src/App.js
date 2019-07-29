@@ -6,6 +6,7 @@ import Login from './Components/Login/Login'
 
 import Home from './Components/LandingPage/Home'
 import { TokenContext } from './Components/Context/Contexts';
+import SignUp from './Components/SignUp/SignUp';
 function App() {
   const [token, setToken] = useState(false)
 
@@ -19,14 +20,19 @@ function App() {
   return (
     <div >
       <header >
+      
         <h1>TipsEase</h1>
         <Link  to='/'>
-          LandingPage
+         Home   
         </Link>
+        <Link to="/SignUp">
+            Sign Up   
+          </Link>
         {token === null ? (
           <Link to='/login'>
-            Login
+            Login   
           </Link>
+
         ) : (
           <Link to='/login'>
             <button onClick={() => {
@@ -36,6 +42,8 @@ function App() {
             </button>
           </Link>
         )}
+
+
       </header>
       <div>
       {/* export const TokenContext = createContext(); */}
@@ -44,6 +52,7 @@ function App() {
         //  token ={token} 
          />
         <Route exact path='/login' render={(props) => <Login {...props} setToken={setToken} />} />
+        <Route exact path='/signup' component={SignUp}/>
       
         </TokenContext.Provider>
       </div>

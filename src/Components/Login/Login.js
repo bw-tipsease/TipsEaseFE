@@ -83,7 +83,7 @@ export default withFormik({
         Swal.fire({
             position: 'center',
             type: 'success',
-            title: 'Welcome!',
+            title: 'Welcome Back!',
             showConfirmButton: false,
             timer: 2500
           })

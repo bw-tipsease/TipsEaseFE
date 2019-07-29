@@ -10,17 +10,19 @@ exports[`should match snapshot 1`] = `
       href="/"
       onClick={[Function]}
     >
-      LandingPage
+      Home
+    </a>
+    <a
+      href="/SignUp"
+      onClick={[Function]}
+    >
+      Sign Up
     </a>
     <a
       href="/login"
       onClick={[Function]}
     >
-      <button
-        onClick={[Function]}
-      >
-        Logout
-      </button>
+      Login
     </a>
   </header>
   <div>
