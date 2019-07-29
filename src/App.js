@@ -7,7 +7,11 @@ import Login from './Components/Login/Login'
 import Home from './Components/LandingPage/Home'
 import { TokenContext } from './Components/Context/Contexts';
 import SignUp from './Components/SignUp/SignUp';
+import Navbar from './Components/Navbar/Navbar';
 import Swal from 'sweetalert2'
+
+import './App.css'
+
 function App() {
   const [token, setToken] = useState(false)
 
@@ -22,7 +26,9 @@ function App() {
     <div >
       <header >
       
-        <h1>TipsEase</h1>
+        <Navbar>
+
+        </Navbar>
         <Link  to='/'>
          Home   
         </Link>
