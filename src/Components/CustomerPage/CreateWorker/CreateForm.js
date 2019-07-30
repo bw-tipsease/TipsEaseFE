@@ -10,7 +10,8 @@ const H5 = styled.h5`
 `;
 
 const FormContainer = styled.div`
-  width: 30%;
+  min-width: 50em;
+  max-width: 50em;
   margin: auto;
   padding: 2em;
   display: flex;
@@ -18,10 +19,11 @@ const FormContainer = styled.div`
   flex-direction: column;
   align-content: center;
   height: 70em;
-  justify-content: space-around;
+  justify-content: space-evenly;
   background-color: #4e5055;
   box-shadow: 0px 12px 22px -1px #545309;
   border-radius: 10px;
+  font-family: "Ubuntu", sans-serif;
 `;
 
 const Butt = styled.button`
@@ -83,9 +85,7 @@ class CreateForm extends Component {
             name="name"
           />
           <H5>{this.props.touched.username && this.props.errors.username}</H5>
-          <Label htmlFor="workDuration">
-            How long have you worked at your current job?
-          </Label>
+          <Label htmlFor="workDuration">Time in current position?</Label>
           <Field
             id="workDuration"
             type="text"

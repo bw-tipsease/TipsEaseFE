@@ -48,12 +48,15 @@ body {
 
 main {
   width: 85%;
-  margin: 2.5rem auto;
+  margin: auto;
 }
 
 .workerPage {
   background: linear-gradient(#7f8688, #f2f7f4);
   height: 100vh;
   padding: 15em 0;
-  box-shadow: 8px 8px 15px -3px #f3e367;
+}
+
+#name {
+  margin-bottom: -3em;
 }

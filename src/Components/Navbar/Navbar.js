@@ -4,18 +4,19 @@ import { Link } from "react-router-dom";
 
 const NavbarContainer = styled.div`
   width: 100%;
-  height: 65px;
+  height: 80px;
   background: #232323;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 0.5rem 2.4rem;
+  padding: 1rem 2.4rem;
 `;
 
 const NavLogo = styled.div`
   font-size: 3rem;
   color: #f3e367;
   margin-right: auto;
+  margin-bottom: 0.7em;
   font-family: "Ubuntu", sans-serif;
 `;
 
@@ -29,6 +30,7 @@ const NavItems = styled.div`
 
 const NavItem = styled(Link)`
   color: #c9c9c9;
+  margin-bottom: 0.7em;
   text-transform: uppercase;
   transition: color 200ms ease-out;
   padding: 0.5rem;
@@ -70,7 +72,7 @@ const Navbar = props => {
           <NavItem to="/customer">Customers</NavItem>
           <NavItem to="/workers">Workers</NavItem>
           <NavCta to="/login">
-            <button
+            <NavItem
               type="submit"
               onClick={() => {
                 localStorage.removeItem("token");
@@ -78,7 +80,7 @@ const Navbar = props => {
               }}
             >
               Logout
-            </button>
+            </NavItem>
           </NavCta>
         </NavItems>
       )}

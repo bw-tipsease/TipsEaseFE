@@ -9,16 +9,17 @@ import CreateWorkerButton from "./CreateWorker/CreateWorkerButton";
 import WorkerCard from "./Workers/WorkerCard";
 import WorkersGrid from "./Workers/WorkersGrid";
 
-//BTW Sap stands for starter app. Is a personal naming convention.Not industry Standard In ANY way.
+//BTW Sap stands for starter app. Is a personal naming convention. Not industry Standard In ANY way.
 const Sap = styled.div`
   font-family: sans-serif;
   text-align: center;
-  height: 750px;
+  margin: 0;
+  background: linear-gradient(#7f8688, #f2f7f4);
 
-  background-image: url("https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: none;
+  // background-image: url("https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
+  // background-size: cover;
+  // background-position: center center;
+  // background-repeat: none;
 `;
 
 const CustomerPage = () => {
@@ -61,15 +62,13 @@ const CustomerPage = () => {
   console.log(data, "data");
   //export const TokenContext = createContext();
   return (
-    <div>
-      <Sap className="App">
-        <main>
-          <WorkersGrid />
-        </main>
-        {/* <h1>Private Route</h1> */}
-        {/* <WorkerType/> */}
-      </Sap>
-    </div>
+    <Sap className="App">
+      <main>
+        <WorkersGrid />
+      </main>
+      {/* <h1>Private Route</h1> */}
+      {/* <WorkerType/> */}
+    </Sap>
   );
 };
 
