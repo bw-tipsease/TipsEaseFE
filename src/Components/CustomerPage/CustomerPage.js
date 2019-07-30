@@ -1,12 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
-import { TokenContext } from "../Context/Contexts";
+import { TokenContext, workerContext } from "../Context/Contexts";
 
 import axios from "axios";
 
 import styled from "styled-components";
 import AxiosWithAuth from "./AxiosWithAuth";
-import CreateWorkerButton from "./CreateWorker/CreateWorkerButton";
-import WorkerCard from "./Workers/WorkerCard";
 import WorkersGrid from "./Workers/WorkersGrid";
 
 //BTW Sap stands for starter app. Is a personal naming convention. Not industry Standard In ANY way.
@@ -22,9 +20,10 @@ const Sap = styled.div`
   // background-repeat: none;
 `;
 
-const CustomerPage = () => {
+const CustomerPage = props => {
   // const [starwarsChars, setChars] = useState()
   const { token, setToken } = useContext(TokenContext);
+  const { workerList, setWorkerList } = useContext(workerContext);
   localStorage.getItem("token");
   const [data, setData] = useState({});
 

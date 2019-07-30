@@ -1,7 +1,7 @@
 import React from "react";
 import CreateWorker from "./CreateWorker/CreateWorker";
 
-function WorkerPage() {
+function WorkerPage(props) {
   return (
     <div className="workerPage">
       <CreateWorker />

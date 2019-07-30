@@ -49,12 +49,15 @@ class CreateForm extends Component {
 
   fileSelectedHandler = event => {
     this.setState({
-      selectedFile: event.target.files[0]
+      selectedFile: event.target.files[0],
+      workerData: { image: {}, name: "", workDuration: "" }
     });
   };
   fileUploadHandler = () => {
     const fd = new FormData();
     fd.append("image", this.state.selectedFile, this.state.selectedFile.name);
+
+    this.setState(...this.workerData, { image: fd });
 
     Axios.post("", fd, {
       onUploadProgress: progressEvent => {
@@ -69,9 +72,17 @@ class CreateForm extends Component {
       console.log(res, "this is the results of our post");
     });
   };
+
+  handleSubmit = event => {
+    this.setState(...this.workerData, {
+      name: event.target.name,
+      workDuration: event.target.workDuration
+    });
+  };
+
   render() {
     return (
-      <Form>
+      <Form onSubmit={this.handleSubmit}>
         <FormContainer>
           <Label>Select an Image</Label>
           <Input type="file" onChange={this.fileSelectedHandler} />
