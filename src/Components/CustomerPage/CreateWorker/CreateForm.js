@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import Swal from "sweetalert2";
 import Axios from "axios";
 import styled from "styled-components";
+import { workerContext } from "../../Context/Contexts";
 
 const H5 = styled.h5`
   color: #b22222;
@@ -29,6 +30,8 @@ const FormContainer = styled.div`
 const Butt = styled.button`
   width: 9em;
   margin: 0 auto;
+  background-color: #f3e367;
+  border: 2px solid black;
 `;
 
 const Input = styled.input`
@@ -78,6 +81,10 @@ class CreateForm extends Component {
       name: event.target.name,
       workDuration: event.target.workDuration
     });
+    this.context.value.setWorkerList(
+      ...this.context.value.workerList,
+      this.state.workerData
+    );
   };
 
   render() {

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import WorkerCard from "./WorkerCard";
+import { workerContext } from "../../Context/Contexts";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const workerList = [
+const list = [
   {
     name: "PJ",
     workDuration: "1 year 2 months"
@@ -45,7 +46,9 @@ const workerList = [
 
 function WorkersGrid() {
   const classes = useStyles();
-  const [worker, setWorker] = useState(workerList);
+  const { workerList, setWorkerList } = useContext(workerContext);
+  const [worker, setWorker] = useState(list);
+
   return (
     <div className={classes.root}>
       <Grid container spacing={4}>

@@ -3,7 +3,7 @@ import CreateWorker from "./CreateWorker/CreateWorker";
 
 function WorkerPage(props) {
   return (
-    <div className="workerPage">
+    <div className="form">
       <CreateWorker />
     </div>
   );
