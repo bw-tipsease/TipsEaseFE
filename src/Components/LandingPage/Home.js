@@ -66,9 +66,10 @@ localStorage.getItem('token')
   return(
     <div>
  <Sap className="App">
-<h1>Private Route</h1>
+
 {/* <WorkerType/> */}
-<CreateWorker/>
+{/* Create worker is where you will be able to create a new worker.  */}
+{/* <CreateWorker/> */}
 
 <WorkerCard/>
 
