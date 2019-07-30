@@ -54,39 +54,36 @@ const NavCta = styled(NavItem)`
 
 const Navbar = props => {
 
-    const [token, setToken] = useState(false)
-
-    useEffect(() => {
-      setToken(localStorage.getItem('token'))
-      console.log('test')
-    }, [token]);
-
   return (
     <NavbarContainer>
       <NavLogo>tipsease</NavLogo>
 
-      <NavItems>
-        <NavItem to='/'>Home</NavItem>
-        <NavItem to='/services'>Services</NavItem>
-        <NavItem to='/about'>About</NavItem>
-        <NavItem to='/contact'>Contact</NavItem>
-
-        {token === null ? (
+        {localStorage.getItem('token') === null ? (
+        <NavItems>
+          <NavItem to='/'>Home</NavItem>
+          <NavItem to='/services'>Services</NavItem>
+          <NavItem to='/about'>About</NavItem>
+          <NavItem to='/contact'>Contact</NavItem>
+          <NavItem to='/signup'>Sign Up </NavItem>
           <Link to='/login'>
             Login   
           </Link>
+        </NavItems>
 
         ) : (
-          <NavCta to='/login'>
-            <button type="submit" onClick={() => {
-              localStorage.removeItem('token')
-              setToken()}} >
-              Logout
-            </button>
-          </NavCta>
+          <NavItems>
+            <NavItem to='/customer'>Customers</NavItem>
+            <NavItem to='/customer'>Workers</NavItem>
+            <NavCta to='/login'>
+              <button type="submit" onClick={() => {
+                localStorage.removeItem('token')
+                props.setToken()}} >
+                Logout
+              </button>
+            </NavCta>
+          </NavItems>
         )}
-        
-      </NavItems>
+
     </NavbarContainer>
   );
 };

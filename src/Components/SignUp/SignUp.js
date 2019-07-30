@@ -16,10 +16,10 @@ color:	#B22222;
         
           <Form>
               <label htmlFor = "username">username</label>
-              <Field id="username" type="text" autocomplete="off" placeholder="username" name = "username"/>
+              <Field id="username" type="text" autoComplete="off" placeholder="username" name = "username"/>
                <H5>{touched.username && errors.username}</H5>
               <label htmlFor = "password">password</label>
-              <Field id="password" type="password" autocomplete="off" placeholder="password" name= "password"/>
+              <Field id="password" type="password" autoComplete="off" placeholder="password" name= "password"/>
               <H5>{touched.password && errors.password}</H5>
               <label htmlFor = "confirmPassword">Confirm your password</label>
               <Field id="passwordConfirmation" type="password" placeholder="passwordConfirmation" name="passwordConfirmation"/>
