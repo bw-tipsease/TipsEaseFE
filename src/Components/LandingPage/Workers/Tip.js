@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
-import {Route,Link} from 'react-router-dom'
-import TipForm from './TipForm'
+import {Link} from 'react-router-dom'
 
 
 const TipButton = styled(Link)`
@@ -15,7 +14,8 @@ const TipButton = styled(Link)`
   font-family: 'Ubuntu', sans-serif;
   border-radius: 10px;
   transition: all 250ms ease-out;
-  margin-top: 1.4rem;
+  margin-top: 2rem;
+  text-decoration: none;
 
   :hover {
     cursor: pointer;

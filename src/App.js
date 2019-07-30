@@ -10,6 +10,10 @@ import SignUp from './Components/SignUp/SignUp';
 import styled from 'styled-components';
 import Swal from 'sweetalert2'
 import TipForm from './Components/LandingPage/Workers/TipForm'
+import './App.css'
+
+
+
 const NavbarContainer = styled.div`
   width: 100%;
   height: 65px;
@@ -115,7 +119,7 @@ function App() {
       <div>
       {/* export const TokenContext = createContext(); */}
         <TokenContext.Provider value={{token,setToken}}>
-        <PrivateRoute exact path='/' component={Home}
+        <Route exact path='/' component={Home}
         //  token ={token} 
          />
          <Route exact path="/Contact" />
