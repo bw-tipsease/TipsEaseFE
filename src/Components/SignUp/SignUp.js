@@ -77,7 +77,7 @@ function SignUp({ errors, touched }) {
         </Label>
 
         <H5>{touched.rememberPassword && errors.rememberPassword}</H5>
-        <Butt type="submit">SignUp</Butt>
+        <Butt type="submit">Sign Up</Butt>
       </FormContainer>
     </Form>
   );
