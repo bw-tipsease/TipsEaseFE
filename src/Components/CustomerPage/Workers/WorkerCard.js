@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
+import posed from "react-pose";
 
 const WorkerCardContainer = styled.div`
   display: flex;
@@ -9,10 +10,13 @@ const WorkerCardContainer = styled.div`
   align-items: center;
 `;
 
-const WorkerImage = styled.img`
-  width: 180px;
-  height: 180px;
+const WorkerImage = styled.div`
+  width: 60%;
+  height: 200px;
   border-radius: 5px;
+  background: url(${props => props.image});
+  background-size: cover;
+  background-position: center;
 `;
 
 const WorkerInfo = styled.div`
@@ -27,8 +31,8 @@ const WorkerName = styled.h2`
   font-size: 3.5rem;
   margin: 1rem 0;
   color: #f3e367;
-  font-style: italic;
-  letter-spacing: 1px;
+  font-family: "Ubuntu", sans-serif;
+  letter-spacing: 2px;
 `;
 
 const WorkerDuration = styled.p`
@@ -39,27 +43,27 @@ const WorkerDuration = styled.p`
   margin-bottom: 2rem;
 `;
 
-const TipButton = styled.button`
-  background: #f3e367;
-  border: none;
-  padding: 1.2rem 2.4rem;
-  font-size: 2rem;
-  font-family: "Ubuntu", sans-serif;
-  border-radius: 10px;
-
-  :hover {
-    cursor: pointer;
+const TipButton = posed.div({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 1,
+    boxShadow: "0px 0px 0px rgba(0,0,0,0)"
+  },
+  hover: {
+    scale: 1.2,
+    boxShadow: "0px 1px 10px #B1B7B7 "
+  },
+  press: {
+    scale: 1,
+    boxShadow: "0px 2px 5px rgba(0,0,0,0.1)"
   }
+});
 
-  svg {
-    margin-right: 0.6rem;
-  }
-`;
-
-const WorkerCard = ({ name, workDuration }) => {
+const WorkerCard = ({ name, workDuration, image }) => {
   return (
     <WorkerCardContainer>
-      <WorkerImage src="https://images.pexels.com/photos/1851471/pexels-photo-1851471.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+      <WorkerImage image={image} />
 
       <WorkerInfo>
         <WorkerName>{name}</WorkerName>
@@ -68,7 +72,7 @@ const WorkerCard = ({ name, workDuration }) => {
           <br />
           <span style={{ color: "white" }}>{workDuration}</span>
         </WorkerDuration>
-        <TipButton>
+        <TipButton className="tipButton">
           <FontAwesomeIcon icon={faCoins} />
           Add Tip
         </TipButton>

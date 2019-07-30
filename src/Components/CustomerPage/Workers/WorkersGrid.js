@@ -19,28 +19,40 @@ const useStyles = makeStyles(theme => ({
 
 const list = [
   {
-    name: "PJ",
-    workDuration: "1 year 2 months"
+    name: "PJ Wise",
+    workDuration: "1 year 2 months",
+    image:
+      "https://images.pexels.com/photos/1851471/pexels-photo-1851471.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
   },
   {
-    name: "PJ",
-    workDuration: "1 year 2 months"
+    name: "Colin de Vries",
+    workDuration: "1 year 2 months",
+    image:
+      "https://images.pexels.com/photos/1851471/pexels-photo-1851471.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
   },
   {
-    name: "PJ",
-    workDuration: "1 year 2 months"
+    name: "Daniel Rolon",
+    workDuration: "1 year 2 months",
+    image:
+      "https://images.pexels.com/photos/1851471/pexels-photo-1851471.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
   },
   {
-    name: "PJ",
-    workDuration: "1 year 2 months"
+    name: "Bryce Soghigian",
+    workDuration: "1 year 2 months",
+    image:
+      "https://images.pexels.com/photos/1851471/pexels-photo-1851471.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
   },
   {
-    name: "PJ",
-    workDuration: "1 year 2 months"
+    name: "Roger McConkie",
+    workDuration: "1 year 2 months",
+    image:
+      "https://images.pexels.com/photos/1851471/pexels-photo-1851471.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
   },
   {
-    name: "PJ",
-    workDuration: "1 year 2 months"
+    name: "Luis Mendes",
+    workDuration: "1 year 2 months",
+    image:
+      "https://images.pexels.com/photos/1851471/pexels-photo-1851471.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
   }
 ];
 
@@ -59,6 +71,7 @@ function WorkersGrid() {
                 <WorkerCard
                   name={worker.name}
                   workDuration={worker.workDuration}
+                  image={worker.image}
                 />
               </Paper>
             </Grid>
