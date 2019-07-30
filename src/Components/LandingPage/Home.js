@@ -8,6 +8,7 @@ import styled from "styled-components"
 import AxiosWithAuth from "./AxiosWithAuth"
 import CreateWorkerButton from './CreateWorker/CreateWorkerButton';
 import WorkerCard from './WorkerCard/WorkerCard';
+import CreateWorker from './CreateWorker/CreateWorker';
 
 //BTW Sap stands for starter app. Is a personal naming convention.Not industry Standard In ANY way.
 const Sap = styled.div`
@@ -65,9 +66,11 @@ localStorage.getItem('token')
   return(
     <div>
  <Sap className="App">
-<h1>Private Route</h1>
+
 {/* <WorkerType/> */}
-<CreateWorkerButton/>
+{/* Create worker is where you will be able to create a new worker.  */}
+{/* <CreateWorker/> */}
+
 <WorkerCard/>
 
        </Sap>
