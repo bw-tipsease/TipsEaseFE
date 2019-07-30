@@ -54,13 +54,11 @@ function App() {
 
 
       </header>
-      <main>
-      <WorkersGrid />
-      </main>
+      
       <div>
       {/* export const TokenContext = createContext(); */}
         <TokenContext.Provider value={{token,setToken}}>
-        <PrivateRoute exact path='/' component={Home}
+        <Route exact path='/' component={Home}
         //  token ={token} 
          />
         <Route exact path='/login' render={(props) => <Login {...props} setToken={setToken} />} />

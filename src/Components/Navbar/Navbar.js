@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const NavbarContainer = styled.div`
   width: 100%;
   height: 65px;
-  background: #232323;
+  background: #252525;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -60,11 +60,6 @@ const Navbar = props => {
       setToken(localStorage.getItem('token'))
       console.log('test')
     }, [token]);
-
-    const linkStyle = {
-      color: '#f3e367',
-      fontStyle: 'italic',
-    }
 
   return (
     <NavbarContainer>

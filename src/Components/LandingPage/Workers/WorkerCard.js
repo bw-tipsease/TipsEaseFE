@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoins } from '@fortawesome/free-solid-svg-icons'
-
+import Tip from './Tip'
 
 const WorkerCardContainer = styled.div`
   display: flex;
@@ -10,10 +8,13 @@ const WorkerCardContainer = styled.div`
   align-items: center;
 `;
 
-const WorkerImage = styled.img`
-  width: 180px;
-  height: 180px;
+const WorkerImage = styled.div`
+  width: 60%;
+  height: 200px;
   border-radius: 5px;
+  background: url(${props => props.image});
+  background-size: cover;
+  background-position: center;
 `;
 
 const WorkerInfo = styled.div`
@@ -28,11 +29,11 @@ const WorkerName = styled.h2`
   font-size: 3.5rem;
   margin: 1rem 0;
   color: #f3e367;
-  font-style: italic;
-  letter-spacing: 1px;
+  font-family: 'Ubuntu', sans-serif;
+  letter-spacing: 2px;
 `;
 
-const WorkerDuration = styled.p`
+const WorkerText = styled.p`
   font-size: 2.2rem;
   text-align: left;
   line-height: 3.5rem;
@@ -40,32 +41,16 @@ const WorkerDuration = styled.p`
   margin-bottom: 2rem;
 `;
 
-const TipButton = styled.button`
-  background: #f3e367;
-  border: none;
-  padding: 1.2rem 2.4rem;
-  font-size: 2rem;
-  font-family: 'Ubuntu', sans-serif;
-  border-radius: 10px;
-
-  :hover {
-    cursor: pointer;
-  }
-
-  svg {
-    margin-right: 0.6rem;
-  }
-`;
-
 const WorkerCard = props => {
+
   return (
     <WorkerCardContainer>
-      <WorkerImage src='https://images.pexels.com/photos/1851471/pexels-photo-1851471.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' />
+      <WorkerImage image='https://images.pexels.com/photos/1851471/pexels-photo-1851471.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' />
       
       <WorkerInfo>
         <WorkerName>Colin de Vries</WorkerName>
-        <WorkerDuration>Employed for:<br /><span style={{color: 'white'}}>1 year, 2 months, 12 days</span></WorkerDuration>
-        <TipButton><FontAwesomeIcon icon={faCoins} />Add Tip</TipButton>
+        <WorkerText>Employed for:<br /><span style={{color: 'white'}}>1 year, 2 months, 12 days</span></WorkerText>
+        <Tip />
       </WorkerInfo>
     </WorkerCardContainer>
   );
