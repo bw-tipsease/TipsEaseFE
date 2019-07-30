@@ -3,7 +3,7 @@ import CreateWorker from "./CreateWorker/CreateWorker";
 
 function WorkerPage() {
   return (
-    <div>
+    <div className="workerPage">
       <CreateWorker />
     </div>
   );

@@ -1,14 +1,12 @@
-import React from 'react'
-import UploadImg from './UploadImg';
-import CreateForm from './CreateForm';
+import React from "react";
+import CreateForm from "./CreateForm";
 
 function CreateWorker() {
-    return (
-        <div>
-            <UploadImg/>
-            <CreateForm/>
-        </div>
-    )
+  return (
+    <div>
+      <CreateForm />
+    </div>
+  );
 }
 
-export default CreateWorker
+export default CreateWorker;
