@@ -61,6 +61,11 @@ const Navbar = props => {
       console.log('test')
     }, [token]);
 
+    const linkStyle = {
+      color: '#f3e367',
+      fontStyle: 'italic',
+    }
+
   return (
     <NavbarContainer>
       <NavLogo>tipsease</NavLogo>
@@ -72,9 +77,9 @@ const Navbar = props => {
         <NavItem to='/contact'>Contact</NavItem>
 
         {token === null ? (
-          <Link to='/login'>
+          <NavCta to='/login'>
             Login   
-          </Link>
+          </NavCta>
 
         ) : (
           <NavCta to='/login'>
