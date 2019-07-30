@@ -9,6 +9,7 @@ import { TokenContext } from './Components/Context/Contexts';
 import SignUp from './Components/SignUp/SignUp';
 import styled from 'styled-components';
 import Swal from 'sweetalert2'
+import TipForm from './Components/LandingPage/Workers/TipForm'
 const NavbarContainer = styled.div`
   width: 100%;
   height: 65px;
@@ -121,6 +122,7 @@ function App() {
          <Route exact path="/Services"/>
         <Route exact path='/login' render={(props) => <Login {...props} setToken={setToken} />} />
         <Route exact path='/signup' component={SignUp}/>
+        <Route exact path='/TipForm' component={TipForm}/>
       
         </TokenContext.Provider>
       </div>
