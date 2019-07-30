@@ -31,3 +31,24 @@ main {
 #username {
   margin-bottom: -3em;
 }
+
+.tipButton {
+  background: none;
+  color: #f3e367;
+  border: 1px solid #f3e367;
+  padding: 1.2rem 2.4rem;
+  font-size: 2rem;
+  font-family: "Ubuntu", sans-serif;
+  border-radius: 10px;
+  transition: all 250ms ease-out;
+}
+
+.tipButton:hover {
+  cursor: pointer;
+  background: #f3e367;
+  color: black;
+}
+
+.tipButton svg {
+  margin-right: 0.6rem;
+}
