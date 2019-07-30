@@ -26,6 +26,12 @@ function App() {
         <Link  to='/'>
          Home   
         </Link>
+        <Link  to="/Contact">
+        Contact
+        </Link>
+        <Link to="/Services">
+        Services
+        </Link>
         <Link to="/SignUp">
             Sign Up   
           </Link>
@@ -52,6 +58,8 @@ function App() {
         <PrivateRoute exact path='/' component={Home}
         //  token ={token} 
          />
+         <Route exact path="/Contact" />
+         <Route exact path="/Services"/>
         <Route exact path='/login' render={(props) => <Login {...props} setToken={setToken} />} />
         <Route exact path='/signup' component={SignUp}/>
       
