@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoins } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoins } from '@fortawesome/free-solid-svg-icons'
+
 
 const WorkerCardContainer = styled.div`
   display: flex;
-  font-family: "Varela Round", sans-serif;
+  font-family: 'Varela Round', sans-serif;
   align-items: center;
 `;
 
@@ -44,7 +45,7 @@ const TipButton = styled.button`
   border: none;
   padding: 1.2rem 2.4rem;
   font-size: 2rem;
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   border-radius: 10px;
 
   :hover {
@@ -56,25 +57,18 @@ const TipButton = styled.button`
   }
 `;
 
-const WorkerCard = ({ name, workDuration }) => {
+const WorkerCard = props => {
   return (
     <WorkerCardContainer>
-      <WorkerImage src="https://images.pexels.com/photos/1851471/pexels-photo-1851471.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
-
+      <WorkerImage src='https://images.pexels.com/photos/1851471/pexels-photo-1851471.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' />
+      
       <WorkerInfo>
-        <WorkerName>{name}</WorkerName>
-        <WorkerDuration>
-          Employed for:
-          <br />
-          <span style={{ color: "white" }}>{workDuration}</span>
-        </WorkerDuration>
-        <TipButton>
-          <FontAwesomeIcon icon={faCoins} />
-          Add Tip
-        </TipButton>
+        <WorkerName>Colin de Vries</WorkerName>
+        <WorkerDuration>Employed for:<br /><span style={{color: 'white'}}>1 year, 2 months, 12 days</span></WorkerDuration>
+        <TipButton><FontAwesomeIcon icon={faCoins} />Add Tip</TipButton>
       </WorkerInfo>
     </WorkerCardContainer>
   );
-};
+}
 
 export default WorkerCard;

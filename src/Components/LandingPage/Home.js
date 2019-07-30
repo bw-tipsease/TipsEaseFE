@@ -1,11 +1,7 @@
-import React from 'react';
-
+import React from "react";
 
 const Home = () => {
- 
-  return (
-    <h1>This is the Landing page!</h1>
-  );
-}
+  return <h1>This is the Landing page!</h1>;
+};
 
 export default Home;
