@@ -12,6 +12,7 @@ const TipButton = styled.button`
   font-family: 'Ubuntu', sans-serif;
   border-radius: 10px;
   transition: all 250ms ease-out;
+  margin-top: 1.4rem;
 
   :hover {
     cursor: pointer;

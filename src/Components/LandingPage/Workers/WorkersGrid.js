@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     background: '#252525',
     color: '#c9c9c9',
+    boxShadow: '0px 4px 12px 0px rgba(201,201,201,1)',
   },
 }));
 

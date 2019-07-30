@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const WorkersDropdownContainer = styled.select`
     font-size: 2rem;
-    padding: 0.5rem;
+    padding: 1rem;
     border-radius: 5px;
     background: #252525;
     font-family: 'Ubuntu', sans-serif;
@@ -20,6 +20,7 @@ const WorkersDropdownLabel = styled.div`
     font-family: 'Ubuntu', sans-serif;
     color: #252525;
     text-transform: uppercase;
+    font-style: italic;
 `;
 
 const WorkersDropdownOption = styled.option`
@@ -33,11 +34,13 @@ const WorkersDropdown = props => {
         display: 'flex',
         marginLeft: 'auto',
         justifyContent: 'flex-end',
-        alignItems: 'center'
+        alignItems: 'center',
+        background: '#e9e9e9',
+        margin: '2rem auto',
     }
     return (
         <div style={style}>
-        <WorkersDropdownLabel>Sort by:</WorkersDropdownLabel>
+        <WorkersDropdownLabel>Sort by :</WorkersDropdownLabel>
         <WorkersDropdownContainer>
             <WorkersDropdownOption value="all">All</WorkersDropdownOption>
             <WorkersDropdownOption value="bartenders">Bartenders</WorkersDropdownOption>

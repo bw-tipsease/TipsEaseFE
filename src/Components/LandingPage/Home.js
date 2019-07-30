@@ -16,10 +16,11 @@ const Sap = styled.div`
   text-align: center;
   height: 750px;
 
-  background-image: url("https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
+  /* background-image: url("https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
   background-size: cover;
   background-position: center center;
-  background-repeat: none;
+  background-repeat: none; */
+  background: linear-gradient(#e9e9e9, white);
 `;
 
 const Home = () => {
