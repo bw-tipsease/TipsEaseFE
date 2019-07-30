@@ -7,7 +7,63 @@ import Login from './Components/Login/Login'
 import Home from './Components/LandingPage/Home'
 import { TokenContext } from './Components/Context/Contexts';
 import SignUp from './Components/SignUp/SignUp';
+import styled from 'styled-components';
 import Swal from 'sweetalert2'
+const NavbarContainer = styled.div`
+  width: 100%;
+  height: 65px;
+  background: #232323;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.5rem 2.4rem;
+`;
+
+const NavLogo = styled.div`
+  font-size: 3rem;
+  color: #f3e367;
+  margin-right: auto;
+  font-family: "Ubuntu", sans-serif;
+`;
+
+const NavItems = styled.div`
+  width: 45%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "Varela Round", sans-serif;
+`;
+
+const NavItem = styled(Link)`
+  color: #c9c9c9;
+  text-transform: uppercase;
+  transition: color 200ms ease-out;
+  padding: 0.5rem;
+  font-size: 1.6rem;
+  text-decoration: none;
+  :hover {
+    color: white;
+    cursor: pointer;
+  }
+`;
+
+const NavCta = styled(NavItem)`
+  color: #f3e367;
+  font-style: italic;
+  :hover {
+    color: #f7eb95;
+    cursor: pointer;
+  }
+`;
+const Logout =styled.button`
+width:75px;
+height:50px;
+background-color:#f7eb95;
+:hover {
+  cursor: pointer;
+  background-color: #f3e367;
+}
+`
 function App() {
   const [token, setToken] = useState(false)
 
@@ -22,34 +78,37 @@ function App() {
     <div >
       <header >
       
-        <h1>TipsEase</h1>
-        <Link  to='/'>
+        <NavbarContainer>
+          <NavItems>
+        <NavItem  to='/'>
          Home   
-        </Link>
-        <Link  to="/Contact">
+        </NavItem>
+        <NavItem  to="/Contact">
         Contact
-        </Link>
-        <Link to="/Services">
+        </NavItem>
+        <NavItem to="/Services">
         Services
-        </Link>
-        <Link to="/SignUp">
+        </NavItem>
+        <NavItem to="/SignUp">
             Sign Up   
-          </Link>
+          </NavItem>
         {token === null ? (
-          <Link to='/login'>
+          <NavItem to='/login'>
             Login   
-          </Link>
+          </NavItem>
 
         ) : (
-          <Link to='/login'>
-            <button type="submit" onClick={() => {
+          <NavCta to='/login'>
+            <Logout className="btn" type="submit" onClick={() => {
               localStorage.removeItem('token')
               setToken()}} >
               Logout
-            </button>
-          </Link>
+            </Logout>
+          </NavCta>
+          
         )}
-
+        </NavItems>
+</NavbarContainer>
 
       </header>
       <div>
