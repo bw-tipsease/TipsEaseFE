@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { TokenContext, workerContext } from "../Context/Contexts";
+import { TokenContext } from "../Context/Contexts";
 
 import axios from "axios";
 
@@ -23,7 +23,6 @@ const Sap = styled.div`
 const CustomerPage = props => {
   // const [starwarsChars, setChars] = useState()
   const { token, setToken } = useContext(TokenContext);
-  const { workerList, setWorkerList } = useContext(workerContext);
   localStorage.getItem("token");
   const [data, setData] = useState({});
 

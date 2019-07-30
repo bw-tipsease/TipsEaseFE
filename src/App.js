@@ -13,66 +13,6 @@ import WorkerPage from "./Components/CustomerPage/WorkerPage";
 
 import "./App.css";
 
-import Home from "./Components/LandingPage/Home";
-import { TokenContext } from "./Components/Context/Contexts";
-import SignUp from "./Components/SignUp/SignUp";
-import styled from "styled-components";
-import Swal from "sweetalert2";
-const NavbarContainer = styled.div`
-  width: 100%;
-  height: 65px;
-  background: #232323;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0.5rem 2.4rem;
-`;
-
-const NavLogo = styled.div`
-  font-size: 3rem;
-  color: #f3e367;
-  margin-right: auto;
-  font-family: "Ubuntu", sans-serif;
-`;
-
-const NavItems = styled.div`
-  width: 45%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-family: "Varela Round", sans-serif;
-`;
-
-const NavItem = styled(Link)`
-  color: #c9c9c9;
-  text-transform: uppercase;
-  transition: color 200ms ease-out;
-  padding: 0.5rem;
-  font-size: 1.6rem;
-  text-decoration: none;
-  :hover {
-    color: white;
-    cursor: pointer;
-  }
-`;
-
-const NavCta = styled(NavItem)`
-  color: #f3e367;
-  font-style: italic;
-  :hover {
-    color: #f7eb95;
-    cursor: pointer;
-  }
-`;
-const Logout = styled.button`
-  width: 75px;
-  height: 50px;
-  background-color: #f7eb95;
-  :hover {
-    cursor: pointer;
-    background-color: #f3e367;
-  }
-`;
 function App() {
   const [token, setToken] = useState(false);
   const [workerList, setWorkerList] = useState([]);
@@ -85,42 +25,27 @@ function App() {
   return (
     <div>
       <header>
-        <NavbarContainer>
-          <NavItems>
-            <NavItem to="/">Home</NavItem>
-            <NavItem to="/Contact">Contact</NavItem>
-            <NavItem to="/Services">Services</NavItem>
-            <NavItem to="/SignUp">Sign Up</NavItem>
-            {token === null ? (
-              <NavItem to="/login">Login</NavItem>
-            ) : (
-              <NavCta to="/login">
-                <Logout
-                  className="btn"
-                  type="submit"
-                  onClick={() => {
-                    localStorage.removeItem("token");
-                    setToken();
-                  }}
-                >
-                  Logout
-                </Logout>
-              </NavCta>
-            )}
-          </NavItems>
-        </NavbarContainer>
+        <Navbar token={token} setToken={setToken} />
       </header>
       <div>
         {/* export const TokenContext = createContext(); */}
         <TokenContext.Provider value={{ token, setToken }}>
-          <PrivateRoute
-            exact
-            path="/"
-            component={Home}
-            //  token ={token}
-          />
-          <Route exact path="/Contact" />
-          <Route exact path="/Services" />
+          <Route exact path="/" component={Home} />
+          <workerContext.Provider value={{ workerList, setWorkerList }}>
+            <PrivateRoute
+              exact
+              path="/customer"
+              component={CustomerPage}
+              //token={token}
+            />
+
+            <PrivateRoute
+              exact
+              path="/workers"
+              component={WorkerPage}
+              //token={token}
+            />
+          </workerContext.Provider>
           <Route
             exact
             path="/login"
