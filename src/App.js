@@ -9,6 +9,7 @@ import { TokenContext } from "./Components/Context/Contexts";
 import SignUp from "./Components/SignUp/SignUp";
 import Navbar from "./Components/Navbar/Navbar";
 import CustomerPage from "./Components/CustomerPage/CustomerPage";
+import WorkerPage from "./Components/CustomerPage/WorkerPage";
 
 import "./App.css";
 
@@ -33,6 +34,13 @@ function App() {
             exact
             path="/customer"
             component={CustomerPage}
+            //token={token}
+          />
+
+          <PrivateRoute
+            exact
+            path="/workers"
+            component={WorkerPage}
             //token={token}
           />
           <Route

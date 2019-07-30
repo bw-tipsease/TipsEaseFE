@@ -63,12 +63,12 @@ const Navbar = props => {
           <NavItem to="/about">About</NavItem>
           <NavItem to="/contact">Contact</NavItem>
           <NavItem to="/signup">Sign Up </NavItem>
-          <Link to="/login">Login</Link>
+          <NavItem to="/login">Login</NavItem>
         </NavItems>
       ) : (
         <NavItems>
           <NavItem to="/customer">Customers</NavItem>
-          <NavItem to="/customer">Workers</NavItem>
+          <NavItem to="/workers">Workers</NavItem>
           <NavCta to="/login">
             <button
               type="submit"
