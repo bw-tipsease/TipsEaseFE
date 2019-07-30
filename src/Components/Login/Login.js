@@ -16,7 +16,11 @@ function Login({ touched, errors }) {
   const token = localStorage.getItem('token');
 
   if (token) {
+<<<<<<< HEAD
     return <Redirect to="/" />;
+=======
+    return <Redirect to="/customer" />;
+>>>>>>> 0db049fcb0283ddd2678c5a547f55700678b8c37
   }
 
   return (
@@ -66,7 +70,11 @@ export default withFormik({
       .then((response) => {
         localStorage.setItem('token', response.data.payload);
         console.log('does token data exist:', response.data.payload)
+<<<<<<< HEAD
         formikBag.props.history.push('/');
+=======
+        formikBag.props.history.push('/customer');
+>>>>>>> 0db049fcb0283ddd2678c5a547f55700678b8c37
         formikBag.props.setToken(response.data.payload)
       })
       .catch((e) => {

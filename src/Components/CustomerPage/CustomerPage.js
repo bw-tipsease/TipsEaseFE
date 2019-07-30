@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React,{useEffect,useState,useContext} from 'react';
 import {TokenContext} from '../Context/Contexts';
 
@@ -26,7 +25,7 @@ background-repeat: none;
 
 
 
-const Home = () => {
+const CustomerPage = () => {
   // const [starwarsChars, setChars] = useState()
   const { token,setToken } = useContext(TokenContext);
   localStorage.getItem("token")
@@ -120,16 +119,4 @@ localStorage.getItem('token')
 
 
 
-=======
-import React from 'react';
-
-
-const Home = () => {
- 
-  return (
-    <h1>This is the Landing page!</h1>
-  );
-}
-
->>>>>>> 0db049fcb0283ddd2678c5a547f55700678b8c37
-export default Home;
+export default CustomerPage;

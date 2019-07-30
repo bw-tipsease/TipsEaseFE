@@ -54,6 +54,7 @@ const NavCta = styled(NavItem)`
 
 const Navbar = props => {
 
+<<<<<<< HEAD
     const [token, setToken] = useState(false)
 
     useEffect(() => {
@@ -61,10 +62,13 @@ const Navbar = props => {
       console.log('test')
     }, [token]);
 
+=======
+>>>>>>> 0db049fcb0283ddd2678c5a547f55700678b8c37
   return (
     <NavbarContainer>
       <NavLogo>tipsease</NavLogo>
 
+<<<<<<< HEAD
       <NavItems>
         <NavItem to='/'>Home</NavItem>
         <NavItem to='/services'>Services</NavItem>
@@ -87,6 +91,34 @@ const Navbar = props => {
         )}
         
       </NavItems>
+=======
+        {localStorage.getItem('token') === null ? (
+        <NavItems>
+          <NavItem to='/'>Home</NavItem>
+          <NavItem to='/services'>Services</NavItem>
+          <NavItem to='/about'>About</NavItem>
+          <NavItem to='/contact'>Contact</NavItem>
+          <NavItem to='/signup'>Sign Up </NavItem>
+          <Link to='/login'>
+            Login   
+          </Link>
+        </NavItems>
+
+        ) : (
+          <NavItems>
+            <NavItem to='/customer'>Customers</NavItem>
+            <NavItem to='/customer'>Workers</NavItem>
+            <NavCta to='/login'>
+              <button type="submit" onClick={() => {
+                localStorage.removeItem('token')
+                props.setToken()}} >
+                Logout
+              </button>
+            </NavCta>
+          </NavItems>
+        )}
+
+>>>>>>> 0db049fcb0283ddd2678c5a547f55700678b8c37
     </NavbarContainer>
   );
 };
