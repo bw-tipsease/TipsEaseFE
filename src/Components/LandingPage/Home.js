@@ -11,6 +11,7 @@ import WorkerCard from './Workers/WorkerCard';
 import CreateWorker from './CreateWorker/CreateWorker';
 import WorkersGrid from './Workers/WorkersGrid';
 import WorkersDropdown from './Workers/WorkersDropdown';
+import WorkerButtons from './Workers/WorkerButtons';
 
 //BTW Sap stands for starter app. Is a personal naming convention.Not industry Standard In ANY way.
 const Sap = styled.div`
@@ -71,8 +72,7 @@ localStorage.getItem('token')
 
 {/* <WorkerType/> */}
 {/* Create worker is where you will be able to create a new worker.  */}
-  <CreateWorkerButton/>
-  <WorkersDropdown/>
+  <WorkerButtons />
 <WorkersGrid/>
 {/* <WorkerCard/> */}
 

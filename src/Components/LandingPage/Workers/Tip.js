@@ -14,8 +14,8 @@ const TipButton = styled(Link)`
   font-family: 'Ubuntu', sans-serif;
   border-radius: 10px;
   transition: all 250ms ease-out;
-  margin-top: 2rem;
   text-decoration: none;
+  margin-top: 1.5rem;
 
   :hover {
     cursor: pointer;
@@ -38,11 +38,7 @@ function Tip() {
     //Fancy JS Logic
     
     return (
-      <div>
         <TipButton to ='/TipForm'><FontAwesomeIcon icon={faCoins} />Add Tip</TipButton>
-   
-        
-        </div>
         )
     
 }

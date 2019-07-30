@@ -17,11 +17,14 @@ import './App.css'
 const NavbarContainer = styled.div`
   width: 100%;
   height: 65px;
-  background: #232323;
+  background: black;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 0.5rem 2.4rem;
+  padding: 0.5rem 3.6rem;
+  position: fixed;
+  top: 0;
+  left: 0;
 `;
 
 const NavLogo = styled.div`
@@ -32,7 +35,7 @@ const NavLogo = styled.div`
 `;
 
 const NavItems = styled.div`
-  width: 45%;
+  width: 40%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -84,7 +87,9 @@ function App() {
       <header >
       
         <NavbarContainer>
-          <NavItems>
+          <NavLogo>tipsEase</NavLogo>
+
+        <NavItems>
         <NavItem  to='/'>
          Home   
         </NavItem>
@@ -94,13 +99,13 @@ function App() {
         <NavItem to="/Services">
         Services
         </NavItem>
-        <NavItem to="/SignUp">
+        <NavCta to="/SignUp">
             Sign Up   
-          </NavItem>
+          </NavCta>
         {token === null ? (
-          <NavItem to='/login'>
+          <NavCta to='/login'>
             Login   
-          </NavItem>
+          </NavCta>
 
         ) : (
           <NavCta to='/login'>
