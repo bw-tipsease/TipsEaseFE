@@ -12,7 +12,7 @@ const WorkerCardContainer = styled.div`
 `;
 
 const WorkerImage = styled.div`
-  height: 175px;
+  height: 185px;
   width: 200px;
   border-radius: 5px;
   background: url(${props => props.image});

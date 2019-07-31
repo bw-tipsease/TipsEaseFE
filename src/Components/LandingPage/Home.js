@@ -7,6 +7,7 @@ import CreateWorkerButton from './CreateWorker/CreateWorkerButton';
 import CreateWorker from './CreateWorker/CreateWorker';
 import WorkersGrid from './Workers/WorkersGrid';
 import WorkersDropdown from './Workers/WorkersDropdown';
+import WorkerButtons from './Workers/WorkerButtons';
 const Sap = styled.div`
 font-family: sans-serif;
 text-align: center;
@@ -60,8 +61,7 @@ localStorage.getItem('token')
 <Sap className="App">
 {/* <WorkerType/> */}
 {/* Create worker is where you will be able to create a new worker.  */}
- <CreateWorkerButton/>
- <WorkersDropdown/>
+<WorkerButtons />
 <WorkersGrid/>
 {/* <WorkerCard/> */}
       </Sap>
