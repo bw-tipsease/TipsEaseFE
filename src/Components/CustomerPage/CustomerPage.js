@@ -6,6 +6,7 @@ import axios from "axios";
 import styled from "styled-components";
 import AxiosWithAuth from "./AxiosWithAuth";
 import WorkersGrid from "./Workers/WorkersGrid";
+import WorkersDropdown from "./Workers/WorkerDropdown";
 
 //BTW Sap stands for starter app. Is a personal naming convention. Not industry Standard In ANY way.
 const Sap = styled.div`
@@ -21,12 +22,13 @@ const Sap = styled.div`
 `;
 
 const CustomerPage = props => {
-  // const [starwarsChars, setChars] = useState()
   const { token, setToken } = useContext(TokenContext);
   localStorage.getItem("token");
   const [data, setData] = useState({});
+  const [filter, setFilter] = useState("all");
 
   localStorage.getItem("token");
+
   useEffect(() => {
     setToken(localStorage.getItem("token"));
     console.log("test");
@@ -59,52 +61,21 @@ const CustomerPage = props => {
   useEffect(fetchData, [localStorage.getItem("token")]);
   console.log(data, "data");
   //export const TokenContext = createContext();
+
   return (
     <Sap className="App">
       <main>
-        <WorkersGrid />
+        <WorkersDropdown setFilter={setFilter} />
+        <WorkersGrid
+          workerList={props.workerList}
+          filter={filter}
+          removeWorker={props.removeWorker}
+        />
       </main>
       {/* <h1>Private Route</h1> */}
       {/* <WorkerType/> */}
     </Sap>
   );
 };
-
-// class App extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       starwarsChars: []
-//     };
-//   }
-
-//   componentDidMount() {
-//     this.getCharacters("https://build-week-tess.herokuapp.com/planets/");
-//   }
-//'https://swapi.co/api/people'
-//   getCharacters = URL => {
-
-//     fetch(URL)
-//       .then(res => {
-//         return res.json();
-//       })
-//       .then(data => {
-//         this.setState({ starwarsChars: data.results });
-//       })
-//       // .catch(err => {
-//       //   throw new Error(err);
-//       // });
-//   };
-
-//   render() {
-//     return (
-//       <div className="App">
-//         <h1 className="Header">React Wars</h1>
-//         <ChararcterList starwarsChars={this.state.starwarsChars} />
-
-//       </div>
-//     );
-//   }
-// }
 
 export default CustomerPage;

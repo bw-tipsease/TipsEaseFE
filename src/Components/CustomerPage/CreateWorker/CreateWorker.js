@@ -1,10 +1,13 @@
 import React from "react";
 import CreateForm from "./CreateForm";
 
-function CreateWorker() {
+function CreateWorker(props) {
   return (
     <div>
-      <CreateForm />
+      <CreateForm
+        workerList={props.workerList}
+        setWorkerList={props.setWorkerList}
+      />
     </div>
   );
 }

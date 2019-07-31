@@ -1,29 +1,31 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
 import Axios from "axios";
 import styled from "styled-components";
-import { workerContext } from "../../Context/Contexts";
 
 const H5 = styled.h5`
   color: #b22222;
 `;
 
 const FormContainer = styled.div`
-  width: 35%;
-  margin: auto;
-  padding: 2em;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-content: center;
-  height: 70em;
-  justify-content: space-evenly;
-  background-color: #4e5055;
-  box-shadow: 0px 12px 22px -1px #545309;
-  border-radius: 10px;
-  font-family: "Ubuntu", sans-serif;
+position: relative;
+min-width: 50em;
+max-width: 50em;
+align-content: center
+margin: 5em auto;
+padding: 2em;
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
+align-content: center;
+min-height: 65em;
+justify-content: space-evenly;
+background-color: #202020;
+box-shadow: 0px 12px 22px -1px #545309;
+border-radius: 10px;
+font-family: "Ubuntu", sans-serif;
 `;
 
 const Butt = styled.button`
@@ -41,26 +43,22 @@ const Label = styled.label`
   color: #f3e367;
   font-size: 2.5em;
 `;
-//Hey WEB21 students! This is called a class component. They are scary. You have to use the this keyword. Careful.
-//I would stay away from this component if possible
 
-class CreateForm extends Component {
-  state = {
-    selectedFile: null
+const CreateForm = props => {
+  const [selectedFile, setSelectedFile] = useState();
+  //const [workerData, setWorkerData] = useState({ name: "", workDuration: "", image: {} });
+
+  const fileSelectedHandler = event => {
+    const newValues = { ...props.values };
+    newValues["image"] = event.target.files[0];
+    props.setValues(newValues);
+    //setSelectedFile(event.target.files[0]);
   };
 
-  fileSelectedHandler = event => {
-    this.setState({
-      selectedFile: event.target.files[0],
-      workerData: { image: {}, name: "", workDuration: "" }
-    });
-  };
-  fileUploadHandler = () => {
+  /*const fileUploadHandler = event => {
+    event.preventDefault();
     const fd = new FormData();
-    fd.append("image", this.state.selectedFile, this.state.selectedFile.name);
-
-    this.setState(...this.workerData, { image: fd });
-
+    fd.append("image", selectedFile, selectedFile.name);
     Axios.post("", fd, {
       onUploadProgress: progressEvent => {
         return (
@@ -73,78 +71,104 @@ class CreateForm extends Component {
     }).then(res => {
       console.log(res, "this is the results of our post");
     });
-  };
+  };*/
 
-  handleSubmit = event => {
-    this.setState(...this.workerData, {
-      name: event.target.name,
-      workDuration: event.target.workDuration
-    });
-    this.context.value.setWorkerList(
-      ...this.context.value.workerList,
-      this.state.workerData
-    );
-  };
-
-  render() {
-    return (
-      <Form onSubmit={this.handleSubmit}>
-        <FormContainer style={{ zIndex: 999 }}>
-          <Label>Select an Image</Label>
-          <Input type="file" onChange={this.fileSelectedHandler} />
-          <Butt onClick={this.fileUploadHandler}>Upload Image</Butt>
-          <Label htmlFor="name">Please enter your name</Label>
-          <Field
-            id="name"
-            type="text"
-            autoComplete="off"
-            placeholder="name"
-            name="name"
-          />
-          <H5>{this.props.touched.username && this.props.errors.username}</H5>
-          <Label htmlFor="workDuration">Time in current position?</Label>
-          <Field
-            id="workDuration"
-            type="text"
-            autoComplete="off"
-            placeholder="ex: 1year 2 months"
-            name="workDuration"
-          />
-          {this.props.touched.passwordConfirmation &&
-            this.props.errors.passwordConfirmation}
-          <Butt type="submit">Create Profile</Butt>
-        </FormContainer>
-      </Form>
-    );
-  }
-}
+  return (
+    <Form>
+      <FormContainer>
+        <Label>Select an Image</Label>
+        <input
+          id="image"
+          type="file"
+          name="image"
+          onChange={fileSelectedHandler}
+        />
+        {/*<Butt onClick={fileUploadHandler}>Upload Image</Butt>*/}
+        <Label htmlFor="name">Please enter your name</Label>
+        <Field
+          id="name"
+          type="text"
+          autoComplete="off"
+          placeholder="name"
+          name="name"
+        />
+        <Label htmlFor="workType">What is your position?</Label>
+        <Field id="workType" component="select" name="workType">
+          <option value="Bartender" selected>
+            Bartender
+          </option>
+          <option value="Server">Server</option>
+          <option value="Waiter">Waiter</option>
+          <option value="Valet">Valet</option>
+          <option value="Bellhop">Bellhop</option>
+        </Field>
+        {/*<H5>{props.touched.name && props.errors.workDuration}</H5>*/}
+        <Label htmlFor="workDuration">Time in current position?</Label>
+        <Field
+          id="workDuration"
+          type="text"
+          autoComplete="off"
+          placeholder="ex: 1year 2 months"
+          name="workDuration"
+        />
+        <Butt type="submit">Create Profile</Butt>
+      </FormContainer>
+    </Form>
+  );
+};
 
 const formikCreateForm = withFormik({
-  mapPropsToValues: () => {
+  mapPropsToValues: ({
+    workerList,
+    setWorkerList,
+    name,
+    workType,
+    workDuration,
+    image
+  }) => {
     return {
-      username: "",
-      password: "",
-      confirmPassword: "",
-      rememberPassword: false
+      workerList: workerList || [],
+      setWorkerList: setWorkerList || (() => {}),
+      name: name || "",
+      workType: workType || "",
+      workDuration: workDuration || "",
+      image: image || {}
     };
-    // if(rememberPassword===true){
-    //     setToken(localStorage.getItem('token')
-    // }
   },
-  handleSubmit(values) {},
+  handleSubmit(values, { resetForm }) {
+    function create_UUID() {
+      var dt = new Date().getTime();
+      var uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+        /[xy]/g,
+        function(c) {
+          var r = (dt + Math.random() * 16) % 16 | 0;
+          dt = Math.floor(dt / 16);
+          return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
+        }
+      );
+      return uuid;
+    }
+    values.setWorkerList([
+      ...values.workerList,
+      {
+        name: values.name,
+        workType: values.workType,
+        workDuration: values.workDuration,
+        image: values.image,
+        id: create_UUID()
+      }
+    ]);
+    resetForm();
+  },
   validationSchema: Yup.object().shape({
-    username: Yup.string()
+    name: Yup.string()
       .min(3, "Must be 3 characters or more")
       .max(15, "Must be less than 15 characters")
       .required("This field is required"),
-    password: Yup.string()
+    workDuration: Yup.string()
       .min(3, "Must be 3 characters or more")
       .max(18, "Must be less than 18 characters")
-      .required("This field is required"),
-    passwordConfirmation: Yup.string().oneOf(
-      [Yup.ref("password"), null],
-      "Passwords must match"
-    )
+      .required("This field is required")
   })
 })(CreateForm);
 

@@ -6,6 +6,7 @@ import { Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 import styled from "styled-components";
 import posed from "react-pose";
+import serveImg from "../../imgs/adult-beverage-black-coffee-733761.jpg";
 
 const H5 = styled.h5`
   color: #b22222;
@@ -15,7 +16,7 @@ const FormContainer = styled.div`
   position: relative;
   min-width: 50em;
   max-width: 50em;
-  margin: -15em auto;
+  margin: -29em auto;
   padding: 2em;
   display: flex;
   flex-wrap: wrap;
@@ -29,7 +30,7 @@ const FormContainer = styled.div`
   font-family: "Ubuntu", sans-serif;
 `;
 
-const Butt = posed.div({
+const Butt = posed.button({
   hoverable: true,
   pressable: true,
   init: {
@@ -59,37 +60,40 @@ function Login({ touched, errors }) {
   }
 
   return (
-    <Form className="form">
-      <FormContainer>
-        <Label htmlFor="username">Username</Label>
-        <Field
-          id="username"
-          type="username"
-          autoComplete="off"
-          placeholder="username"
-          name="username"
-        />
-        <H5>{touched.username && errors.username}</H5>
-        <Label htmlFor="password">Password</Label>
-        <Field
-          id="password"
-          type="password"
-          autoComplete="off"
-          placeholder="password"
-          name="password"
-        />
-        <H5>{touched.password && errors.password}</H5>
-        {/* <Label htmlFor = "confirmPassword">Confirm your password</Label>
+    <>
+      <img className="formPageImg" style={{ zIndex: -999 }} src={serveImg} />
+      <Form className="form">
+        <FormContainer>
+          <Label htmlFor="username">Username</Label>
+          <Field
+            id="username"
+            type="username"
+            autoComplete="off"
+            placeholder="username"
+            name="username"
+          />
+          <H5>{touched.username && errors.username}</H5>
+          <Label htmlFor="password">Password</Label>
+          <Field
+            id="password"
+            type="password"
+            autoComplete="off"
+            placeholder="password"
+            name="password"
+          />
+          <H5>{touched.password && errors.password}</H5>
+          {/* <Label htmlFor = "confirmPassword">Confirm your password</Label>
     <Field id="passwordConfirmation" type="password" placeholder="passwordConfirmation" name="passwordConfirmation"/>
    <H5>{touched.passwordConfirmation && errors.passwordConfirmation}</H5>
    <Label htmlFor = "rememberPassword">Let us remember your password?</Label>
     <Field id="rememberPassword" type="checkbox" name="rememberPassword"/>
     <H5>{touched.rememberPassword && errors.rememberPassword}</H5> */}
-        <Butt className="formButt" type="submit">
-          Login
-        </Butt>
-      </FormContainer>
-    </Form>
+          <Butt className="formButt" type="submit">
+            Login
+          </Butt>
+        </FormContainer>
+      </Form>
+    </>
   );
 }
 
