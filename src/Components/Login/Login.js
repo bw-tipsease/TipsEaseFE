@@ -15,12 +15,16 @@ color:	#B22222;
 function Login({ touched, errors }) {
   const token = localStorage.getItem('token');
 
+  const style = {
+    marginTop: '70px',
+  }
+
   if (token) {
     return <Redirect to="/" />;
   }
 
   return (
-    <Form>
+    <Form style={style}>
     <label htmlFor = "username">username</label>
     <Field id="username" type="username" autoComplete="off" placeholder="username" name = "username"/>
      <H5>{touched.username && errors.username}</H5>

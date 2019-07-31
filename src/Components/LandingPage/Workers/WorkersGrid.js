@@ -21,21 +21,22 @@ const useStyles = makeStyles(theme => ({
 
 function WorkersGrid() {
 
-  const [workers, setWorkers] = useState(mockData);
+  const [workers, setWorkers] = useState([]);
 
   const classes = useStyles();
 
   useEffect(() => {
-    axios.get('https://tipsease-backend-new.herokuapp.com/')
+    axios.get('https://tipsease-backend-new.herokuapp.com/api/tippers')
 
     .then(res => {
-      console.log(res);
+      console.log(res.data);
+      setWorkers(res.data);
     })
 
     .catch(err => {
       console.log(err);
     })
-  },[])
+  }, [])
 
   return (
     <div className={classes.root}>
@@ -43,7 +44,7 @@ function WorkersGrid() {
         {workers.map(worker => 
           <Grid item xs={12} md={12} lg={6}>
           <Paper className={classes.paper}>
-          <WorkerCard name={worker.name} role={worker.role} timeEmployed={worker.timeEmployed} />
+          <WorkerCard key={worker.index} image={worker.photo_url} firstName={worker.first_name} lastName = {worker.last_name} role={worker.email} />
           </Paper>
         </Grid>
         )}

@@ -10,7 +10,7 @@ const WorkerCardContainer = styled.div`
 `;
 
 const WorkerImage = styled.div`
-  width: 60%;
+  width: 300px;
   height: 200px;
   border-radius: 3px;
   background: url(${props => props.image});
@@ -55,16 +55,16 @@ const WorkerEmployment = styled(WorkerText)`
   font-size: 2rem;
 `;
 
-const WorkerCard = ({ name, role, timeEmployed }) => {
+const WorkerCard = ({ image, firstName, lastName, role, timeEmployed }) => {
 
   return (
     <WorkerCardContainer>
-      <WorkerImage image='https://images.robertharding.com/previeww/RF/TI/HORIZONTAL/1178-4100.jpg' />
+      <WorkerImage image={image} />
       
       <WorkerInfo>
-        <WorkerName>{name}</WorkerName>
+        <WorkerName>{firstName} {lastName}</WorkerName>
         <WorkerRole>{role}</WorkerRole>
-        <WorkerText>Employed for<br /><WorkerEmployment>{timeEmployed[0]} years, {timeEmployed[1]} months</WorkerEmployment></WorkerText>
+        <WorkerText>Employed for<br /><WorkerEmployment></WorkerEmployment></WorkerText>
         <Tip />
       </WorkerInfo>
     </WorkerCardContainer>
