@@ -48,6 +48,9 @@ const WorkersDropdown = props => {
             <WorkersDropdownOption value="waiters">Waiters</WorkersDropdownOption>
             <WorkersDropdownOption value="valet">Valet</WorkersDropdownOption>
             <WorkersDropdownOption value="bellhops">Bellhops</WorkersDropdownOption>
+            <WorkersDropdownOption value="manager">Manager</WorkersDropdownOption>
+            <WorkersDropdownOption value="Hospitality">Hospitality</WorkersDropdownOption>
+            <WorkersDropdownOption value="cook">cook</WorkersDropdownOption>
         </WorkersDropdownContainer>
         </div>
     )
