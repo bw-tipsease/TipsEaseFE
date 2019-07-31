@@ -55,16 +55,16 @@ const WorkerEmployment = styled(WorkerText)`
   font-size: 2rem;
 `;
 
-const WorkerCard = props => {
+const WorkerCard = ({ name, role, timeEmployed }) => {
 
   return (
     <WorkerCardContainer>
       <WorkerImage image='https://images.robertharding.com/previeww/RF/TI/HORIZONTAL/1178-4100.jpg' />
       
       <WorkerInfo>
-        <WorkerName>{props.name}</WorkerName>
-        <WorkerRole>{props.role}</WorkerRole>
-        <WorkerText>Employed for<br /><WorkerEmployment>{props.timeEmployed[0]} years, {props.timeEmployed[1]} months</WorkerEmployment></WorkerText>
+        <WorkerName>{name}</WorkerName>
+        <WorkerRole>{role}</WorkerRole>
+        <WorkerText>Employed for<br /><WorkerEmployment>{timeEmployed[0]} years, {timeEmployed[1]} months</WorkerEmployment></WorkerText>
         <Tip />
       </WorkerInfo>
     </WorkerCardContainer>

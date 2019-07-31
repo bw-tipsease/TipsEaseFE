@@ -9,7 +9,7 @@ import { TweenMax } from "gsap/TweenMax";
 const TipButton = styled(Link)`
   background: none;
   color: #f3e367;
-  border: 1px solid #f3e367;
+  border: 2px solid #f3e367;
   padding: 1.6rem 2.8rem;
   font-size: 1.9rem;
   font-family: 'Ubuntu', sans-serif;
