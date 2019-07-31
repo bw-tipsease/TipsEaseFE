@@ -32,6 +32,7 @@ function WorkersGrid(props) {
                     workType={worker.workType}
                     workDuration={worker.workDuration}
                     image={worker.image}
+                    removeWorker={props.removeWorker}
                   />
                 </Paper>
               </Grid>

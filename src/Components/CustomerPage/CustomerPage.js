@@ -71,7 +71,7 @@ const CustomerPage = props => {
     <Sap className="App">
       <main>
         <WorkersDropdown setFilter={setFilter} />
-        <WorkersGrid workerList={props.workerList} filter={filter}/>
+        <WorkersGrid workerList={props.workerList} filter={filter} removeWorker={props.removeWorker}/>
       </main>
       {/* <h1>Private Route</h1> */}
       {/* <WorkerType/> */}

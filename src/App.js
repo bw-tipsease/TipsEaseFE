@@ -19,13 +19,26 @@ function App() {
   const [workerList, setWorkerList] = useState([{
     name: "Colin de Vries",
     workType: 'Bartender',
-    workDuration: "1 year 2 months"
+    workDuration: "1 year 2 months",
+    id: '0'
   },
   {
     name: "PJ",
     workType: 'Server',
-    workDuration: "5 months"
+    workDuration: "5 months",
+    id: '1'
   },]);
+
+  function removeWorker(workerId){;
+    let index;
+    workerList.map((worker,i)=>{
+      if(worker.id===workerId){
+        index = i;
+      }
+    });
+    workerList.splice(index,1);
+    setWorkerList([...workerList]);
+  }
 
   useEffect(() => {
     setToken(localStorage.getItem("token"));
@@ -46,6 +59,7 @@ function App() {
             path="/customer"
             component={CustomerPage}
             workerList={workerList}
+            removeWorker={removeWorker}
           //token={token}
           />
 

@@ -8,6 +8,7 @@ const WorkerCardContainer = styled.div`
   display: flex;
   font-family: "Varela Round", sans-serif;
   align-items: center;
+  position: relative;
 `;
 
 const WorkerImage = styled.img`
@@ -48,13 +49,28 @@ const WorkerDuration = styled.p`
   margin-bottom: 2rem;
 `;
 
+const DeleteButton = styled.button`
+  border-radius: 50px;
+  background-color: red;
+  color: white;
+  width: 20px;
+  height: 20px;
+  font-size: 0.5rem;
+  position:absolute;
+  top: -1rem;
+  right: -1rem;
+`;
+
 
 const WorkerCard = (props) => {
   if(props.image){
     return (
+      <>
       <WorkerCardContainer>
         <WorkerImage src={URL.createObjectURL(props.image)} />
   
+        <DeleteButton onClick={() => props.removeWorker(props.id)}>X</DeleteButton>
+
         <WorkerInfo>
           <WorkerName>{props.name}</WorkerName>
           <WorkerText style={{color: 'white', fontFamily: `'Ubuntu', sans-serif`, letterSpacing: '1px', fontSize: '2rem'}}>{props.workType}</WorkerText>
@@ -66,11 +82,14 @@ const WorkerCard = (props) => {
           <Tip />
         </WorkerInfo>
       </WorkerCardContainer>
+      </>
     );
   }
   return (
     <WorkerCardContainer>
       <WorkerImage src="https://images.pexels.com/photos/1851471/pexels-photo-1851471.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+
+      <DeleteButton onClick={() => props.removeWorker(props.id)}>X</DeleteButton>
 
       <WorkerInfo>
         <WorkerName>{props.name}</WorkerName>
