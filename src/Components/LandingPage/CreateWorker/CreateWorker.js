@@ -7,7 +7,7 @@ function CreateWorker() {
         <div>
             <UploadImg/>
             <CreateForm/>
-            
+            {/* <CreateWorkerBio/> */}
 
         </div>
     )

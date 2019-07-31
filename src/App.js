@@ -10,6 +10,7 @@ import SignUp from './Components/SignUp/SignUp';
 import styled from 'styled-components';
 import Swal from 'sweetalert2'
 import TipForm from './Components/LandingPage/Workers/TipForm'
+import CreateWorker from './Components/LandingPage/CreateWorker/CreateWorker';
 const NavbarContainer = styled.div`
   width: 100%;
   height: 65px;
@@ -57,13 +58,33 @@ const NavCta = styled(NavItem)`
   }
 `;
 const Logout =styled.button`
-width:75px;
-height:50px;
-background-color:#f7eb95;
-:hover {
-  cursor: pointer;
-  background-color: #f3e367;
-}
+  background: none;
+  color: #f3e367;
+  border: 1px solid #f3e367;
+  padding: 1.2rem 2.4rem;
+  font-size: 2rem;
+  font-family: 'Ubuntu', sans-serif;
+  border-radius: 10px;
+  transition: all 250ms ease-out;
+  margin-top: 1.4rem;
+  text-decoration:none;
+  transition: all 250ms ease-out;
+
+  :hover {
+    cursor: pointer;
+    background: #f3e367;
+    color: black;
+    transition: all 250ms ease-in-out;
+  }
+
+  :focus {
+      outline: none;
+  }
+
+  svg {
+    margin-right: 0.6rem;
+  }
+
 `
 function App() {
   const [token, setToken] = useState(false)
@@ -123,6 +144,7 @@ function App() {
         <Route exact path='/login' render={(props) => <Login {...props} setToken={setToken} />} />
         <Route exact path='/signup' component={SignUp}/>
         <Route exact path='/TipForm' component={TipForm}/>
+        <Route exact path='/CreateWorker' component={CreateWorker}/>
       
         </TokenContext.Provider>
       </div>
