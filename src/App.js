@@ -18,11 +18,11 @@ import './App.css'
 const NavbarContainer = styled.div`
   width: 100%;
   height: 65px;
-  background: black;
+  background: rgba(0,0,0,0.9);
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 0.5rem 3.6rem;
+  padding: 0.5rem 4.8rem;
   position: fixed;
   top: 0;
   left: 0;
