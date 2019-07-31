@@ -44,17 +44,20 @@ const Label = styled.label`
 
 const CreateForm = (props) => {
   const [selectedFile, setSelectedFile] = useState();
-  const [workerData, setWorkerData] = useState({ name: "", workDuration: "", image: {} });
+  //const [workerData, setWorkerData] = useState({ name: "", workDuration: "", image: {} });
 
   const fileSelectedHandler = event => {
-    setSelectedFile(event.target.files[0]);
+    const newValues = {...props.values};
+    newValues['image'] = event.target.files[0];
+    props.setValues(newValues);
+    //setSelectedFile(event.target.files[0]);
   };
 
-  const fileUploadHandler = event => {
+  /*const fileUploadHandler = event => {
     event.preventDefault();
     const fd = new FormData();
     fd.append("image", selectedFile, selectedFile.name);
-    /*Axios.post("", fd, {
+    Axios.post("", fd, {
       onUploadProgress: progressEvent => {
         return (
           <h1>
@@ -65,21 +68,15 @@ const CreateForm = (props) => {
       }
     }).then(res => {
       console.log(res, "this is the results of our post");
-    });*/
-  };
-
-  const handleSubmit = event => {
-    event.preventDefault();
-    props.setWorkerList([...props.workerList, {name:'test',
-      workDuration: 'test2'}]);
-  };
+    });
+  };*/
 
   return (
     <Form>
       <FormContainer>
         <Label>Select an Image</Label>
-        <Input type="file" onChange={fileSelectedHandler} />
-        <Butt onClick={fileUploadHandler}>Upload Image</Butt>
+        <input id='image' type="file" name='image' onChange={fileSelectedHandler} />
+        {/*<Butt onClick={fileUploadHandler}>Upload Image</Butt>*/}
         <Label htmlFor="name">Please enter your name</Label>
         <Field
           id="name"
@@ -104,17 +101,18 @@ const CreateForm = (props) => {
 }
 
 const formikCreateForm = withFormik({
-  mapPropsToValues: ({ workerList, setWorkerList, name ,workDuration}) => {
+  mapPropsToValues: ({ workerList, setWorkerList, name ,workDuration, image}) => {
     return {
       workerList: workerList || [],
       setWorkerList: setWorkerList || (()=>{}),
       name: name || "",
       workDuration: workDuration || "",
+      image: image || {},
     };
   },
   handleSubmit(values) {
     values.setWorkerList([...values.workerList, {name: values.name,
-    workDuration: values.workDuration}]);
+    workDuration: values.workDuration, image: values.image}]);
    },
   validationSchema: Yup.object().shape({
     name: Yup.string()

@@ -30,6 +30,7 @@ function WorkersGrid(props) {
                 <WorkerCard
                   name={worker.name}
                   workDuration={worker.workDuration}
+                  image={worker.image}
                 />
               </Paper>
             </Grid>

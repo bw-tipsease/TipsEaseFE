@@ -56,17 +56,37 @@ const TipButton = styled.button`
   }
 `;
 
-const WorkerCard = ({ name, workDuration }) => {
+const WorkerCard = (props) => {
+  if(props.image){
+    return (
+      <WorkerCardContainer>
+        <WorkerImage src={URL.createObjectURL(props.image)} />
+  
+        <WorkerInfo>
+          <WorkerName>{props.name}</WorkerName>
+          <WorkerDuration>
+            Employed for:
+            <br />
+            <span style={{ color: "white" }}>{props.workDuration}</span>
+          </WorkerDuration>
+          <TipButton>
+            <FontAwesomeIcon icon={faCoins} />
+            Add Tip
+          </TipButton>
+        </WorkerInfo>
+      </WorkerCardContainer>
+    );
+  }
   return (
     <WorkerCardContainer>
       <WorkerImage src="https://images.pexels.com/photos/1851471/pexels-photo-1851471.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
 
       <WorkerInfo>
-        <WorkerName>{name}</WorkerName>
+        <WorkerName>{props.name}</WorkerName>
         <WorkerDuration>
           Employed for:
           <br />
-          <span style={{ color: "white" }}>{workDuration}</span>
+          <span style={{ color: "white" }}>{props.workDuration}</span>
         </WorkerDuration>
         <TipButton>
           <FontAwesomeIcon icon={faCoins} />
