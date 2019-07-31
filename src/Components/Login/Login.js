@@ -12,9 +12,10 @@ const H5 = styled.h5`
 `;
 
 const FormContainer = styled.div`
+  position: relative;
   min-width: 50em;
   max-width: 50em;
-  margin: auto;
+  margin: -15em auto;
   padding: 2em;
   display: flex;
   flex-wrap: wrap;
@@ -22,7 +23,7 @@ const FormContainer = styled.div`
   align-content: center;
   min-height: 45em;
   justify-content: space-evenly;
-  background-color: #4e5055;
+  background: #202020;
   box-shadow: 0px 12px 22px -1px #545309;
   border-radius: 10px;
   font-family: "Ubuntu", sans-serif;

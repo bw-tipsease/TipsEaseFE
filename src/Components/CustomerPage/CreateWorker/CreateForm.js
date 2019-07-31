@@ -89,7 +89,7 @@ class CreateForm extends Component {
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
-        <FormContainer>
+        <FormContainer style={{ zIndex: 999 }}>
           <Label>Select an Image</Label>
           <Input type="file" onChange={this.fileSelectedHandler} />
           <Butt onClick={this.fileUploadHandler}>Upload Image</Butt>

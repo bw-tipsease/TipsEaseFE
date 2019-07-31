@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const NavbarContainer = styled.div`
   width: 100%;
-  height: 80px;
-  background: #232323;
+  height: 70px;
+  background: #202020;
   display: flex;
   justify-content: flex-end;
   align-items: center;

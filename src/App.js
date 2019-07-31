@@ -10,6 +10,7 @@ import SignUp from "./Components/SignUp/SignUp";
 import Navbar from "./Components/Navbar/Navbar";
 import CustomerPage from "./Components/CustomerPage/CustomerPage";
 import WorkerPage from "./Components/CustomerPage/WorkerPage";
+import serveImg from "./imgs/adult-beverage-black-coffee-733761.jpg";
 
 import "./App.css";
 
@@ -27,6 +28,7 @@ function App() {
       <header>
         <Navbar token={token} setToken={setToken} />
       </header>
+      <img className="formPageImg" style={{ zIndex: -999 }} src={serveImg} />
       <div>
         {/* export const TokenContext = createContext(); */}
         <TokenContext.Provider value={{ token, setToken }}>

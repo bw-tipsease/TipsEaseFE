@@ -10,9 +10,11 @@ const H5 = styled.h5`
 `;
 
 const FormContainer = styled.div`
+  position: relative;
   min-width: 50em;
   max-width: 50em;
-  margin: auto;
+  align-content: center
+  margin: -15em auto;
   padding: 2em;
   display: flex;
   flex-wrap: wrap;
@@ -20,7 +22,7 @@ const FormContainer = styled.div`
   align-content: center;
   min-height: 65em;
   justify-content: space-evenly;
-  background-color: #4e5055;
+  background-color: #202020;
   box-shadow: 0px 12px 22px -1px #545309;
   border-radius: 10px;
   font-family: "Ubuntu", sans-serif;
@@ -79,14 +81,13 @@ function SignUp({ errors, touched }) {
         />
         <H5>{touched.passwordConfirmation && errors.passwordConfirmation}</H5>
         <Label htmlFor="rememberPassword">
-          Remember password?{" "}
+          Remember password?
           <Field
             id="rememberPassword"
             type="checkbox"
             name="rememberPassword"
           />
         </Label>
-
         <H5>{touched.rememberPassword && errors.rememberPassword}</H5>
         <Butt className="formButt" type="submit">
           Sign Up
