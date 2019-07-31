@@ -59,7 +59,7 @@ const WorkerCard = props => {
 
   return (
     <WorkerCardContainer>
-      <WorkerImage image='https://images.robertharding.com/previeww/RF/TI/HORIZONTAL/1178-4100.jpg' />
+      <WorkerImage image='https://raw.githubusercontent.com/bw-tipsease/TipsEaseFE/Bryce/src/Components/LandingPage/Workers/WorkerMockImages/Bryce.jpg' />
       
       <WorkerInfo>
         <WorkerName>{props.name}</WorkerName>
