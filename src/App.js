@@ -15,7 +15,14 @@ import "./App.css";
 
 function App() {
   const [token, setToken] = useState(false);
-  const [workerList, setWorkerList] = useState([]);
+  const [workerList, setWorkerList] = useState([{
+    name: "PJ",
+    workDuration: "1 year 2 months"
+  },
+  {
+    name: "PJ",
+    workDuration: "1 year 2 months"
+  },]);
 
   useEffect(() => {
     setToken(localStorage.getItem("token"));
@@ -31,11 +38,11 @@ function App() {
         {/* export const TokenContext = createContext(); */}
         <TokenContext.Provider value={{ token, setToken }}>
           <Route exact path="/" component={Home} />
-          <workerContext.Provider value={{ workerList, setWorkerList }}>
             <PrivateRoute
               exact
               path="/customer"
               component={CustomerPage}
+              workerList={workerList}
               //token={token}
             />
 
@@ -43,9 +50,10 @@ function App() {
               exact
               path="/workers"
               component={WorkerPage}
+              workerList={workerList}
+              setWorkerList={setWorkerList}
               //token={token}
             />
-          </workerContext.Provider>
           <Route
             exact
             path="/login"

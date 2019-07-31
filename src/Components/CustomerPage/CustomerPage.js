@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { TokenContext, workerContext } from "../Context/Contexts";
+import { TokenContext } from "../Context/Contexts";
 
 import axios from "axios";
 
@@ -21,13 +21,12 @@ const Sap = styled.div`
 `;
 
 const CustomerPage = props => {
-  // const [starwarsChars, setChars] = useState()
   const { token, setToken } = useContext(TokenContext);
-  const { workerList, setWorkerList } = useContext(workerContext);
   localStorage.getItem("token");
   const [data, setData] = useState({});
 
   localStorage.getItem("token");
+  
   useEffect(() => {
     setToken(localStorage.getItem("token"));
     console.log("test");
@@ -36,6 +35,7 @@ const CustomerPage = props => {
   function setRestricted(res) {
     setSecretData(res);
   }
+
   useEffect(() => {
     AxiosWithAuth()
       .get("http://localhost:4000/restricted/data")
@@ -45,6 +45,7 @@ const CustomerPage = props => {
       })
       .catch(err => console.log(err));
   }, []);
+
   const fetchData = () => {
     axios
       .get(`http://localhost:4000/api/restricted/data`)
@@ -56,56 +57,21 @@ const CustomerPage = props => {
         console.log(err);
       });
   };
+
   console.log("token", "does context get this");
   useEffect(fetchData, [localStorage.getItem("token")]);
   console.log(data, "data");
   //export const TokenContext = createContext();
+  
   return (
     <Sap className="App">
       <main>
-        <WorkersGrid />
+        <WorkersGrid workerList={props.workerList} />
       </main>
       {/* <h1>Private Route</h1> */}
       {/* <WorkerType/> */}
     </Sap>
   );
 };
-
-// class App extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       starwarsChars: []
-//     };
-//   }
-
-//   componentDidMount() {
-//     this.getCharacters("https://build-week-tess.herokuapp.com/planets/");
-//   }
-//'https://swapi.co/api/people'
-//   getCharacters = URL => {
-
-//     fetch(URL)
-//       .then(res => {
-//         return res.json();
-//       })
-//       .then(data => {
-//         this.setState({ starwarsChars: data.results });
-//       })
-//       // .catch(err => {
-//       //   throw new Error(err);
-//       // });
-//   };
-
-//   render() {
-//     return (
-//       <div className="App">
-//         <h1 className="Header">React Wars</h1>
-//         <ChararcterList starwarsChars={this.state.starwarsChars} />
-
-//       </div>
-//     );
-//   }
-// }
 
 export default CustomerPage;

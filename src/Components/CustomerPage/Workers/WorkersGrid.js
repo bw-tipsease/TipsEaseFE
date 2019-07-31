@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import WorkerCard from "./WorkerCard";
-import { workerContext } from "../../Context/Contexts";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,42 +16,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const list = [
-  {
-    name: "PJ",
-    workDuration: "1 year 2 months"
-  },
-  {
-    name: "PJ",
-    workDuration: "1 year 2 months"
-  },
-  {
-    name: "PJ",
-    workDuration: "1 year 2 months"
-  },
-  {
-    name: "PJ",
-    workDuration: "1 year 2 months"
-  },
-  {
-    name: "PJ",
-    workDuration: "1 year 2 months"
-  },
-  {
-    name: "PJ",
-    workDuration: "1 year 2 months"
-  }
-];
-
-function WorkersGrid() {
+function WorkersGrid(props) {
   const classes = useStyles();
-  const { workerList, setWorkerList } = useContext(workerContext);
-  const [worker, setWorker] = useState(list);
+  //const [workers, setWorkers] = useState(props.workerList);
 
   return (
     <div className={classes.root}>
       <Grid container spacing={4}>
-        {worker.map((worker, index) => {
+        {props.workerList.map((worker, index) => {
           return (
             <Grid item xs={12} md={6} lg={6}>
               <Paper className={classes.paper}>
