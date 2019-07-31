@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
+import Tip from './Tip'
 
 const WorkerCardContainer = styled.div`
   display: flex;
@@ -31,6 +32,14 @@ const WorkerName = styled.h2`
   letter-spacing: 1px;
 `;
 
+const WorkerText = styled.p`
+  font-size: 2.2rem;
+  text-align: left;
+  line-height: 3.5rem;
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+`;
+
 const WorkerDuration = styled.p`
   font-size: 2.2rem;
   text-align: left;
@@ -39,22 +48,6 @@ const WorkerDuration = styled.p`
   margin-bottom: 2rem;
 `;
 
-const TipButton = styled.button`
-  background: #f3e367;
-  border: none;
-  padding: 1.2rem 2.4rem;
-  font-size: 2rem;
-  font-family: "Ubuntu", sans-serif;
-  border-radius: 10px;
-
-  :hover {
-    cursor: pointer;
-  }
-
-  svg {
-    margin-right: 0.6rem;
-  }
-`;
 
 const WorkerCard = (props) => {
   if(props.image){
@@ -64,15 +57,13 @@ const WorkerCard = (props) => {
   
         <WorkerInfo>
           <WorkerName>{props.name}</WorkerName>
+          <WorkerText style={{color: 'white', fontFamily: `'Ubuntu', sans-serif`, letterSpacing: '1px', fontSize: '2rem'}}>{props.workType}</WorkerText>
           <WorkerDuration>
             Employed for:
             <br />
             <span style={{ color: "white" }}>{props.workDuration}</span>
           </WorkerDuration>
-          <TipButton>
-            <FontAwesomeIcon icon={faCoins} />
-            Add Tip
-          </TipButton>
+          <Tip />
         </WorkerInfo>
       </WorkerCardContainer>
     );
@@ -83,15 +74,13 @@ const WorkerCard = (props) => {
 
       <WorkerInfo>
         <WorkerName>{props.name}</WorkerName>
+        <WorkerText style={{color: 'white', fontFamily: `'Ubuntu', sans-serif`, letterSpacing: '1px', fontSize: '2rem'}}>{props.workType}</WorkerText>
         <WorkerDuration>
           Employed for:
           <br />
           <span style={{ color: "white" }}>{props.workDuration}</span>
         </WorkerDuration>
-        <TipButton>
-          <FontAwesomeIcon icon={faCoins} />
-          Add Tip
-        </TipButton>
+        <Tip />
       </WorkerInfo>
     </WorkerCardContainer>
   );

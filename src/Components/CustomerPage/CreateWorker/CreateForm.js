@@ -85,7 +85,19 @@ const CreateForm = (props) => {
           placeholder="name"
           name="name"
         />
-        <H5>{props.touched.name && props.errors.workDuration}</H5>
+        <Label htmlFor="workType">What is your position?</Label>
+        <Field
+          id="workType"
+          component="select"
+          name="workType"
+        >
+            <option value="Bartender" selected>Bartender</option>
+            <option value="Server">Server</option>
+            <option value="Waiter">Waiter</option>
+            <option value="Valet">Valet</option>
+            <option value="Bellhop">Bellhop</option>
+        </Field>
+        {/*<H5>{props.touched.name && props.errors.workDuration}</H5>*/}
         <Label htmlFor="workDuration">Time in current position?</Label>
         <Field
           id="workDuration"
@@ -101,17 +113,18 @@ const CreateForm = (props) => {
 }
 
 const formikCreateForm = withFormik({
-  mapPropsToValues: ({ workerList, setWorkerList, name ,workDuration, image}) => {
+  mapPropsToValues: ({ workerList, setWorkerList, name, workType ,workDuration, image}) => {
     return {
       workerList: workerList || [],
       setWorkerList: setWorkerList || (()=>{}),
       name: name || "",
+      workType: workType || "",
       workDuration: workDuration || "",
       image: image || {},
     };
   },
   handleSubmit(values) {
-    values.setWorkerList([...values.workerList, {name: values.name,
+    values.setWorkerList([...values.workerList, {name: values.name, workType: values.workType,
     workDuration: values.workDuration, image: values.image}]);
    },
   validationSchema: Yup.object().shape({

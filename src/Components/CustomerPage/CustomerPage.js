@@ -6,6 +6,7 @@ import axios from "axios";
 import styled from "styled-components";
 import AxiosWithAuth from "./AxiosWithAuth";
 import WorkersGrid from "./Workers/WorkersGrid";
+import WorkersDropdown from "./Workers/WorkerDropdown";
 
 //BTW Sap stands for starter app. Is a personal naming convention. Not industry Standard In ANY way.
 const Sap = styled.div`
@@ -24,6 +25,7 @@ const CustomerPage = props => {
   const { token, setToken } = useContext(TokenContext);
   localStorage.getItem("token");
   const [data, setData] = useState({});
+  const [filter,setFilter] = useState('all')
 
   localStorage.getItem("token");
   
@@ -66,7 +68,8 @@ const CustomerPage = props => {
   return (
     <Sap className="App">
       <main>
-        <WorkersGrid workerList={props.workerList} />
+        <WorkersDropdown setFilter={setFilter} />
+        <WorkersGrid workerList={props.workerList} filter={filter}/>
       </main>
       {/* <h1>Private Route</h1> */}
       {/* <WorkerType/> */}

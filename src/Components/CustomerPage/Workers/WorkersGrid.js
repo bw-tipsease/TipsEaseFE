@@ -18,27 +18,30 @@ const useStyles = makeStyles(theme => ({
 
 function WorkersGrid(props) {
   const classes = useStyles();
-  //const [workers, setWorkers] = useState(props.workerList);
 
   return (
     <div className={classes.root}>
       <Grid container spacing={4}>
         {props.workerList.map((worker, index) => {
-          return (
-            <Grid item xs={12} md={6} lg={6}>
-              <Paper className={classes.paper}>
-                <WorkerCard
-                  name={worker.name}
-                  workDuration={worker.workDuration}
-                  image={worker.image}
-                />
-              </Paper>
-            </Grid>
-          );
+          if (props.filter === 'all' || props.filter === worker.workType) {
+            return (
+              <Grid item xs={12} md={6} lg={6}>
+                <Paper className={classes.paper}>
+                  <WorkerCard
+                    name={worker.name}
+                    workType={worker.workType}
+                    workDuration={worker.workDuration}
+                    image={worker.image}
+                  />
+                </Paper>
+              </Grid>
+            );
+          }
         })}
       </Grid>
     </div>
   );
+
 }
 
 export default WorkersGrid;

@@ -16,12 +16,14 @@ import "./App.css";
 function App() {
   const [token, setToken] = useState(false);
   const [workerList, setWorkerList] = useState([{
-    name: "PJ",
+    name: "Colin de Vries",
+    workType: 'Bartender',
     workDuration: "1 year 2 months"
   },
   {
     name: "PJ",
-    workDuration: "1 year 2 months"
+    workType: 'Server',
+    workDuration: "5 months"
   },]);
 
   useEffect(() => {
