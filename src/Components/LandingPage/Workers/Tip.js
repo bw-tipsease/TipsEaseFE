@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
 import {Link} from 'react-router-dom'
+import { TweenMax } from "gsap/TweenMax";
 
 
 const TipButton = styled(Link)`
@@ -36,9 +37,18 @@ const TipButton = styled(Link)`
 
 function Tip() {
     //Fancy JS Logic
+    const buttonUp = e => {
+      const btn = e.target;
+      TweenMax.to(btn, 0.1, {y: -3})
+    }
+
+    const buttonDown = e => {
+      const btn = e.target;
+      TweenMax.to(btn, 0.1, {y: 0})
+    }
     
     return (
-        <TipButton to ='/TipForm'><FontAwesomeIcon icon={faCoins} />Add Tip</TipButton>
+        <TipButton onMouseEnter={buttonUp} onMouseLeave={buttonDown} to ='/TipForm'><FontAwesomeIcon icon={faCoins} />Add Tip</TipButton>
         )
     
 }
