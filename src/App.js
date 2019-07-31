@@ -1,5 +1,5 @@
 import React, { useState, useEffect,useContext } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import PrivateRoute from "./Components/SecretData/PrivateRoute"
 
 import Login from './Components/Login/Login'
@@ -25,6 +25,7 @@ const NavbarContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 100;
 `;
 
 const NavLogo = styled.div`
@@ -42,7 +43,7 @@ const NavItems = styled.div`
   font-family: "Varela Round", sans-serif;
 `;
 
-const NavItem = styled(Link)`
+const NavItem = styled(NavLink)`
   color: #c9c9c9;
   text-transform: uppercase;
   transition: color 200ms ease-out;

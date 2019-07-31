@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import WorkerCard from './WorkerCard';
+import mockData from './MockData';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -18,42 +19,22 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function WorkersGrid() {
+
+  const [workers, setWorkers] = useState(mockData);
+
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Grid container spacing={4}>
-        <Grid item xs={12} md={6} lg={6}>
+        {workers.map(worker => 
+          <Grid item xs={12} md={6} lg={6}>
           <Paper className={classes.paper}>
-          <WorkerCard />
+          <WorkerCard name={worker.name} role={worker.role} timeEmployed={worker.timeEmployed} />
           </Paper>
         </Grid>
-        <Grid item xs={12} md={6} lg={6}>
-          <Paper className={classes.paper}>
-          <WorkerCard />
-          </Paper>
+        )}
         </Grid>
-        <Grid item xs={12} md={6} lg={6}>
-          <Paper className={classes.paper}>
-          <WorkerCard />
-          </Paper>
-        </Grid>
-        <Grid item xs={12} md={6} lg={6}>
-          <Paper className={classes.paper}>
-          <WorkerCard />
-          </Paper>
-        </Grid>
-        <Grid item xs={12} md={6} lg={6}>
-          <Paper className={classes.paper}>
-          <WorkerCard />
-          </Paper>
-        </Grid>
-        <Grid item xs={12} md={6} lg={6}>
-          <Paper className={classes.paper}>
-          <WorkerCard />
-          </Paper>
-        </Grid>
-      </Grid>
     </div>
   );
 }

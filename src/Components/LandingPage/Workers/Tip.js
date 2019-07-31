@@ -14,7 +14,7 @@ const TipButton = styled(Link)`
   font-size: 2rem;
   font-family: 'Ubuntu', sans-serif;
   border-radius: 10px;
-  transition: all 250ms ease-out;
+  transition: all 200ms ease-out;
   text-decoration: none;
   margin-top: 1.5rem;
 

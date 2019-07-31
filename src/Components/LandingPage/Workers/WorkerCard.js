@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Tip from './Tip'
 
+
 const WorkerCardContainer = styled.div`
   display: flex;
   font-family: 'Varela Round', sans-serif;
@@ -11,7 +12,7 @@ const WorkerCardContainer = styled.div`
 const WorkerImage = styled.div`
   width: 60%;
   height: 200px;
-  border-radius: 5px;
+  border-radius: 3px;
   background: url(${props => props.image});
   background-size: cover;
   background-position: center;
@@ -27,7 +28,7 @@ const WorkerInfo = styled.div`
 `;
 
 const WorkerName = styled.h2`
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   margin: 0.5rem 0;
   color: #f3e367;
   font-family: 'Ubuntu', sans-serif;
@@ -35,11 +36,23 @@ const WorkerName = styled.h2`
 `;
 
 const WorkerText = styled.p`
-  font-size: 2rem;
+  font-size: 1.8rem;
   text-align: left;
   line-height: 3.2rem;
   margin-top: 0;
   margin-bottom: 1.2rem;
+`;
+
+const WorkerRole = styled(WorkerText)`
+  font-size: 2rem;
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+  letter-spacing: 1px;
+`;
+
+const WorkerEmployment = styled(WorkerText)`
+  color: white;
+  font-size: 2rem;
 `;
 
 const WorkerCard = props => {
@@ -49,9 +62,9 @@ const WorkerCard = props => {
       <WorkerImage image='https://images.robertharding.com/previeww/RF/TI/HORIZONTAL/1178-4100.jpg' />
       
       <WorkerInfo>
-        <WorkerName>Colin de Vries</WorkerName>
-        <WorkerText style={{color: 'white', fontFamily: `'Ubuntu', sans-serif`, letterSpacing: '1px', fontSize: '2rem'}}>Bartender</WorkerText>
-        <WorkerText>Employed for:<br /><span style={{color: 'white'}}>1 year, 2 months</span></WorkerText>
+        <WorkerName>{props.name}</WorkerName>
+        <WorkerRole>{props.role}</WorkerRole>
+        <WorkerText>Employed for:<br /><WorkerEmployment>{props.timeEmployed[0]} years, {props.timeEmployed[1]} months</WorkerEmployment></WorkerText>
         <Tip />
       </WorkerInfo>
     </WorkerCardContainer>
