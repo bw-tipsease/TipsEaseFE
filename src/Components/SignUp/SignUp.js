@@ -15,7 +15,7 @@ const FormContainer = styled.div`
   min-width: 50em;
   max-width: 50em;
   align-content: center
-  margin: -29em auto;
+  margin: -100em auto;
   padding: 2em;
   display: flex;
   flex-wrap: wrap;
@@ -53,7 +53,7 @@ const Label = styled.label`
 
 function SignUp({ errors, touched }) {
   return (
-    <>
+    <div className="signUpPage">
       <img className="formPageImg" style={{ zIndex: -999 }} src={serveImg} />
       <Form className="form">
         <FormContainer>
@@ -97,7 +97,7 @@ function SignUp({ errors, touched }) {
           </Butt>
         </FormContainer>
       </Form>
-    </>
+    </div>
   );
 }
 

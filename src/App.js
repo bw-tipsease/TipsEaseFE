@@ -52,38 +52,37 @@ function App() {
       <header>
         <Navbar token={token} setToken={setToken} />
       </header>
-      <div>
-        {/* export const TokenContext = createContext(); */}
-        <TokenContext.Provider value={{ token, setToken }}>
-          <Route exact path="/" component={Home} />
-          <PrivateRoute
-            exact
-            path="/customer"
-            component={CustomerPage}
-            workerList={workerList}
-            removeWorker={removeWorker}
-            //token={token}
-          />
 
-          <PrivateRoute
-            exact
-            path="/workers"
-            component={WorkerPage}
-            workerList={workerList}
-            setWorkerList={setWorkerList}
-            //token={token}
-          />
-          <Route
-            exact
-            path="/login"
-            render={props => <Login {...props} setToken={setToken} />}
-          />
-          <Route exact path="/Contact" />
-          <Route exact path="/Services" />
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/TipForm" component={TipForm} />
-        </TokenContext.Provider>
-      </div>
+      {/* export const TokenContext = createContext(); */}
+      <TokenContext.Provider value={{ token, setToken }}>
+        <Route exact path="/" component={Home} />
+        <PrivateRoute
+          exact
+          path="/customer"
+          component={CustomerPage}
+          workerList={workerList}
+          removeWorker={removeWorker}
+          //token={token}
+        />
+
+        <PrivateRoute
+          exact
+          path="/workers"
+          component={WorkerPage}
+          workerList={workerList}
+          setWorkerList={setWorkerList}
+          //token={token}
+        />
+        <Route
+          exact
+          path="/login"
+          render={props => <Login {...props} setToken={setToken} />}
+        />
+        <Route exact path="/Contact" />
+        <Route exact path="/Services" />
+        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/TipForm" component={TipForm} />
+      </TokenContext.Provider>
     </div>
   );
 }
