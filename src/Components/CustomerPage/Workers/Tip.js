@@ -2,8 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
+import {Route,Link} from 'react-router-dom'
+import TipForm from './TipForm'
 
-const TipButton = styled.button`
+
+const TipButton = styled(Link)`
   background: none;
   color: #f3e367;
   border: 1px solid #f3e367;
@@ -28,12 +31,17 @@ const TipButton = styled.button`
 
 
 
-
 function Tip() {
     //Fancy JS Logic
+    
     return (
-        <TipButton><FontAwesomeIcon icon={faCoins} />Add Tip</TipButton>
-    )
+      <div>
+        <TipButton to ='/TipForm'><FontAwesomeIcon icon={faCoins} />Add Tip</TipButton>
+   
+        
+        </div>
+        )
+    
 }
 
 export default Tip

@@ -123,9 +123,10 @@ const formikCreateForm = withFormik({
       image: image || {},
     };
   },
-  handleSubmit(values) {
+  handleSubmit(values, {resetForm}) {
     values.setWorkerList([...values.workerList, {name: values.name, workType: values.workType,
     workDuration: values.workDuration, image: values.image}]);
+    resetForm();
    },
   validationSchema: Yup.object().shape({
     name: Yup.string()
