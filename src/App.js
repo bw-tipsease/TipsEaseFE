@@ -17,7 +17,7 @@ import './App.css'
 
 const NavbarContainer = styled.div`
   width: 100%;
-  height: 65px;
+  height: 70px;
   background: rgba(0,0,0,0.9);
   display: flex;
   justify-content: flex-end;
