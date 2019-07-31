@@ -5,7 +5,7 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 import styled from "styled-components";
-import posed from "react-pose";
+// import posed from "react-pose";
 
 const H5 = styled.h5`
   color: #b22222;
