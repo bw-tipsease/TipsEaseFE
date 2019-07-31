@@ -101,16 +101,16 @@ function App() {
         <NavItem to="/Services">
         Services
         </NavItem>
-        <NavCta to="/SignUp">
+        <NavCta to="/SignUp" activeClassName='active-cta'>
             Sign Up   
           </NavCta>
         {token === null ? (
-          <NavCta to='/login'>
+          <NavCta to='/login' activeClassName='active-cta'>
             Login   
           </NavCta>
 
         ) : (
-          <NavCta to='/login'>
+          <NavCta to='/login' activeClassName='active-cta'>
             <Logout className="btn" type="submit" onClick={() => {
               localStorage.removeItem('token')
               setToken()}} >
@@ -133,7 +133,7 @@ function App() {
          <Route exact path="/Services"/>
         <Route exact path='/login' render={(props) => <Login {...props} setToken={setToken} />} />
         <Route exact path='/signup' component={SignUp}/>
-        <Route exact path='/TipForm' component={TipModal}/>
+        <Route exact path='/TipForm' component={TipForm}/>
       
         </TokenContext.Provider>
       </div>

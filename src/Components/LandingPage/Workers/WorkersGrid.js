@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import WorkerCard from './WorkerCard';
 import mockData from './MockData';
+import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(5),
+    padding: theme.spacing(4),
     textAlign: 'center',
     background: '#202020',
     color: '#c9c9c9',
@@ -24,11 +25,23 @@ function WorkersGrid() {
 
   const classes = useStyles();
 
+  useEffect(() => {
+    axios.get('https://tipsease-backend-new.herokuapp.com/')
+
+    .then(res => {
+      console.log(res);
+    })
+
+    .catch(err => {
+      console.log(err);
+    })
+  },[])
+
   return (
     <div className={classes.root}>
       <Grid container spacing={4}>
         {workers.map(worker => 
-          <Grid item xs={12} md={10} lg={6}>
+          <Grid item xs={12} md={12} lg={6}>
           <Paper className={classes.paper}>
           <WorkerCard name={worker.name} role={worker.role} timeEmployed={worker.timeEmployed} />
           </Paper>
