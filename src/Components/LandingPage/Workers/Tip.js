@@ -10,13 +10,16 @@ const TipButton = styled(Link)`
   background: none;
   color: #f3e367;
   border: 1px solid #f3e367;
-  padding: 1.2rem 2.4rem;
-  font-size: 2rem;
+  padding: 1.6rem 2.8rem;
+  font-size: 1.9rem;
   font-family: 'Ubuntu', sans-serif;
   border-radius: 10px;
   transition: all 200ms ease-out;
   text-decoration: none;
   margin-top: 1.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 
   :hover {
     cursor: pointer;

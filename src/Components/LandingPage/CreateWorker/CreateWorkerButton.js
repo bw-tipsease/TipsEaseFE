@@ -8,7 +8,7 @@ import { TweenMax } from "gsap/TweenMax";
 
 const WorkerButton = styled.button`
     font-size: 2rem;
-    padding: 1rem;
+    padding: 1.2rem 2.2rem;
     border-radius: 5px;
     background: #252525;
     font-family: 'Ubuntu', sans-serif;

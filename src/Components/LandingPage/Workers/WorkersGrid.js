@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(5),
     textAlign: 'center',
-    background: '#252525',
+    background: '#202020',
     color: '#c9c9c9',
     boxShadow: '0px 4px 12px 0px rgba(201,201,201,1)',
   },
@@ -28,7 +28,7 @@ function WorkersGrid() {
     <div className={classes.root}>
       <Grid container spacing={4}>
         {workers.map(worker => 
-          <Grid item xs={12} md={6} lg={6}>
+          <Grid item xs={12} md={10} lg={6}>
           <Paper className={classes.paper}>
           <WorkerCard name={worker.name} role={worker.role} timeEmployed={worker.timeEmployed} />
           </Paper>

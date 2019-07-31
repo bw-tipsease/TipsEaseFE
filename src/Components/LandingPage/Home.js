@@ -6,11 +6,7 @@ import axios from "axios";
 
 import styled from "styled-components"
 import AxiosWithAuth from "./AxiosWithAuth"
-import CreateWorkerButton from './CreateWorker/CreateWorkerButton';
-import WorkerCard from './Workers/WorkerCard';
-import CreateWorker from './CreateWorker/CreateWorker';
 import WorkersGrid from './Workers/WorkersGrid';
-import WorkersDropdown from './Workers/WorkersDropdown';
 import WorkerButtons from './Workers/WorkerButtons';
 
 //BTW Sap stands for starter app. Is a personal naming convention.Not industry Standard In ANY way.

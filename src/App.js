@@ -10,6 +10,7 @@ import SignUp from './Components/SignUp/SignUp';
 import styled from 'styled-components';
 import Swal from 'sweetalert2'
 import TipForm from './Components/LandingPage/Workers/TipForm'
+import TipModal from './Components/LandingPage/Workers/TipModal';
 import './App.css'
 
 
@@ -132,7 +133,7 @@ function App() {
          <Route exact path="/Services"/>
         <Route exact path='/login' render={(props) => <Login {...props} setToken={setToken} />} />
         <Route exact path='/signup' component={SignUp}/>
-        <Route exact path='/TipForm' component={TipForm}/>
+        <Route exact path='/TipForm' component={TipModal}/>
       
         </TokenContext.Provider>
       </div>
