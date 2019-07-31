@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(4),
+    padding: theme.spacing(3),
     textAlign: 'center',
     background: '#202020',
     color: '#c9c9c9',
@@ -44,7 +44,7 @@ function WorkersGrid() {
         {workers.map(worker => 
           <Grid item xs={12} md={12} lg={6}>
           <Paper className={classes.paper}>
-          <WorkerCard key={worker.index} image={worker.photo_url} firstName={worker.first_name} lastName = {worker.last_name} role={worker.email} />
+          <WorkerCard key={worker.index} image='https://images.robertharding.com/previeww/RF/TI/HORIZONTAL/1178-4100.jpg' firstName={worker.first_name} lastName = {worker.last_name}/>
           </Paper>
         </Grid>
         )}
