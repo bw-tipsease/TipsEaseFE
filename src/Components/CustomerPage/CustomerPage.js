@@ -13,7 +13,9 @@ const Sap = styled.div`
   font-family: sans-serif;
   text-align: center;
   margin: 0;
+  padding: 2rem 0;
   background: linear-gradient(#7f8688, #f2f7f4);
+  height:100vh;
 
   // background-image: url("https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
   // background-size: cover;
