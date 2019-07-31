@@ -7,27 +7,61 @@
 
 .App {
   text-align: center;
+  height    : 100vh;
+  background: linear-gradient(#7f8688, #f2f7f4);
 }
 
 html,
 body {
-  margin: 0;
-  padding: 0;
+  margin   : 0;
+  padding  : 0;
   font-size: 62.5%;
 }
 
 main {
-  width: 85%;
+  width : 85%;
   margin: auto;
-}
-
-.form {
-  background: linear-gradient(#7f8688, #f2f7f4);
-  height: 100vh;
-  padding: 15em 0;
 }
 
 
 #username {
   margin-bottom: -3em;
+}
+
+.tipButton {
+  background   : none;
+  color        : #f3e367;
+  border       : 1px solid #f3e367;
+  padding      : 1.2rem 2.4rem;
+  font-size    : 2rem;
+  font-family  : "Ubuntu", sans-serif;
+  border-radius: 10px;
+  transition   : all 250ms ease-out;
+}
+
+.tipButton:hover {
+  cursor    : pointer;
+  background: #f3e367;
+  color     : black;
+}
+
+.tipButton svg {
+  margin-right: 0.6rem;
+}
+
+.formButt {
+  background   : none;
+  color        : #f3e367;
+  border       : 1px solid #f3e367;
+  padding      : 1.2rem 2.4rem;
+  font-size    : 2rem;
+  font-family  : "Ubuntu", sans-serif;
+  border-radius: 10px;
+  transition   : all 250ms ease-out;
+}
+
+.formButt:hover {
+  cursor    : pointer;
+  background: #f3e367;
+  color     : black;
 }

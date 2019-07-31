@@ -10,8 +10,7 @@ const H5 = styled.h5`
 `;
 
 const FormContainer = styled.div`
-  min-width: 50em;
-  max-width: 50em;
+  width: 35%;
   margin: auto;
   padding: 2em;
   display: flex;

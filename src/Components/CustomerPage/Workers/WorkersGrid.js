@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import WorkerCard from "./WorkerCard";
+import Grow from '@material-ui/core/Grow';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,6 +26,7 @@ function WorkersGrid(props) {
         {props.workerList.map((worker, index) => {
           if (props.filter === 'all' || props.filter === worker.workType) {
             return (
+              <Grow in={true} timeout={500} style={{ transitionDelay: `${100 * index}ms` }} >
               <Grid item xs={12} md={6} lg={6}>
                 <Paper className={classes.paper}>
                   <WorkerCard
@@ -36,6 +38,7 @@ function WorkersGrid(props) {
                   />
                 </Paper>
               </Grid>
+              </Grow>
             );
           }
         })}

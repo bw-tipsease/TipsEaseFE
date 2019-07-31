@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import Tip from './Tip'
 
 const WorkerCardContainer = styled.div`
