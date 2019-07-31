@@ -4,15 +4,18 @@ import * as Yup from "yup";
 import Swal from "sweetalert2";
 import styled from "styled-components";
 import posed from "react-pose";
+import serveImg from "../../imgs/adult-beverage-black-coffee-733761.jpg";
 
 const H5 = styled.h5`
   color: #b22222;
 `;
 
 const FormContainer = styled.div`
+  position: relative;
   min-width: 50em;
   max-width: 50em;
-  margin: auto;
+  align-content: center
+  margin: -29em auto;
   padding: 2em;
   display: flex;
   flex-wrap: wrap;
@@ -20,7 +23,7 @@ const FormContainer = styled.div`
   align-content: center;
   min-height: 65em;
   justify-content: space-evenly;
-  background-color: #4e5055;
+  background-color: #202020;
   box-shadow: 0px 12px 22px -1px #545309;
   border-radius: 10px;
   font-family: "Ubuntu", sans-serif;
@@ -50,49 +53,51 @@ const Label = styled.label`
 
 function SignUp({ errors, touched }) {
   return (
-    <Form className="form">
-      <FormContainer>
-        <Label htmlFor="username">Username</Label>
-        <Field
-          id="username"
-          type="text"
-          autoComplete="off"
-          placeholder="username"
-          name="username"
-        />
-        <H5>{touched.username && errors.username}</H5>
-        <Label htmlFor="password">Password</Label>
-        <Field
-          id="password"
-          type="password"
-          autoComplete="off"
-          placeholder="password"
-          name="password"
-        />
-        <H5>{touched.password && errors.password}</H5>
-        <Label htmlFor="confirmPassword">Confirm your password</Label>
-        <Field
-          id="passwordConfirmation"
-          type="password"
-          placeholder="Confirm Password"
-          name="passwordConfirmation"
-        />
-        <H5>{touched.passwordConfirmation && errors.passwordConfirmation}</H5>
-        <Label htmlFor="rememberPassword">
-          Remember password?{" "}
+    <>
+      <img className="formPageImg" style={{ zIndex: -999 }} src={serveImg} />
+      <Form className="form">
+        <FormContainer>
+          <Label htmlFor="username">Username</Label>
           <Field
-            id="rememberPassword"
-            type="checkbox"
-            name="rememberPassword"
+            id="username"
+            type="text"
+            autoComplete="off"
+            placeholder="username"
+            name="username"
           />
-        </Label>
-
-        <H5>{touched.rememberPassword && errors.rememberPassword}</H5>
-        <Butt className="formButt" type="submit">
-          Sign Up
-        </Butt>
-      </FormContainer>
-    </Form>
+          <H5>{touched.username && errors.username}</H5>
+          <Label htmlFor="password">Password</Label>
+          <Field
+            id="password"
+            type="password"
+            autoComplete="off"
+            placeholder="password"
+            name="password"
+          />
+          <H5>{touched.password && errors.password}</H5>
+          <Label htmlFor="confirmPassword">Confirm your password</Label>
+          <Field
+            id="passwordConfirmation"
+            type="password"
+            placeholder="Confirm Password"
+            name="passwordConfirmation"
+          />
+          <H5>{touched.passwordConfirmation && errors.passwordConfirmation}</H5>
+          <Label htmlFor="rememberPassword">
+            Remember password?
+            <Field
+              id="rememberPassword"
+              type="checkbox"
+              name="rememberPassword"
+            />
+          </Label>
+          <H5>{touched.rememberPassword && errors.rememberPassword}</H5>
+          <Butt className="formButt" type="submit">
+            Sign Up
+          </Butt>
+        </FormContainer>
+      </Form>
+    </>
   );
 }
 

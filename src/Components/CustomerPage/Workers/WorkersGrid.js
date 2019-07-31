@@ -13,7 +13,8 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(5),
     textAlign: "center",
     background: "#232323",
-    color: "#c9c9c9"
+    color: "#c9c9c9",
+    height: "65em"
   }
 }));
 
@@ -24,10 +25,9 @@ function WorkersGrid(props) {
     <div className={classes.root}>
       <Grid container spacing={4}>
         {props.workerList.map((worker, index) => {
-          if (props.filter === 'all' || props.filter === worker.workType) {
+          if (props.filter === "all" || props.filter === worker.workType) {
             return (
-              <Grow in={true} timeout={500} style={{ transitionDelay: `${100 * index}ms` }} >
-              <Grid item xs={12} md={6} lg={6}>
+              <Grid item xs={12} sm={6}>
                 <Paper className={classes.paper}>
                   <WorkerCard
                     name={worker.name}
@@ -45,7 +45,6 @@ function WorkersGrid(props) {
       </Grid>
     </div>
   );
-
 }
 
 export default WorkersGrid;

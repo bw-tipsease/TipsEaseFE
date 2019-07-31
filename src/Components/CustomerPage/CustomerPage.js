@@ -13,9 +13,7 @@ const Sap = styled.div`
   font-family: sans-serif;
   text-align: center;
   margin: 0;
-  padding: 2rem 0;
   background: linear-gradient(#7f8688, #f2f7f4);
-  height:100vh;
 
   // background-image: url("https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
   // background-size: cover;
@@ -27,10 +25,10 @@ const CustomerPage = props => {
   const { token, setToken } = useContext(TokenContext);
   localStorage.getItem("token");
   const [data, setData] = useState({});
-  const [filter,setFilter] = useState('all')
+  const [filter, setFilter] = useState("all");
 
   localStorage.getItem("token");
-  
+
   useEffect(() => {
     setToken(localStorage.getItem("token"));
     console.log("test");
@@ -39,7 +37,6 @@ const CustomerPage = props => {
   function setRestricted(res) {
     setSecretData(res);
   }
-
   useEffect(() => {
     AxiosWithAuth()
       .get("http://localhost:4000/restricted/data")
@@ -49,7 +46,6 @@ const CustomerPage = props => {
       })
       .catch(err => console.log(err));
   }, []);
-
   const fetchData = () => {
     axios
       .get(`http://localhost:4000/api/restricted/data`)
@@ -61,17 +57,20 @@ const CustomerPage = props => {
         console.log(err);
       });
   };
-
   console.log("token", "does context get this");
   useEffect(fetchData, [localStorage.getItem("token")]);
   console.log(data, "data");
   //export const TokenContext = createContext();
-  
+
   return (
     <Sap className="App">
       <main>
         <WorkersDropdown setFilter={setFilter} />
-        <WorkersGrid workerList={props.workerList} filter={filter} removeWorker={props.removeWorker}/>
+        <WorkersGrid
+          workerList={props.workerList}
+          filter={filter}
+          removeWorker={props.removeWorker}
+        />
       </main>
       {/* <h1>Private Route</h1> */}
       {/* <WorkerType/> */}

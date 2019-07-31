@@ -4,7 +4,10 @@ import CreateForm from "./CreateForm";
 function CreateWorker(props) {
   return (
     <div>
-      <CreateForm workerList={props.workerList} setWorkerList={props.setWorkerList}/>
+      <CreateForm
+        workerList={props.workerList}
+        setWorkerList={props.setWorkerList}
+      />
     </div>
   );
 }

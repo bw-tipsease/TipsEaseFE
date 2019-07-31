@@ -10,33 +10,35 @@ import SignUp from "./Components/SignUp/SignUp";
 import Navbar from "./Components/Navbar/Navbar";
 import CustomerPage from "./Components/CustomerPage/CustomerPage";
 import WorkerPage from "./Components/CustomerPage/WorkerPage";
-import TipForm from './Components/CustomerPage/Workers/TipForm';
+import TipForm from "./Components/CustomerPage/Workers/TipForm";
 
 import "./App.css";
 
 function App() {
   const [token, setToken] = useState(false);
-  const [workerList, setWorkerList] = useState([{
-    name: "Colin de Vries",
-    workType: 'Bartender',
-    workDuration: "1 year 2 months",
-    id: '0'
-  },
-  {
-    name: "PJ",
-    workType: 'Server',
-    workDuration: "5 months",
-    id: '1'
-  },]);
+  const [workerList, setWorkerList] = useState([
+    {
+      name: "Colin de Vries",
+      workType: "Bartender",
+      workDuration: "1 year 2 months",
+      id: "0"
+    },
+    {
+      name: "PJ Wise",
+      workType: "Server",
+      workDuration: "1 year 5 months",
+      id: "1"
+    }
+  ]);
 
-  function removeWorker(workerId){;
+  function removeWorker(workerId) {
     let index;
-    workerList.map((worker,i)=>{
-      if(worker.id===workerId){
+    workerList.map((worker, i) => {
+      if (worker.id === workerId) {
         index = i;
       }
     });
-    workerList.splice(index,1);
+    workerList.splice(index, 1);
     setWorkerList([...workerList]);
   }
 
@@ -46,7 +48,7 @@ function App() {
   }, [token]);
 
   return (
-    <div>
+    <div className="App">
       <header>
         <Navbar token={token} setToken={setToken} />
       </header>
@@ -60,7 +62,7 @@ function App() {
             component={CustomerPage}
             workerList={workerList}
             removeWorker={removeWorker}
-          //token={token}
+            //token={token}
           />
 
           <PrivateRoute
@@ -69,7 +71,7 @@ function App() {
             component={WorkerPage}
             workerList={workerList}
             setWorkerList={setWorkerList}
-          //token={token}
+            //token={token}
           />
           <Route
             exact
@@ -79,7 +81,7 @@ function App() {
           <Route exact path="/Contact" />
           <Route exact path="/Services" />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path='/TipForm' component={TipForm} />
+          <Route exact path="/TipForm" component={TipForm} />
         </TokenContext.Provider>
       </div>
     </div>

@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoins } from '@fortawesome/free-solid-svg-icons';
-import {Route,Link} from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoins } from "@fortawesome/free-solid-svg-icons";
+import { Route, Link } from "react-router-dom";
 import posed from "react-pose";
-
+import TipForm from "./TipForm";
 
 const TipButton = posed.div({
   hoverable: true,
@@ -23,19 +23,17 @@ const TipButton = posed.div({
   }
 });
 
-
-
 function Tip() {
-    //Fancy JS Logic
-    
-    return (
-      <div>
-        <TipButton to ='/TipForm' className="animButton tipButton"><FontAwesomeIcon icon={faCoins} />Add Tip</TipButton>
-   
-        
-        </div>
-        )
-    
+  //Fancy JS Logic
+
+  return (
+    <div>
+      <TipButton className="tipButton" to="/TipForm">
+        <FontAwesomeIcon icon={faCoins} />
+        Add Tip
+      </TipButton>
+    </div>
+  );
 }
 
-export default Tip
+export default Tip;
