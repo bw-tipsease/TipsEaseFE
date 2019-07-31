@@ -64,7 +64,7 @@ const WorkerCard = props => {
       <WorkerInfo>
         <WorkerName>{props.name}</WorkerName>
         <WorkerRole>{props.role}</WorkerRole>
-        <WorkerText>Employed for:<br /><WorkerEmployment>{props.timeEmployed[0]} years, {props.timeEmployed[1]} months</WorkerEmployment></WorkerText>
+        <WorkerText>Employed for<br /><WorkerEmployment>{props.timeEmployed[0]} years, {props.timeEmployed[1]} months</WorkerEmployment></WorkerText>
         <Tip />
       </WorkerInfo>
     </WorkerCardContainer>

@@ -16,7 +16,7 @@ const TipButton = styled(Link)`
   border-radius: 10px;
   transition: all 200ms ease-out;
   text-decoration: none;
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
