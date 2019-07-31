@@ -8,6 +8,7 @@ import styled from 'styled-components'
 
 const H5 = styled.h5`
 color:	#B22222;
+font-size: 2rem;
 `
 const TipFormLabel = styled.label`
   color: #f3e367;
@@ -21,6 +22,10 @@ const TipFormField = styled(Field)`
   border: none;
   padding: 1rem 2rem;
   font-size: 2rem;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const TipSubmitButton = styled.button`
@@ -88,7 +93,6 @@ export default withFormik({
   validationSchema: Yup.object().shape({
     username: Yup.string()
     .min(1,"Must tip at least 1 dollar")
-    .required("Oops please enter a payment amount"),
 
   }),
   handleSubmit(values, formikBag) {
