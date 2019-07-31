@@ -5,6 +5,7 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 import styled from "styled-components";
+import posed from "react-pose";
 
 const H5 = styled.h5`
   color: #b22222;
@@ -19,20 +20,30 @@ const FormContainer = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   align-content: center;
-  height: 70em;
-  justify-content: space-around;
+  min-height: 45em;
+  justify-content: space-evenly;
   background-color: #4e5055;
   box-shadow: 0px 12px 22px -1px #545309;
   border-radius: 10px;
   font-family: "Ubuntu", sans-serif;
 `;
 
-const Butt = styled.button`
-  width: 9em;
-  margin: 0 auto;
-  background-color: #f3e367;
-  border: 2px solid black;
-`;
+const Butt = posed.div({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 0.8,
+    boxShadow: "0px 0px 0px rgba(0,0,0,0)"
+  },
+  hover: {
+    scale: 1,
+    boxShadow: "0px 1px 10px #B1B7B7 "
+  },
+  press: {
+    scale: 1,
+    boxShadow: "0px 2px 5px rgba(0,0,0,0.1)"
+  }
+});
 
 const Label = styled.label`
   color: #f3e367;
@@ -73,7 +84,9 @@ function Login({ touched, errors }) {
    <Label htmlFor = "rememberPassword">Let us remember your password?</Label>
     <Field id="rememberPassword" type="checkbox" name="rememberPassword"/>
     <H5>{touched.rememberPassword && errors.rememberPassword}</H5> */}
-        <Butt type="submit">Login</Butt>
+        <Butt className="formButt" type="submit">
+          Login
+        </Butt>
       </FormContainer>
     </Form>
   );

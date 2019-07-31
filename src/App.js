@@ -23,7 +23,7 @@ function App() {
   }, [token]);
 
   return (
-    <div>
+    <div className="App">
       <header>
         <Navbar token={token} setToken={setToken} />
       </header>

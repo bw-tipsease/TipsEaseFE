@@ -72,7 +72,7 @@ const WorkerCard = ({ name, workDuration, image }) => {
           <br />
           <span style={{ color: "white" }}>{workDuration}</span>
         </WorkerDuration>
-        <TipButton className="tipButton">
+        <TipButton className="animButton">
           <FontAwesomeIcon icon={faCoins} />
           Add Tip
         </TipButton>
