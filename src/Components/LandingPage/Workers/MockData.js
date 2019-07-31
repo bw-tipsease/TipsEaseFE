@@ -29,6 +29,16 @@ const mockData = [
         role: 'Bartender',
         timeEmployed: [1, 9],
     },
+    {
+        name: 'Sara Johnson',
+        role: 'Bartender',
+        timeEmployed: [1, 9],
+    },
+    {
+        name: 'Sara Johnson',
+        role: 'Bartender',
+        timeEmployed: [1, 9],
+    },
 ]
 
 export default mockData;

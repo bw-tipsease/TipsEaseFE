@@ -42,7 +42,7 @@ function Tip() {
     //Fancy JS Logic
     const buttonUp = e => {
       const btn = e.target;
-      TweenMax.to(btn, 0.1, {y: -3})
+      TweenMax.to(btn, 0.1, {y: -4})
     }
 
     const buttonDown = e => {

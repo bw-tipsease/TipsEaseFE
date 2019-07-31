@@ -34,7 +34,7 @@ function CreateWorkerButton() {
 
     const workerButtonUp= e => {
         const btn = e.target;
-        TweenMax.to(btn, 0.2, {y: -2});    
+        TweenMax.to(btn, 0.2, {y: 2});    
     }
     const workerButtonDown= e => {
         const btn = e.target;

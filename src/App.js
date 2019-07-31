@@ -59,7 +59,7 @@ const NavItem = styled(NavLink)`
 
 const NavCta = styled(NavItem)`
   color: #f3e367;
-  font-style: italic;
+  /* font-style: italic; */
   :hover {
     color: #f7eb95;
     cursor: pointer;
