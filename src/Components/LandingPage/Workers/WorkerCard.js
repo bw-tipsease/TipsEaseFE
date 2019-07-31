@@ -35,9 +35,9 @@ const WorkerName = styled.h2`
 `;
 
 const WorkerText = styled.p`
-  font-size: 2.2rem;
+  font-size: 2rem;
   text-align: left;
-  line-height: 3.5rem;
+  line-height: 3.2rem;
   margin-top: 0;
   margin-bottom: 1.2rem;
 `;

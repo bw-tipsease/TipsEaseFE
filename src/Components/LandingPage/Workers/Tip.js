@@ -28,7 +28,7 @@ const TipButton = styled(Link)`
   }
 
   svg {
-    margin-right: 0.6rem;
+    margin-right: 0.8rem;
   }
 `;
 

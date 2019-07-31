@@ -28,7 +28,7 @@ const NavbarContainer = styled.div`
 `;
 
 const NavLogo = styled.div`
-  font-size: 3rem;
+  font-size: 2.9rem;
   color: #f3e367;
   margin-right: auto;
   font-family: "Ubuntu", sans-serif;
