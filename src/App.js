@@ -10,6 +10,7 @@ import SignUp from './Components/SignUp/SignUp';
 import styled from 'styled-components';
 import Swal from 'sweetalert2'
 import TipForm from './Components/LandingPage/Workers/TipForm'
+import CreateWorker from './Components/LandingPage/CreateWorker/CreateWorker';
 const NavbarContainer = styled.div`
   width: 100%;
   height: 65px;
@@ -123,6 +124,7 @@ function App() {
         <Route exact path='/login' render={(props) => <Login {...props} setToken={setToken} />} />
         <Route exact path='/signup' component={SignUp}/>
         <Route exact path='/TipForm' component={TipForm}/>
+        <Route exact path='/CreateWorker' component={CreateWorker}/>
       
         </TokenContext.Provider>
       </div>

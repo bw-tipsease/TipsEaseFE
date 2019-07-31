@@ -1,62 +1,143 @@
-import React from 'react';
-import { withFormik, Form, Field } from 'formik';
-import * as Yup from 'yup';
-import axios from 'axios';
-import { Redirect } from 'react-router-dom';
-import Swal from 'sweetalert2'
-import styled from 'styled-components'
-
+import React from "react";
+import { withFormik, Form, Field } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
+import { Redirect } from "react-router-dom";
+import Swal from "sweetalert2";
+import styled from "styled-components";
+import posed from "react-pose";
 
 const H5 = styled.h5`
-color:	#B22222;
-`
+  color: #b22222;
+`;
 
+const FormContainer = styled.div`
+  min-width: 50em;
+  max-width: 50em;
+  height:600px;
+  margin: auto;
+  padding: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  min-height: 45em;
+  justify-content: space-evenly;
+  background-color: #4e5055;
+  box-shadow: 0px 12px 22px -1px #545309;
+  border-radius: 10px;
+  font-family: "Ubuntu", sans-serif;
+`;
+const BTN =styled.button`
+  background: none;
+  color: #f3e367;
+  border: 1px solid #f3e367;
+  padding: 1.2rem 2.4rem;
+  font-size: 2rem;
+  font-family: 'Ubuntu', sans-serif;
+  border-radius: 10px;
+  transition: all 250ms ease-out;
+  margin-top: 1.4rem;
+  text-decoration:none;
+  transition: all 250ms ease-out;
+
+  :hover {
+    cursor: pointer;
+    background: #f3e367;
+    color: black;
+    transition: all 250ms ease-in-out;
+  }
+
+  :focus {
+      outline: none;
+  }
+
+  svg {
+    margin-right: 0.6rem;
+  }
+`
+// const Butt = posed.div({
+//   hoverable: true,
+//   pressable: true,
+//   init: {
+//     scale: 0.8,
+//     boxShadow: "0px 0px 0px rgba(0,0,0,0)"
+//   },
+//   hover: {
+//     scale: 1,
+//     boxShadow: "0px 1px 10px #B1B7B7 "
+//   },
+//   press: {
+//     scale: 1,
+//     boxShadow: "0px 2px 5px rgba(0,0,0,0.1)"
+//   }
+// });
+
+const Label = styled.label`
+  color: #f3e367;
+  font-size: 2.5em;
+`;
 
 function Login({ touched, errors }) {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   if (token) {
     return <Redirect to="/" />;
   }
 
   return (
-    <Form>
-    <label htmlFor = "username">username</label>
-    <Field id="username" type="username" autoComplete="off" placeholder="username" name = "username"/>
-     <H5>{touched.username && errors.username}</H5>
-    <label htmlFor = "password">password</label>
-    <Field id="password" type="password" autoComplete="off" placeholder="password" name= "password"/>
-    <H5>{touched.password && errors.password}</H5>
-    {/* <label htmlFor = "confirmPassword">Confirm your password</label>
+    <Form className="form">
+      <FormContainer>
+        <Label htmlFor="username">Username</Label>
+        <Field
+          id="username"
+          type="username"
+          autoComplete="off"
+          placeholder="username"
+          name="username"
+        />
+        <H5>{touched.username && errors.username}</H5>
+        <Label htmlFor="password">Password</Label>
+        <Field
+          id="password"
+          type="password"
+          autoComplete="off"
+          placeholder="password"
+          name="password"
+        />
+        <H5>{touched.password && errors.password}</H5>
+        {/* <Label htmlFor = "confirmPassword">Confirm your password</Label>
     <Field id="passwordConfirmation" type="password" placeholder="passwordConfirmation" name="passwordConfirmation"/>
    <H5>{touched.passwordConfirmation && errors.passwordConfirmation}</H5>
-   <label htmlFor = "rememberPassword">Let us remember your password?</label>
+   <Label htmlFor = "rememberPassword">Let us remember your password?</Label>
     <Field id="rememberPassword" type="checkbox" name="rememberPassword"/>
     <H5>{touched.rememberPassword && errors.rememberPassword}</H5> */}
-    <button type="submit">Login</button>
- </Form> 
- 
+        <BTN className="formBTN" type="submit">
+          Login
+        </BTN>
+      </FormContainer>
+    </Form>
   );
 }
 
 export default withFormik({
   mapPropsToValues() {
     return {
-        username: '',
-        password: ''
-        // confirmPassword: "",
-        // rememberPassword: false
+      username: "",
+      password: ""
+      // confirmPassword: "",
+      // rememberPassword: false
     };
   },
   validationSchema: Yup.object().shape({
     username: Yup.string()
-    .min(3, "Must be 3 characters or more")
-    .max(20, "Must be less than 20 characters")
-    .required("This field is required"),
-  password: Yup.string()
-    .min(3, "Must be 3 characters or more")
-    .max(100, "Must be less than 100 characters")
-    .required("Enter a password to continue"),
+      .min(3, "Must be 3 characters or more")
+      .max(20, "Must be less than 20 characters")
+      .required("This field is required"),
+    password: Yup.string()
+      .min(3, "Must be 3 characters or more")
+      .max(100, "Must be less than 100 characters")
+      .required("Enter a password to continue")
     // passwordConfirmation: Yup.string()
     // .oneOf([Yup.ref('password'), null], 'Passwords must match'),
   }),

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
@@ -12,6 +12,7 @@ color:	#B22222;
 
 
 function TipForm({ touched, errors }) {
+    const [payment,setPayment] = useState();
  
 
  
@@ -38,10 +39,25 @@ export default withFormik({
   },
   validationSchema: Yup.object().shape({
     username: Yup.string()
-    .min(1,"Must tip at least 1 dollar")
-    .required("Oops please enter a payment amount"),
+    // .min(1,"Must tip at least 1 dollar"),
+    // .required("Oops please enter a payment amount")
 
   }),
+//    onSubmit(e,{touched}) {
+//     e.preventDefault();
+//     const obj = {
+//         // Total: {state.payment},
+//         total: {touched.payment}
+        
+//       };
+//       axios.post('http://localhost:4000/API/tipWorker', obj)
+//           .then(res => console.log(res.data));
+//     console.log(`The Amount is ${state.payment}`)
+//     setPayment({
+//         payment:''
+     
+//     })
+//   },
   handleSubmit(values, formikBag) {
     
 
