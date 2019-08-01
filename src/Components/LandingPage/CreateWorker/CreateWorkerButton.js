@@ -1,46 +1,50 @@
-
-import React from "react";
-import styled from "styled-components";
-
-import {Link} from 'react-router-dom'
-
-
-
-const WorkerButton = styled(Link)`
-  background: black;
-  color: #f3e367;
-  border: 1px solid #f3e367;
-  padding: 1.2rem 2.4rem;
-  font-size: 2rem;
-  font-family: 'Ubuntu', sans-serif;
-  border-radius: 10px;
-  transition: all 250ms ease-out;
-  margin-top: 1.4rem;
-  text-decoration:none;
-  transition: all 250ms ease-out;
-
-  :hover {
-    cursor: pointer;
-    background: #f3e367;
-    color: black;
-    transition: all 250ms ease-in-out;
-  }
-
-  :focus {
-      outline: none;
-  }
-
-  svg {
-    margin-right: 0.6rem;
-  }
-`;
+import React from 'react'
+import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 //Use react router to make the button go to a new route that renders the CreateWorker.js Component
+import { TweenMax } from "gsap/TweenMax";
+
+
+const WorkerButton = styled.button`
+    font-size: 2rem;
+    padding: 1.2rem 2.2rem;
+    border-radius: 5px;
+    background: #252525;
+    font-family: 'Ubuntu', sans-serif;
+    text-transform: uppercase;
+    border: none;
+    color: #f3e367;
+    margin: 2.5rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    svg {
+        margin-right: 1rem;
+    }
+`;
+
 function CreateWorkerButton() {
+
+    const workerButtonUp= e => {
+        const btn = e.target;
+        TweenMax.to(btn, 0.2, {y: 2});    
+    }
+    const workerButtonDown= e => {
+        const btn = e.target;
+        TweenMax.to(btn, 0.2, {y: 0});    
+    }
+
     return (
-        <div>
-        <WorkerButton to='/CreateWorker'>Create New Worker</WorkerButton>   
-        </div>
+        <WorkerButton onMouseEnter={workerButtonUp} onMouseLeave={workerButtonDown}><FontAwesomeIcon icon={faPlusSquare} />New Worker</WorkerButton>   
     )
 }
 
 export default CreateWorkerButton
+

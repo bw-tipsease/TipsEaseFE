@@ -36,8 +36,9 @@ const WorkersDropdown = props => {
         justifyContent: 'flex-end',
         alignItems: 'center',
         background: '#e9e9e9',
-        margin: '2rem auto',
+        margin: '2.5rem',
     }
+    
     return (
         <div style={style}>
         <WorkersDropdownLabel>Sort by :</WorkersDropdownLabel>
@@ -48,9 +49,6 @@ const WorkersDropdown = props => {
             <WorkersDropdownOption value="waiters">Waiters</WorkersDropdownOption>
             <WorkersDropdownOption value="valet">Valet</WorkersDropdownOption>
             <WorkersDropdownOption value="bellhops">Bellhops</WorkersDropdownOption>
-            <WorkersDropdownOption value="manager">Manager</WorkersDropdownOption>
-            <WorkersDropdownOption value="Hospitality">Hospitality</WorkersDropdownOption>
-            <WorkersDropdownOption value="cook">cook</WorkersDropdownOption>
         </WorkersDropdownContainer>
         </div>
     )
