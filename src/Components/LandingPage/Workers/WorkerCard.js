@@ -75,7 +75,7 @@ const WorkerEmployment = styled(WorkerText)`
   
 `;
 
-const WorkerCloseButton = styled.div`
+const WorkerCloseButton = styled.button`
   font-size: 2.8rem;
   color: #c9c9c9;
   background: none;
@@ -87,6 +87,10 @@ const WorkerCloseButton = styled.div`
 
   :hover {
     cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
   }
 `;
 

@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins, faTimes } from '@fortawesome/free-solid-svg-icons'
 import Swal from 'sweetalert2'
 import styled from 'styled-components'
+import { TweenMax } from "gsap/TweenMax";
 
 
 const H5 = styled.h5`
@@ -111,6 +112,16 @@ const TipSubmitButton = styled.button`
 
 function TipForm({ touched, errors, toggleModal }) {
 
+  const buttonUp = e => {
+    const btn = e.target;
+    TweenMax.to(btn, 0.1, {y: -4})
+  }
+
+  const buttonDown = e => {
+    const btn = e.target;
+    TweenMax.to(btn, 0.1, {y: 0})
+  }
+
   return (
     <FormModal>
     <Form>
@@ -121,7 +132,7 @@ function TipForm({ touched, errors, toggleModal }) {
     <TipFormField id="payment" type="payment" autoComplete="off" placeholder="Amount" name = "payment"/>
      <H5>{touched.payment && errors.username}</H5>
     <div className='tip-button-container'>
-    <TipSubmitButton type="submit"><FontAwesomeIcon icon={faCoins} /> Pay</TipSubmitButton>
+    <TipSubmitButton onMouseEnter={buttonUp} onMouseLeave={buttonDown} type="submit"><FontAwesomeIcon icon={faCoins} /> Pay</TipSubmitButton>
     </div>
     </FormContainer>
  </Form> 

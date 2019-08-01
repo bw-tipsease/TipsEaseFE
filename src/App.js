@@ -1,29 +1,26 @@
-import React, { useState, useEffect,useContext } from 'react';
-import { Route, NavLink } from 'react-router-dom';
-import PrivateRoute from "./Components/SecretData/PrivateRoute"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import Login from './Components/Login/Login'
+import React, { useState, useEffect, useContext } from "react";
+import { Route, NavLink } from "react-router-dom";
+import PrivateRoute from "./Components/SecretData/PrivateRoute";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import Login from "./Components/Login/Login";
 import { TweenMax } from "gsap/TweenMax";
 
+import Home from "./Components/LandingPage/Home";
+import { TokenContext } from "./Components/Context/Contexts";
+import SignUp from "./Components/SignUp/SignUp";
+import styled from "styled-components";
+import Swal from "sweetalert2";
+import TipForm from "./Components/LandingPage/Workers/TipForm";
+import TipModal from "./Components/LandingPage/Workers/TipModal";
+import "./App.css";
 
-import Home from './Components/LandingPage/Home'
-import { TokenContext } from './Components/Context/Contexts';
-import SignUp from './Components/SignUp/SignUp';
-import styled from 'styled-components';
-import Swal from 'sweetalert2'
-import TipForm from './Components/LandingPage/Workers/TipForm'
-import TipModal from './Components/LandingPage/Workers/TipModal';
-import './App.css'
 
-const mobileToggle = () => {
-  TweenMax.to('.nav-items', 0.3, {y: 70});
-}
 
 const NavbarContainer = styled.div`
   width: 100%;
   height: 70px;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0, 0, 0, 0.9);
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -33,8 +30,9 @@ const NavbarContainer = styled.div`
   left: 0;
   z-index: 100;
 
-  @media(max-width: 800px) {
+  @media (max-width: 800px) {
     padding: 0.5rem 2.4rem;
+    background: black;
   }
 `;
 
@@ -53,20 +51,20 @@ const NavItems = styled.div`
   align-items: center;
   font-family: "Varela Round", sans-serif;
 
-  @media(max-width: 1100px) {
+  @media (max-width: 1100px) {
     width: 55%;
   }
 
-  @media(max-width: 800px) {
+  @media (max-width: 800px) {
     position: absolute;
     flex-direction: column;
     background: black;
-    transform: translateY(-240px); 
+    transform: translateY(-240px);
     top: 0;
     right: 0;
     justify-content: center;
     height: 240px;
-    z-index: 45;
+    z-index: -1;
   }
 `;
 
@@ -81,7 +79,7 @@ const NavItem = styled(NavLink)`
     color: white;
     cursor: pointer;
   }
-  @media(max-width: 800px) {
+  @media (max-width: 800px) {
     width: 100%;
     margin: 1rem 0;
     font-size: 1.4rem;
@@ -119,80 +117,95 @@ const MobileNavToggle = styled.button`
     color: #f3e367;
   }
 
-  @media(max-width: 800px) {
+  @media (max-width: 800px) {
     display: flex;
   }
 `;
 
-const Logout =styled.button`
-width:75px;
-height:50px;
-background-color:#f7eb95;
-:hover {
-  cursor: pointer;
-  background-color: #f3e367;
-}
-`
+const Logout = styled.button`
+  width: 75px;
+  height: 50px;
+  background-color: #f7eb95;
+  :hover {
+    cursor: pointer;
+    background-color: #f3e367;
+  }
+`;
 function App() {
-  const [token, setToken] = useState(false)
+  const [token, setToken] = useState(false);
+
+  const [mobileNav, setMobileNav] = useState(false);
+
+  const mobileToggle = () => {
+    setMobileNav(!mobileNav);
+    console.log(mobileNav);
+
+    if (mobileNav === true) {
+      TweenMax.to('.nav-items', 0.3, {y: 240});
+    } else {
+      TweenMax.to('.nav-items', 0.3, {y: 0});
+    }
+  };
 
   useEffect(() => {
-    setToken(localStorage.getItem('token'))
-    console.log('test')
+    setToken(localStorage.getItem("token"));
+    console.log("test");
   }, [token]);
 
   // console.log('Token u there brother?: ', token);
   return (
-    <div >
-      <header >
-      
-        <NavbarContainer>
-          <NavLogo>tipsEase</NavLogo>
-        <MobileNavToggle className='mobile-nav-toggle' onClick={mobileToggle}><FontAwesomeIcon icon={faBars} /></MobileNavToggle>
-        <NavItems className='nav-items'>
-        <NavItem  to='/'>
-         Home   
-        </NavItem>
-        <NavItem  to="/About">
-        About
-        </NavItem>
-        <NavItem to="/Team">
-        Team
-        </NavItem>
-        <NavCta to="/SignUp" activeClassName='active-cta'>
-            Sign Up   
+    <div>
+      <NavbarContainer>
+        <NavLogo>tipsEase</NavLogo>
+        <MobileNavToggle className="mobile-nav-toggle" onClick={mobileToggle}>
+          <FontAwesomeIcon icon={faBars} />
+        </MobileNavToggle>
+        <NavItems className="nav-items">
+          <NavItem to="/">Home</NavItem>
+          <NavItem to="/About">About</NavItem>
+          <NavItem to="/Team">Team</NavItem>
+          <NavCta to="/SignUp" activeClassName="active-cta">
+            Sign Up
           </NavCta>
-        {token === null ? (
-          <NavCta to='/login' activeClassName='active-cta'>
-            Login   
-          </NavCta>
-
-        ) : (
-          <NavCta to='/login' activeClassName='active-cta'>
-            <Logout className="btn" type="submit" onClick={() => {
-              localStorage.removeItem('token')
-              setToken()}} >
-              Logout
-            </Logout>
-          </NavCta>
-          
-        )}
+          {token === null ? (
+            <NavCta to="/login" activeClassName="active-cta">
+              Login
+            </NavCta>
+          ) : (
+            <NavCta to="/login" activeClassName="active-cta">
+              <Logout
+                className="btn"
+                type="submit"
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  setToken();
+                }}
+              >
+                Logout
+              </Logout>
+            </NavCta>
+          )}
         </NavItems>
-</NavbarContainer>
+      </NavbarContainer>
 
-      </header>
       <div>
-      {/* export const TokenContext = createContext(); */}
-        <TokenContext.Provider value={{token,setToken}}>
-        <Route exact path='/' component={Home}
-        //  token ={token} 
-         />
-         <Route exact path="/About" />
-         <Route exact path="/Team"/>
-        <Route exact path='/login' render={(props) => <Login {...props} setToken={setToken} />} />
-        <Route exact path='/signup' component={SignUp}/>
-        <Route path='/TipForm' component={TipForm}/>
-      
+        {/* export const TokenContext = createContext(); */}
+        <TokenContext.Provider value={{ token, setToken }}>
+          <Route
+            exact
+            path="/"
+            component={Home}
+            //  token ={token}
+          />
+          <Route exact path="/About" />
+          <Route exact path="/Team" />
+          <Route
+            exact
+            path="/login"
+            render={props => <Login {...props} setToken={setToken} />}
+          />
+          <Route exact path="/signup" component={SignUp} />
+          <Route path="/TipForm" component={TipForm} />
         </TokenContext.Provider>
       </div>
     </div>
@@ -209,4 +222,3 @@ function App() {
 }
 
 export default App;
-
