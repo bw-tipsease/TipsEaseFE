@@ -1,7 +1,8 @@
 import React from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoins } from '@fortawesome/free-solid-svg-icons'
 import Swal from 'sweetalert2'
 import styled from 'styled-components'
 
@@ -10,9 +11,33 @@ const H5 = styled.h5`
 color:	#B22222;
 font-size: 2rem;
 `
-const TipFormLabel = styled.label`
+
+const FormContainer = styled.div`
+  margin: 0 auto;
+    margin-top: 120px;
+    width: 800px;
+    height: 350px;
+    background: #202020;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2.5rem 0;
+`;
+
+
+const FormLogo = styled.h1`
+  font-size: 4rem;
   color: #f3e367;
-  font-size: 3.2rem;
+  margin: 1.5rem auto;
+  font-family: "Ubuntu", sans-serif;
+  margin-bottom: 1rem;
+`;
+
+const TipFormLabel = styled.label`
+  color: #c9c9c9;
+  font-size: 2.4rem;
   font-family: 'Ubuntu', sans-serif;
   margin: 2rem 0;
 `;
@@ -32,13 +57,12 @@ const TipSubmitButton = styled.button`
   background: none;
   color: #f3e367;
   border: 2px solid #f3e367;
-  padding: 1.6rem 2.8rem;
-  font-size: 1.9rem;
+  padding: 1.4rem 2.6rem;
+  font-size: 2rem;
   font-family: 'Ubuntu', sans-serif;
   border-radius: 10px;
   transition: all 200ms ease-out;
   text-decoration: none;
-  margin-top: 1rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -52,31 +76,26 @@ const TipSubmitButton = styled.button`
   :focus {
       outline: none;
   }
+
+  svg {
+    margin-right: 0.3rem;
+  }
 `;
 
 
 function TipForm({ touched, errors }) {
 
-  const style = {
-    margin: '0 auto',
-    marginTop: '120px',
-    width: '800px',
-    height: '350px',
-    background: '#202020',
-    borderRadius: '5px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-
   return (
-    <Form style={style}>
+    <Form>
+      <FormContainer>
+      <FormLogo>tipsEase</FormLogo>
     <TipFormLabel htmlFor = "username">Enter tip amount</TipFormLabel>
     <TipFormField id="payment" type="payment" autoComplete="off" placeholder="Amount" name = "payment"/>
      <H5>{touched.payment && errors.username}</H5>
-    
-    <TipSubmitButton type="submit">Submit</TipSubmitButton>
+    <div className='tip-button-container'>
+    <TipSubmitButton type="submit"><FontAwesomeIcon icon={faCoins} /> Pay</TipSubmitButton>
+    </div>
+    </FormContainer>
  </Form> 
  
   );

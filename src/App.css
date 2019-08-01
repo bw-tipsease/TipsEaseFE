@@ -30,3 +30,7 @@ body {
 .MuiGrid-container {
   justify-content: center;
 }
+
+.tip-button-container {
+  margin-bottom: 3rem;
+}

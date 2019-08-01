@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
 import {Link} from 'react-router-dom'
 import { TweenMax } from "gsap/TweenMax";
+import TipForm from "./TipForm";
 
 
 const TipButton = styled(Link)`
@@ -38,7 +39,8 @@ const TipButton = styled(Link)`
 
 
 
-function Tip() {
+function Tip(props) {
+  const [modal, setModal] = useState(props.modal);
     //Fancy JS Logic
     const buttonUp = e => {
       const btn = e.target;
@@ -49,9 +51,13 @@ function Tip() {
       const btn = e.target;
       TweenMax.to(btn, 0.1, {y: 0})
     }
+
+    const toggleModal = () => {
+      setModal(!props.modal);
+    }
     
     return (
-        <TipButton onMouseEnter={buttonUp} onMouseLeave={buttonDown} to ='/TipForm'><FontAwesomeIcon icon={faCoins} />Add Tip</TipButton>
+        <TipButton onClick={toggleModal} onMouseEnter={buttonUp} onMouseLeave={buttonDown}><FontAwesomeIcon icon={faCoins} />Add Tip</TipButton>
         )
     
 }

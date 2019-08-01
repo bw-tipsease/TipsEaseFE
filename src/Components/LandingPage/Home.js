@@ -8,6 +8,7 @@ import CreateWorker from './CreateWorker/CreateWorker';
 import WorkersGrid from './Workers/WorkersGrid';
 import WorkersDropdown from './Workers/WorkersDropdown';
 import WorkerButtons from './Workers/WorkerButtons';
+import TipForm from '../LandingPage/Workers/TipForm'
 const Sap = styled.div`
 font-family: sans-serif;
 text-align: center;
@@ -56,14 +57,22 @@ localStorage.getItem('token')
  console.log("token","does context get this")
    useEffect(fetchData, [localStorage.getItem('token')]);
  console.log(data,"data")
+
+   const [modal, setModal] = useState(false);
+
+   const toggleModal = () => {
+    setModal(!modal);
+  }
+
  return(
    <div>
 <Sap className="App">
 {/* <WorkerType/> */}
 {/* Create worker is where you will be able to create a new worker.  */}
 <WorkerButtons />
-<WorkersGrid/>
+<WorkersGrid modal={modal} toggleModal={toggleModal}/>
 {/* <WorkerCard/> */}
+{modal ? <TipForm /> : null}
       </Sap>
    </div>
  )

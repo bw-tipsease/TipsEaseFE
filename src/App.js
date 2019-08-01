@@ -43,6 +43,7 @@ const NavLogo = styled.div`
   color: #f3e367;
   margin-right: auto;
   font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
 `;
 
 const NavItems = styled.div`
@@ -190,7 +191,7 @@ function App() {
          <Route exact path="/Team"/>
         <Route exact path='/login' render={(props) => <Login {...props} setToken={setToken} />} />
         <Route exact path='/signup' component={SignUp}/>
-        <Route exact path='/TipForm' component={TipForm}/>
+        <Route path='/TipForm' component={TipForm}/>
       
         </TokenContext.Provider>
       </div>

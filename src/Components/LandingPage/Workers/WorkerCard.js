@@ -73,7 +73,7 @@ const WorkerEmployment = styled(WorkerText)`
   
 `;
 
-const WorkerCard = ({ image, firstName, lastName, role, timeEmployed }) => {
+const WorkerCard = ({ image, firstName, lastName, role, timeEmployed, modal, toggleModal }) => {
 
   return (
     <WorkerCardContainer>
@@ -84,7 +84,7 @@ const WorkerCard = ({ image, firstName, lastName, role, timeEmployed }) => {
       <WorkerInfo>
         <WorkerRole>Bartender</WorkerRole>
         <WorkerText>Employed for<br /><WorkerEmployment>1 year, 2 months</WorkerEmployment></WorkerText>
-        <Tip />
+        <Tip toggleModal={props.toggleModal} />
         </WorkerInfo>
       </WorkerProfile>
     </WorkerCardContainer>
