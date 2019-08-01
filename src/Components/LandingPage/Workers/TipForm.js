@@ -43,6 +43,10 @@ const FormContainer = styled.div`
       width: 600px;
       height: auto;
     }
+    @media (max-width: 600px) {
+      width: 300px;
+      height: auto;
+    }
 `;
 
 
@@ -56,6 +60,10 @@ const FormLogo = styled.h1`
   @media (max-width: 800px) {
       margin: 1.5rem auto;
     }
+
+    @media (max-width: 600px) {
+      font-size: 2.8rem;
+    }
 `;
 
 const TipFormLabel = styled.label`
@@ -63,6 +71,10 @@ const TipFormLabel = styled.label`
   font-size: 2.4rem;
   font-family: 'Ubuntu', sans-serif;
   margin: 2rem 0;
+
+  @media (max-width: 600px) {
+      font-size: 2rem;
+    }
 `;
 
 const TipFormField = styled(Field)`
@@ -74,6 +86,10 @@ const TipFormField = styled(Field)`
   &:focus {
     outline: none;
   }
+
+  @media (max-width: 600px) {
+      width: 60%;
+    }
 `;
 
 const TipFormClose = styled.button`
