@@ -11,35 +11,47 @@ import Navbar from "./Components/Navbar/Navbar";
 import CustomerPage from "./Components/CustomerPage/CustomerPage";
 import WorkerPage from "./Components/CustomerPage/WorkerPage";
 import TipForm from "./Components/CustomerPage/Workers/TipForm";
+import axios from 'axios';
 
 import "./App.css";
 
 function App() {
   const [token, setToken] = useState(false);
-  const [workerList, setWorkerList] = useState([
-    {
-      name: "Colin de Vries",
-      workType: "Bartender",
-      workDuration: "1 year 2 months",
-      id: "0"
-    },
-    {
-      name: "PJ Wise",
-      workType: "Server",
-      workDuration: "1 year 5 months",
-      id: "1"
-    }
-  ]);
+  const [workerList, setWorkerList] = useState([]);
+
+  useEffect(()=>{
+    axios.get(`https://tipsease-backend-new.herokuapp.com/api/tippees`)
+    .then(apiObject=>{
+      setWorkerList(apiObject.data)
+    })
+    .catch( err => {
+      console.log("Error:", err);
+    })    
+  },[]);
 
   function removeWorker(workerId) {
-    let index;
+    //DELETE /api/tippers/:id
+    axios.delete(`https://tipsease-backend-new.herokuapp.com/api/tippees/${workerId}`)
+    .then((res)=>{
+      axios.get(`https://tipsease-backend-new.herokuapp.com/api/tippees`)
+      .then(apiObject=>{
+         setWorkerList(apiObject.data)
+       })
+       .catch( err => {
+         console.log("Inside Error:", err);
+       })   
+    })
+    .catch( err => {
+      console.log("Outside Error:", err);
+    })    
+    /*let index;
     workerList.map((worker, i) => {
       if (worker.id === workerId) {
         index = i;
       }
     });
     workerList.splice(index, 1);
-    setWorkerList([...workerList]);
+    setWorkerList([...workerList]);*/
   }
 
   useEffect(() => {

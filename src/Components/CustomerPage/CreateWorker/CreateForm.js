@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
-import Axios from "axios";
+import axios from 'axios';
 import styled from "styled-components";
 
-const H5 = styled.h5`
+const H2 = styled.h2`
   color: #b22222;
 `;
 
@@ -84,15 +84,39 @@ const CreateForm = props => {
           onChange={fileSelectedHandler}
         />
         {/*<Butt onClick={fileUploadHandler}>Upload Image</Butt>*/}
-        <Label htmlFor="name">Please enter your name</Label>
+        <Label htmlFor="first_name">First name:</Label>
         <Field
-          id="name"
+          id="first_name"
           type="text"
           autoComplete="off"
-          placeholder="name"
-          name="name"
+          placeholder="first name"
+          name="first_name"
         />
-        <Label htmlFor="workType">What is your position?</Label>
+        <Label htmlFor="last_name">Last name:</Label>
+        <Field
+          id="last_name"
+          type="text"
+          autoComplete="off"
+          placeholder="last name"
+          name="last_name"
+        />
+        <Label htmlFor="email">Email:</Label>
+        <Field
+          id="email"
+          type="email"
+          autoComplete="off"
+          placeholder="example@gmail.com"
+          name="email"
+        />
+        <Label htmlFor="tagline">Your Tagline:</Label>
+        <Field
+          id="tagline"
+          type="text"
+          autoComplete="off"
+          placeholder="Your tagline..."
+          name="tagline"
+        />
+        {/*<Label htmlFor="workType">What is your position?</Label>
         <Field id="workType" component="select" name="workType">
           <option value="Bartender" selected>
             Bartender
@@ -101,38 +125,44 @@ const CreateForm = props => {
           <option value="Waiter">Waiter</option>
           <option value="Valet">Valet</option>
           <option value="Bellhop">Bellhop</option>
-        </Field>
+        </Field>*/}
         {/*<H5>{props.touched.name && props.errors.workDuration}</H5>*/}
-        <Label htmlFor="workDuration">Time in current position?</Label>
+        <Label htmlFor="start_date">When did you start?</Label>
         <Field
-          id="workDuration"
-          type="text"
+          id="start_date"
+          type="number"
           autoComplete="off"
-          placeholder="ex: 1year 2 months"
-          name="workDuration"
+          placeholder="date"
+          name="start_date"
         />
         <Butt type="submit">Create Profile</Butt>
+        <H2>{props.touched.name && props.errors.workDuration}</H2>
       </FormContainer>
     </Form>
   );
 };
 
+
 const formikCreateForm = withFormik({
   mapPropsToValues: ({
     workerList,
     setWorkerList,
-    name,
-    workType,
-    workDuration,
-    image
+    first_name,
+    last_name,
+    email,
+    image,
+    tagline,
+    start_date
   }) => {
     return {
       workerList: workerList || [],
       setWorkerList: setWorkerList || (() => {}),
-      name: name || "",
-      workType: workType || "",
-      workDuration: workDuration || "",
-      image: image || {}
+      first_name: first_name || "",
+      last_name: last_name || "",
+      email: email || "",
+      image: image || {},
+      tagline: tagline || "",
+      start_date: start_date || 0
     };
   },
   handleSubmit(values, { resetForm }) {
@@ -148,27 +178,72 @@ const formikCreateForm = withFormik({
       );
       return uuid;
     }
-    values.setWorkerList([
-      ...values.workerList,
-      {
-        name: values.name,
-        workType: values.workType,
-        workDuration: values.workDuration,
-        image: values.image,
-        id: create_UUID()
-      }
-    ]);
-    resetForm();
+    console.log("Hi there i did the thing");
+    const uniqueId = create_UUID();
+    let fileToUrl = '';
+    if(values.image.name){
+      fileToUrl = URL.createObjectURL(values.image);
+    }
+
+    /*
+    {
+      id: uniqueId,
+      first_name: values.first_name,
+      last_name: values.last_name,
+      email: values.email,
+      photo_url: fileToUrl,
+      tagline: values.tagline,
+      start_date: values.start_date
+    }
+    */
+    axios.put(`https://tipsease-backend-new.herokuapp.com/api/tippees/${uniqueId}`, {
+      id: uniqueId,
+      first_name: values.first_name,
+      last_name: values.last_name,
+      email: values.email,
+      photo_url: fileToUrl,
+      tagline: values.tagline,
+      start_date: values.start_date,
+      password: 'hello'
+    })
+    .then(res => {
+      console.log('Put Res:',res);
+      resetForm();
+    })
+    .catch( err => {
+      console.log("Put Error:", err);
+    })  
+    
+    // values.setWorkerList([
+    //   ...values.workerList,
+    //   {
+    //     name: values.name,
+    //     workType: values.workType,
+    //     workDuration: values.workDuration,
+    //     image: values.image,
+    //     id: create_UUID()
+    //   }
+    // ]);
   },
   validationSchema: Yup.object().shape({
-    name: Yup.string()
-      .min(3, "Must be 3 characters or more")
-      .max(15, "Must be less than 15 characters")
-      .required("This field is required"),
-    workDuration: Yup.string()
-      .min(3, "Must be 3 characters or more")
-      .max(18, "Must be less than 18 characters")
-      .required("This field is required")
+     first_name: Yup.string()
+       .min(3, "Must be 3 characters or more")
+       .max(15, "Must be less than 15 characters")
+       .required("This field is required"),
+     last_name: Yup.string()
+       .min(3, "Must be 3 characters or more")
+       .max(15, "Must be less than 15 characters")
+       .required("This field is required"),
+     email: Yup.string()
+       .email("Must be a valid email")
+       .required("This field is required"),
+     tagline: Yup.string()
+       .min(3, "Must be 3 characters or more")
+       .max(25, "Must be less than 25 characters")
+       .required("This field is required"),
+     start_Date: Yup.number()
+    //   .min(1, "Must be 3 characters or more")
+    //   .max(18, "Must be less than 18 characters")
   })
 })(CreateForm);
 

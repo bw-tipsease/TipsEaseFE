@@ -27,13 +27,11 @@ function WorkersGrid(props) {
         {props.workerList.map((worker, index) => {
           if (props.filter === "all" || props.filter === worker.workType) {
             return (
+              <Grow in={true}>
               <Grid item xs={12} sm={6}>
                 <Paper className={classes.paper}>
                   <WorkerCard
-                    name={worker.name}
-                    workType={worker.workType}
-                    workDuration={worker.workDuration}
-                    image={worker.image}
+                    worker={worker}
                     removeWorker={props.removeWorker}
                   />
                 </Paper>

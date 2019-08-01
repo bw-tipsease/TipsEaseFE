@@ -14,7 +14,7 @@ const WorkerCardContainer = styled.div`
 `;
 
 const WorkerImage = styled.img`
-  width: 90%;
+  width: 200px;
   height: 200px;
   border-radius: 5px;
 `;
@@ -64,46 +64,14 @@ const DeleteButton = styled.button`
 `;
 
 const WorkerCard = props => {
-  if (props.image) {
-    return (
-      <>
-        <WorkerCardContainer>
-          <WorkerName>{props.name}</WorkerName>
-          <WorkerImage src={URL.createObjectURL(props.image)} />
-
-          <DeleteButton onClick={() => props.removeWorker(props.id)}>
-            X
-          </DeleteButton>
-
-          <WorkerInfo>
-            <WorkerText
-              style={{
-                color: "white",
-                fontFamily: `'Ubuntu', sans-serif`,
-                letterSpacing: "1px",
-                fontSize: "2rem"
-              }}
-            >
-              {props.workType}
-            </WorkerText>
-            <WorkerDuration>
-              Employed for:
-              <br />
-              <span style={{ color: "white" }}>{props.workDuration}</span>
-            </WorkerDuration>
-            <Tip />
-          </WorkerInfo>
-        </WorkerCardContainer>
-      </>
-    );
-  }
+  
   return (
     <WorkerCardContainer>
       <div className="wrkNameImg">
-        <WorkerName>{props.name}</WorkerName>
-        <WorkerImage src="https://images.pexels.com/photos/1851471/pexels-photo-1851471.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+        <WorkerName>{`${props.worker.first_name} ${props.worker.last_name}`}</WorkerName>
+        <WorkerImage src={props.worker.photo_url} />
       </div>
-      <DeleteButton onClick={() => props.removeWorker(props.id)}>
+      <DeleteButton onClick={() => props.removeWorker(props.worker.id)}>
         X
       </DeleteButton>
 
@@ -116,12 +84,12 @@ const WorkerCard = props => {
             fontSize: "2rem"
           }}
         >
-          {props.workType}
+          {props.worker.tagline}
         </WorkerText>
         <WorkerDuration>
-          Employed for:
+          Employed since:
           <br />
-          <span style={{ color: "white" }}>{props.workDuration}</span>
+          <span style={{ color: "white" }}>{props.worker.start_date}</span>
         </WorkerDuration>
         <Tip />
       </WorkerInfo>
