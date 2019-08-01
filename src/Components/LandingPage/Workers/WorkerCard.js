@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Tip from './Tip'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const WorkerCardContainer = styled.div`
   display: flex;
@@ -9,6 +10,7 @@ const WorkerCardContainer = styled.div`
   font-family: 'Varela Round', sans-serif;
   align-items: center;
   justify-content: center;
+  position: relative;
 `;
 
 const WorkerImage = styled.div`
@@ -73,10 +75,26 @@ const WorkerEmployment = styled(WorkerText)`
   
 `;
 
+const WorkerCloseButton = styled.div`
+  font-size: 2.8rem;
+  color: #c9c9c9;
+  background: none;
+  border: none;
+  padding: 0.8rem;
+  position: absolute;
+  top: 0;
+  right: 1rem;
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 const WorkerCard = ({ image, firstName, lastName, role, timeEmployed, modal, toggleModal }) => {
 
   return (
     <WorkerCardContainer>
+      <WorkerCloseButton><FontAwesomeIcon icon={faTimes} /></WorkerCloseButton>
       <WorkerName>{firstName} {lastName}</WorkerName>
       
       <WorkerProfile>
