@@ -7,10 +7,12 @@ import Swal from 'sweetalert2'
 import styled from 'styled-components'
 import { TweenMax } from "gsap/TweenMax";
 
+
 const H5 = styled.h5`
 color:	#B22222;
 font-size: 2rem;
 `
+
 const FormModal = styled.div`
   position: fixed;
   top: 0;
@@ -35,6 +37,12 @@ const FormContainer = styled.div`
     align-items: center;
     justify-content: center;
     padding: 2.5rem 0;
+    position: relative;
+
+    @media (max-width: 800px) {
+      width: 600px;
+      height: auto;
+    }
 `;
 
 
@@ -44,6 +52,10 @@ const FormLogo = styled.h1`
   margin: 1.5rem auto;
   font-family: "Ubuntu", sans-serif;
   margin-bottom: 1rem;
+
+  @media (max-width: 800px) {
+      margin: 1.5rem auto;
+    }
 `;
 
 const TipFormLabel = styled.label`
@@ -64,7 +76,7 @@ const TipFormField = styled(Field)`
   }
 `;
 
-const TipFormClose = styled.div`
+const TipFormClose = styled.button`
   font-size: 2.8rem;
   color: #c9c9c9;
   margin-left: auto;
@@ -76,6 +88,13 @@ const TipFormClose = styled.div`
   :hover {
     cursor: pointer;
   }
+
+  @media (max-width: 800px) {
+      margin: 0;
+      position: absolute;
+      right: 1.5rem;
+      top: 1rem;
+    }
 `;
 
 const TipSubmitButton = styled.button`
@@ -107,7 +126,6 @@ const TipSubmitButton = styled.button`
   }
 `;
 
-
 function TipForm({ touched, errors, toggleModal }) {
 
   const buttonUp = e => {
@@ -135,6 +153,7 @@ function TipForm({ touched, errors, toggleModal }) {
     </FormContainer>
  </Form> 
  </FormModal>
+ 
   );
 }
 
@@ -151,7 +170,6 @@ export default withFormik({
     .min(1,"Must tip at least 1 dollar")
 
   }),
-
   handleSubmit(values, formikBag) {
     
 
