@@ -17,9 +17,11 @@ const WorkerButton = styled(Link)`
     border: none;
     color: #f3e367;
     margin: 2.5rem;
+    text-decoration:none;
 
     &:hover {
         cursor: pointer;
+        text-decoration:underline;
     }
 
     &:focus {
