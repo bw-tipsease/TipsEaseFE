@@ -62,6 +62,7 @@ localStorage.getItem('token')
 
    const toggleModal = () => {
     setModal(!modal);
+    console.log(modal);
   }
 
  return(
@@ -72,7 +73,7 @@ localStorage.getItem('token')
 <WorkerButtons />
 <WorkersGrid modal={modal} toggleModal={toggleModal}/>
 {/* <WorkerCard/> */}
-{modal ? <TipForm /> : null}
+{modal === true ? <TipForm toggleModal={toggleModal} /> : null}
       </Sap>
    </div>
  )

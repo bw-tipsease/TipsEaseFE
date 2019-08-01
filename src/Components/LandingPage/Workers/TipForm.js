@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoins } from '@fortawesome/free-solid-svg-icons'
+import { faCoins, faTimes } from '@fortawesome/free-solid-svg-icons'
 import Swal from 'sweetalert2'
 import styled from 'styled-components'
 
@@ -12,17 +12,29 @@ color:	#B22222;
 font-size: 2rem;
 `
 
+const FormModal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const FormContainer = styled.div`
-  margin: 0 auto;
-    margin-top: 120px;
+    margin: 0 auto;
     width: 800px;
-    height: 350px;
+    height: 400px;
     background: #202020;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     padding: 2.5rem 0;
 `;
 
@@ -50,6 +62,20 @@ const TipFormField = styled(Field)`
 
   &:focus {
     outline: none;
+  }
+`;
+
+const TipFormClose = styled.div`
+  font-size: 2.8rem;
+  color: #e8e8e8;
+  margin-left: auto;
+  margin-right: 2rem;
+  background: none;
+  border: none;
+  padding: 1rem;
+
+  :hover {
+    cursor: pointer;
   }
 `;
 
@@ -83,11 +109,15 @@ const TipSubmitButton = styled.button`
 `;
 
 
-function TipForm({ touched, errors }) {
+function TipForm({ touched, errors, toggleModal }) {
+
+  const [modal, setModal] = useState(false);
 
   return (
+    <FormModal>
     <Form>
       <FormContainer>
+      <TipFormClose onClick={toggleModal}><FontAwesomeIcon icon={faTimes} /></TipFormClose>
       <FormLogo>tipsEase</FormLogo>
     <TipFormLabel htmlFor = "username">Enter tip amount</TipFormLabel>
     <TipFormField id="payment" type="payment" autoComplete="off" placeholder="Amount" name = "payment"/>
@@ -97,6 +127,7 @@ function TipForm({ touched, errors }) {
     </div>
     </FormContainer>
  </Form> 
+ </FormModal>
  
   );
 }

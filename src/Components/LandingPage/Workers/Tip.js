@@ -40,7 +40,6 @@ const TipButton = styled(Link)`
 
 
 function Tip(props) {
-  const [modal, setModal] = useState(props.modal);
     //Fancy JS Logic
     const buttonUp = e => {
       const btn = e.target;
@@ -52,12 +51,10 @@ function Tip(props) {
       TweenMax.to(btn, 0.1, {y: 0})
     }
 
-    const toggleModal = () => {
-      setModal(!props.modal);
-    }
+    
     
     return (
-        <TipButton onClick={toggleModal} onMouseEnter={buttonUp} onMouseLeave={buttonDown}><FontAwesomeIcon icon={faCoins} />Add Tip</TipButton>
+        <TipButton onClick={props.toggleModal} onMouseEnter={buttonUp} onMouseLeave={buttonDown}><FontAwesomeIcon icon={faCoins} />Add Tip</TipButton>
         )
     
 }

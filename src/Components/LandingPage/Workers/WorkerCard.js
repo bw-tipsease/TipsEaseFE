@@ -84,7 +84,7 @@ const WorkerCard = ({ image, firstName, lastName, role, timeEmployed, modal, tog
       <WorkerInfo>
         <WorkerRole>Bartender</WorkerRole>
         <WorkerText>Employed for<br /><WorkerEmployment>1 year, 2 months</WorkerEmployment></WorkerText>
-        <Tip toggleModal={props.toggleModal} />
+        <Tip toggleModal={toggleModal} />
         </WorkerInfo>
       </WorkerProfile>
     </WorkerCardContainer>
