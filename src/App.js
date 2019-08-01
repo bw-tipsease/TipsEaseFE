@@ -83,18 +83,19 @@ const NavItem = styled(NavLink)`
   @media (max-width: 600px) {
     font-size: 1rem;
   }
+`;
 
 const NavCta = styled(NavItem)`
   color: #f3e367;
-  /* font-style: italic; */
-
+`;
 
 
 const Logout = styled.button`
   width: 75px;
   height: 50px;
   background-color: #f7eb95;
-  :hover {
+  
+  &:hover {
     cursor: pointer;
     background-color: #f3e367;
   }
