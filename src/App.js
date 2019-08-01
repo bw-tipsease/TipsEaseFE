@@ -138,19 +138,21 @@ function App() {
 
   const mobileToggle = () => {
     setMobileNav(!mobileNav);
-    console.log(mobileNav);
-
-    if (mobileNav === true) {
-      TweenMax.to('.nav-items', 0.3, {y: 240});
-    } else {
-      TweenMax.to('.nav-items', 0.3, {y: 0});
-    }
   };
 
   useEffect(() => {
     setToken(localStorage.getItem("token"));
     console.log("test");
   }, [token]);
+
+  useEffect(() => {
+    if (mobileNav === true) {
+      TweenMax.to('.nav-items', 0.3, {y: 240});
+    } else {
+      TweenMax.to('.nav-items', 0.3, {y: 0});
+    }
+  }, [mobileNav]);
+
 
   // console.log('Token u there brother?: ', token);
   return (
@@ -161,7 +163,7 @@ function App() {
           <FontAwesomeIcon icon={faBars} />
         </MobileNavToggle>
         <NavItems className="nav-items">
-          <NavItem to="/">Home</NavItem>
+          <NavItem exact to="/">Home</NavItem>
           <NavItem to="/About">About</NavItem>
           <NavItem to="/Team">Team</NavItem>
           <NavCta to="/SignUp" activeClassName="active-cta">

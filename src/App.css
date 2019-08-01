@@ -34,3 +34,7 @@ body {
 .tip-button-container {
   margin-bottom: 3rem;
 }
+
+.active-cta {
+  color: #f7eb95;
+}

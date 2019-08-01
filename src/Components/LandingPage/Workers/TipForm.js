@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoins, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faHandHoldingUsd, faTimes } from '@fortawesome/free-solid-svg-icons'
 import Swal from 'sweetalert2'
 import styled from 'styled-components'
 import { TweenMax } from "gsap/TweenMax";
@@ -105,7 +105,7 @@ const TipSubmitButton = styled.button`
   }
 
   svg {
-    margin-right: 0.3rem;
+    font-size: 2.4rem;
   }
 `;
 
@@ -132,7 +132,7 @@ function TipForm({ touched, errors, toggleModal }) {
     <TipFormField id="payment" type="payment" autoComplete="off" placeholder="Amount" name = "payment"/>
      <H5>{touched.payment && errors.username}</H5>
     <div className='tip-button-container'>
-    <TipSubmitButton onMouseEnter={buttonUp} onMouseLeave={buttonDown} type="submit"><FontAwesomeIcon icon={faCoins} /> Pay</TipSubmitButton>
+    <TipSubmitButton onMouseEnter={buttonUp} onMouseLeave={buttonDown} type="submit"><FontAwesomeIcon icon={faHandHoldingUsd} /> Pay</TipSubmitButton>
     </div>
     </FormContainer>
  </Form> 
