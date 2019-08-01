@@ -12,6 +12,8 @@ const mockData = [
     {
         name: 'Tony Simpson',
         role: 'Waiter',
+        name: 'Tiffany',
+        role: 'Hospitality',
         timeEmployed: [2, 8],
     },
     {
@@ -20,12 +22,20 @@ const mockData = [
         timeEmployed: [0, 4],
     },
     {
+
         name: 'Stephanie Jones',
         role: 'Bartender',
         timeEmployed: [1, 8],
     },
     {
         name: 'Sara Johnson',
+
+        name: 'Zackary',
+        role: 'Manager',
+        timeEmployed: [1, 8],
+    },
+    {
+        name: 'Sara',
         role: 'Bartender',
         timeEmployed: [1, 9],
     },
@@ -37,6 +47,15 @@ const mockData = [
     {
         name: 'Sara Johnson',
         role: 'Bartender',
+    },
+    {
+        name: 'Bailey',
+        role: 'Server',
+        timeEmployed: [1, 9],
+    },
+    {
+        name: 'Bryce',
+        role: 'Cook',
         timeEmployed: [1, 9],
     },
 ]

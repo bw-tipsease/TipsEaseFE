@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom'
 import { TweenMax } from "gsap/TweenMax";
 import TipForm from "./TipForm";
 
-
 const TipButton = styled(Link)`
   background: none;
   color: #f3e367;
@@ -41,8 +40,6 @@ const TipButton = styled(Link)`
     padding: 0.8rem 1.4rem;
   }
 `;
-
-
 
 function Tip(props) {
     //Fancy JS Logic

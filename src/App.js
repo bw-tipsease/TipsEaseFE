@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useContext } from "react";
 import { Route, NavLink } from "react-router-dom";
 import PrivateRoute from "./Components/SecretData/PrivateRoute";
@@ -52,6 +53,7 @@ const NavItems = styled.div`
   align-items: center;
   font-family: "Varela Round", sans-serif;
 
+
   @media (max-width: 1100px) {
     width: 55%;
   }
@@ -81,16 +83,12 @@ const NavItem = styled(NavLink)`
   @media (max-width: 600px) {
     font-size: 1rem;
   }
-`;
 
 const NavCta = styled(NavItem)`
   color: #f3e367;
   /* font-style: italic; */
-  :hover {
-    color: #f7eb95;
-    cursor: pointer;
-  }
-`;
+
+
 
 const Logout = styled.button`
   width: 75px;
@@ -146,7 +144,7 @@ function App() {
       <div>
         {/* export const TokenContext = createContext(); */}
         <TokenContext.Provider value={{ token, setToken }}>
-          <Route
+          <PrivateRoute
             exact
             path="/"
             component={Home}
@@ -161,6 +159,7 @@ function App() {
           />
           <Route exact path="/signup" component={SignUp} />
           <Route path="/TipForm" component={TipForm} />
+
         </TokenContext.Provider>
       </div>
     </div>
@@ -177,3 +176,4 @@ function App() {
 }
 
 export default App;
+
