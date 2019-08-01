@@ -29,6 +29,7 @@ function WorkersGrid(props) {
               <Grid item xs={12} sm={6}>
                 <Paper className={classes.paper}>
                   <WorkerCard
+                    id={worker.id}
                     name={worker.name}
                     workType={worker.workType}
                     workDuration={worker.workDuration}

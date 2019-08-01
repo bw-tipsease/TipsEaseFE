@@ -14,7 +14,7 @@ const WorkerCardContainer = styled.div`
 `;
 
 const WorkerImage = styled.img`
-  width: 90%;
+  width: 200px;
   height: 200px;
   border-radius: 5px;
 `;
@@ -64,13 +64,15 @@ const DeleteButton = styled.button`
 `;
 
 const WorkerCard = props => {
+  console.log('HERE!!!!!!!!!', props.id);
   if (props.image) {
     return (
       <>
         <WorkerCardContainer>
-          <WorkerName>{props.name}</WorkerName>
-          <WorkerImage src={URL.createObjectURL(props.image)} />
-
+          <div className="wrkNameImg">
+            <WorkerName>{props.name}</WorkerName>
+            <WorkerImage src={URL.createObjectURL(props.image)} />
+          </div>
           <DeleteButton onClick={() => props.removeWorker(props.id)}>
             X
           </DeleteButton>
