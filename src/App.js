@@ -1,11 +1,12 @@
 
 import React, { useState, useEffect, useContext } from "react";
 import { Route, NavLink } from "react-router-dom";
+import axios from 'axios'
 import PrivateRoute from "./Components/SecretData/PrivateRoute";
 import Login from "./Components/Login/Login";
 
 import Home from "./Components/LandingPage/Home";
-import { TokenContext } from "./Components/Context/Contexts";
+import { TokenContext,WorkersListContext,FilterContext } from "./Components/Context/Contexts";
 import SignUp from "./Components/SignUp/SignUp";
 import styled from "styled-components";
 import Swal from "sweetalert2";
@@ -102,12 +103,21 @@ const Logout = styled.button`
 `;
 function App() {
   const [token, setToken] = useState(false);
-
+  const[workerList, setWorkerList] = useState([])
+  const [filter, setFilter] = useState("all");
   useEffect(() => {
     setToken(localStorage.getItem("token"));
     console.log("test");
   }, [token]);
-
+  useEffect(()=>{
+    axios.get(`https://tipsease-backend-new.herokuapp.com/api/tippees`)
+    .then(apiObject=>{
+      setWorkerList(apiObject.data)
+    })
+    .catch( err => {
+      console.log("Error:", err);
+    })    
+  },[]);
 
   // console.log('Token u there brother?: ', token);
   return (
@@ -145,6 +155,8 @@ function App() {
       <div>
         {/* export const TokenContext = createContext(); */}
         <TokenContext.Provider value={{ token, setToken }}>
+          <WorkersListContext.Provider value={{workerList}}>
+         <FilterContext.Provider value={{filter, setFilter}}>
           <PrivateRoute
             exact
             path="/"
@@ -160,7 +172,8 @@ function App() {
           />
           <Route exact path="/signup" component={SignUp} />
           <Route path="/TipForm" component={TipForm} />
-
+          </FilterContext.Provider>
+          </WorkersListContext.Provider>
         </TokenContext.Provider>
       </div>
     </div>
