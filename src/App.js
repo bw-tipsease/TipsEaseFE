@@ -95,11 +95,11 @@ function App() {
         <NavItem  to='/'>
          Home   
         </NavItem>
-        <NavItem  to="/Contact">
-        Contact
+        <NavItem  to="/About">
+        About
         </NavItem>
-        <NavItem to="/Services">
-        Services
+        <NavItem to="/Team">
+        Team
         </NavItem>
         <NavCta to="/SignUp" activeClassName='active-cta'>
             Sign Up   
@@ -129,8 +129,8 @@ function App() {
         <Route exact path='/' component={Home}
         //  token ={token} 
          />
-         <Route exact path="/Contact" />
-         <Route exact path="/Services"/>
+         <Route exact path="/About" />
+         <Route exact path="/Team"/>
         <Route exact path='/login' render={(props) => <Login {...props} setToken={setToken} />} />
         <Route exact path='/signup' component={SignUp}/>
         <Route exact path='/TipForm' component={TipForm}/>

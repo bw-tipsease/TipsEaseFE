@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
     background: '#202020',
     color: '#c9c9c9',
     boxShadow: '0px 4px 12px 0px rgba(201,201,201,1)',
+    margin: '0 auto',
   },
 }));
 
@@ -40,9 +41,9 @@ function WorkersGrid() {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={4}>
+      <Grid container spacing={5}>
         {workers.map(worker => 
-          <Grid item xs={12} md={12} lg={6}>
+          <Grid item md={9} lg={6}>
           <Paper className={classes.paper}>
           <WorkerCard key={worker.index} image='https://images.robertharding.com/previeww/RF/TI/HORIZONTAL/1178-4100.jpg' firstName={worker.first_name} lastName = {worker.last_name}/>
           </Paper>

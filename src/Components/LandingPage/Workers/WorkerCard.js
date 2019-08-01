@@ -51,11 +51,12 @@ const WorkerProfile = styled.div`
 `;
 
 const WorkerText = styled.p`
-  font-size: 2rem;
+  font-size: 1.8rem;
   text-align: left;
   line-height: 3.2rem;
   margin-top: 0;
   margin-bottom: 1.2rem;
+  font-family: 'Ubuntu', sans-serif;
 `;
 
 const WorkerRole = styled(WorkerText)`
@@ -67,7 +68,9 @@ const WorkerRole = styled(WorkerText)`
 
 const WorkerEmployment = styled(WorkerText)`
   color: white;
-  font-size: 2.4rem;
+  font-size: 2.2rem;
+  font-family: 'Varela Round', sans-serif;
+  
 `;
 
 const WorkerCard = ({ image, firstName, lastName, role, timeEmployed }) => {
