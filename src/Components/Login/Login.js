@@ -5,6 +5,7 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 import styled from "styled-components";
+import "../../App.css"
 // import posed from "react-pose";
 
 const H5 = styled.h5`
@@ -12,10 +13,10 @@ const H5 = styled.h5`
 `;
 
 const FormContainer = styled.div`
+  
   min-width: 50em;
   max-width: 50em;
-  height:600px;
-  margin: auto;
+  margin: 0 auto;
   padding: 2em;
   display: flex;
   flex-wrap: wrap;
@@ -23,7 +24,7 @@ const FormContainer = styled.div`
   align-content: center;
   min-height: 45em;
   justify-content: space-evenly;
-  background-color: #4e5055;
+  background: #202020;
   box-shadow: 0px 12px 22px -1px #545309;
   border-radius: 10px;
   font-family: "Ubuntu", sans-serif;
