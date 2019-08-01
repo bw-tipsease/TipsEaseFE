@@ -3,7 +3,6 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
 import styled from "styled-components";
-import posed from "react-pose";
 
 const H5 = styled.h5`
   color: #b22222;
