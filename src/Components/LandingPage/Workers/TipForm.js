@@ -83,7 +83,7 @@ const TipFormField = styled(Field)`
   padding: 1rem 2rem;
   font-size: 2rem;
 
-  &:focus {
+  :focus {
     outline: none;
   }
 
@@ -103,6 +103,10 @@ const TipFormClose = styled.button`
 
   :hover {
     cursor: pointer;
+  }
+
+  :focus {
+    outline: none;
   }
 
   @media (max-width: 800px) {

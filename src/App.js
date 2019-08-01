@@ -94,7 +94,7 @@ const Logout = styled.button`
   background: none;
   color: #f3e367;
   border: 2px solid #f3e367;
-  padding: 1rem 1.5rem;
+  padding: 0.8rem 1.5rem;
   font-size: 1.5rem;
   border-radius: 10px;
   transition: all 200ms ease-out;
