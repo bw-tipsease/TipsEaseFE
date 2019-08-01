@@ -1,8 +1,11 @@
 import React, { useState, useEffect,useContext } from 'react';
 import { Route, NavLink } from 'react-router-dom';
 import PrivateRoute from "./Components/SecretData/PrivateRoute"
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import Login from './Components/Login/Login'
+import { TweenMax } from "gsap/TweenMax";
+
 
 import Home from './Components/LandingPage/Home'
 import { TokenContext } from './Components/Context/Contexts';
@@ -13,7 +16,9 @@ import TipForm from './Components/LandingPage/Workers/TipForm'
 import TipModal from './Components/LandingPage/Workers/TipModal';
 import './App.css'
 
-
+const mobileToggle = () => {
+  TweenMax.to('.nav-items', 0.3, {y: 70});
+}
 
 const NavbarContainer = styled.div`
   width: 100%;
@@ -27,6 +32,10 @@ const NavbarContainer = styled.div`
   top: 0;
   left: 0;
   z-index: 100;
+
+  @media(max-width: 800px) {
+    padding: 0.5rem 2.4rem;
+  }
 `;
 
 const NavLogo = styled.div`
@@ -42,6 +51,22 @@ const NavItems = styled.div`
   justify-content: space-around;
   align-items: center;
   font-family: "Varela Round", sans-serif;
+
+  @media(max-width: 1100px) {
+    width: 55%;
+  }
+
+  @media(max-width: 800px) {
+    position: absolute;
+    flex-direction: column;
+    background: black;
+    transform: translateY(-240px); 
+    top: 0;
+    right: 0;
+    justify-content: center;
+    height: 240px;
+    z-index: 55;
+  }
 `;
 
 const NavItem = styled(NavLink)`
@@ -55,6 +80,12 @@ const NavItem = styled(NavLink)`
     color: white;
     cursor: pointer;
   }
+  @media(max-width: 800px) {
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 1.4rem;
+    text-align: center;
+  }
 `;
 
 const NavCta = styled(NavItem)`
@@ -65,6 +96,33 @@ const NavCta = styled(NavItem)`
     cursor: pointer;
   }
 `;
+
+const MobileNavToggle = styled.button`
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: none;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  svg {
+    font-size: 3rem;
+    color: #f3e367;
+  }
+
+  @media(max-width: 800px) {
+    display: flex;
+  }
+`;
+
 const Logout =styled.button`
 width:75px;
 height:50px;
@@ -83,15 +141,14 @@ function App() {
   }, [token]);
 
   // console.log('Token u there brother?: ', token);
-
   return (
     <div >
       <header >
       
         <NavbarContainer>
           <NavLogo>tipsEase</NavLogo>
-
-        <NavItems>
+        <MobileNavToggle className='mobile-nav-toggle' onClick={mobileToggle}><FontAwesomeIcon icon={faBars} /></MobileNavToggle>
+        <NavItems className='nav-items'>
         <NavItem  to='/'>
          Home   
         </NavItem>
