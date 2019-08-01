@@ -66,7 +66,7 @@ const NavItems = styled.div`
     right: 0;
     justify-content: center;
     height: 240px;
-    z-index: 55;
+    z-index: 45;
   }
 `;
 

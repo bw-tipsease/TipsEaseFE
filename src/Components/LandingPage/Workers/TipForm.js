@@ -67,7 +67,7 @@ const TipFormField = styled(Field)`
 
 const TipFormClose = styled.div`
   font-size: 2.8rem;
-  color: #e8e8e8;
+  color: #c9c9c9;
   margin-left: auto;
   margin-right: 2rem;
   background: none;
@@ -110,8 +110,6 @@ const TipSubmitButton = styled.button`
 
 
 function TipForm({ touched, errors, toggleModal }) {
-
-  const [modal, setModal] = useState(false);
 
   return (
     <FormModal>
