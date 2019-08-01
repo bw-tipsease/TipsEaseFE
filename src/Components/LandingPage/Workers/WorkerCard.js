@@ -21,6 +21,12 @@ const WorkerImage = styled.div`
   background-size: cover;
   background-position: center;
   box-shadow: 0px 4px 12px 0px #383838;
+
+  @media (max-width: 600px) {
+    width: 140px;
+    height: 90px;
+    margin: 0 auto;
+  }
 `;
 
 const WorkerInfo = styled.div`
@@ -29,6 +35,10 @@ const WorkerInfo = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding-left: 3.5rem;
+
+  @media (max-width: 600px) {
+    padding-left: 1.5rem;
+  }
   `;
 
 const WorkerName = styled.h2`
@@ -42,7 +52,7 @@ const WorkerName = styled.h2`
   padding: 0 1.5rem;
 
   @media (max-width: 600px) {
-    font-size: 2.8rem;
+    font-size: 2.2rem;
   }
 `;
 
@@ -57,6 +67,8 @@ const WorkerProfile = styled.div`
 
   @media (max-width: 600px) {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-row-gap: 1rem;
   }
 
 `;
@@ -68,6 +80,11 @@ const WorkerText = styled.p`
   margin-top: 0;
   margin-bottom: 1.2rem;
   font-family: 'Ubuntu', sans-serif;
+
+  @media (max-width: 600px) {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const WorkerRole = styled(WorkerText)`
@@ -81,6 +98,11 @@ const WorkerEmployment = styled(WorkerText)`
   color: white;
   font-size: 2.2rem;
   font-family: 'Varela Round', sans-serif;
+
+  @media (max-width: 600px) {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
   
 `;
 
@@ -100,6 +122,10 @@ const WorkerCloseButton = styled.button`
 
   &:focus {
     outline: none;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 2rem;
   }
 `;
 

@@ -35,6 +35,11 @@ const TipButton = styled(Link)`
   svg {
     margin-right: 0.8rem;
   }
+
+  @media (max-width: 600px) {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.4rem;
+  }
 `;
 
 
