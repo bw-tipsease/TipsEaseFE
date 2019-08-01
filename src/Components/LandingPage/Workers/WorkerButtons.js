@@ -9,9 +9,10 @@ const WorkerButtonsContainer = styled.div`
     align-items: flex-end;
     width: 100%;
 
-    @media(max-width: 800px) {
+    @media(max-width: 600px) {
         flex-direction: column;
         align-items: center;
+        justify-content: center;
     }
 `;
 

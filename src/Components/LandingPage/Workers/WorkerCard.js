@@ -40,6 +40,10 @@ const WorkerName = styled.h2`
   width: 100%;
   text-align: left;
   padding: 0 1.5rem;
+
+  @media (max-width: 600px) {
+    font-size: 2.8rem;
+  }
 `;
 
 const WorkerProfile = styled.div`
@@ -50,6 +54,11 @@ const WorkerProfile = styled.div`
   margin-top: 2rem;
   margin-bottom: 1.5rem;
   width: 90%;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+
 `;
 
 const WorkerText = styled.p`

@@ -39,6 +39,10 @@ const NavLogo = styled.div`
   margin-right: auto;
   font-family: "Ubuntu", sans-serif;
   font-weight: 500;
+
+  @media (max-width: 800px) {
+    font-size: 2.2rem;
+  }
 `;
 
 const NavItems = styled.div`
@@ -73,6 +77,9 @@ const NavItem = styled(NavLink)`
     margin: 1rem 0;
     font-size: 1.4rem;
     text-align: center;
+  }
+  @media (max-width: 600px) {
+    font-size: 1rem;
   }
 `;
 
