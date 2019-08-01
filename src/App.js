@@ -91,13 +91,38 @@ const NavCta = styled(NavItem)`
 
 
 const Logout = styled.button`
-  width: 75px;
-  height: 50px;
-  background-color: #f7eb95;
-  
-  &:hover {
+  background: none;
+  color: #f3e367;
+  border: 2px solid #f3e367;
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  transition: all 200ms ease-out;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 500;
+
+  :hover {
     cursor: pointer;
-    background-color: #f3e367;
+    background: #f3e367;
+    color: black;
+  }
+
+  :focus {
+      outline: none;
+  }
+
+  @media (max-width: 800px) {
+    font-size: 1.3rem;
+    padding: 0.8rem 1.2rem;
+    border-width: 1px;
+  }
+  @media (max-width: 600px) {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-width: 1px;
   }
 `;
 function App() {
