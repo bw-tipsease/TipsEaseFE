@@ -13,6 +13,7 @@ import Swal from "sweetalert2";
 import TipForm from "./Components/LandingPage/Workers/TipForm";
 import TipModal from "./Components/LandingPage/Workers/TipModal";
 import "./App.css";
+import CreateWorker from './Components/LandingPage/CreateWorker/CreateWorker'
 
 
 
@@ -118,6 +119,30 @@ function App() {
       console.log("Error:", err);
     })    
   },[]);
+  function removeWorker(workerId) {
+    //DELETE /api/tippers/:id
+    axios.delete(`https://tipsease-backend-new.herokuapp.com/api/tippees/${workerId}`)
+    .then((res)=>{
+      axios.get(`https://tipsease-backend-new.herokuapp.com/api/tippees`)
+      .then(apiObject=>{
+         setWorkerList(apiObject.data)
+       })
+       .catch( err => {
+         console.log("Inside Error:", err);
+       })   
+    })
+    .catch( err => {
+      console.log("Outside Error:", err);
+    })    
+    /*let index;
+    workerList.map((worker, i) => {
+      if (worker.id === workerId) {
+        index = i;
+      }
+    });
+    workerList.splice(index, 1);
+    setWorkerList([...workerList]);*/
+  }
 
   // console.log('Token u there brother?: ', token);
   return (
@@ -172,6 +197,7 @@ function App() {
           />
           <Route exact path="/signup" component={SignUp} />
           <Route path="/TipForm" component={TipForm} />
+          <Route exact path="/CreateWorker" component={CreateWorker}/>
           </FilterContext.Provider>
           </WorkersListContext.Provider>
         </TokenContext.Provider>

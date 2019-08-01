@@ -1,14 +1,17 @@
-import React from 'react'
-import UploadImg from './UploadImg';
-import CreateForm from './CreateForm';
+import React,{useState,useContext} from "react";
+import CreateForm from "./CreateForm";
+import {WorkersListContext} from '../../Context/Contexts'
 
 function CreateWorker() {
-    return (
-        <div>
-            <UploadImg/>
-            <CreateForm/>
-        </div>
-    )
+const {workerList,setWorkerList} = useState(WorkersListContext);
+  return (
+    <div>
+      <CreateForm
+        workerList={workerList}
+        setWorkerList={setWorkerList}
+      />
+    </div>
+  );
 }
 
-export default CreateWorker
+export default CreateWorker;

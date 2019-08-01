@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components';
+import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 //Use react router to make the button go to a new route that renders the CreateWorker.js Component
 import { TweenMax } from "gsap/TweenMax";
 
 
-const WorkerButton = styled.button`
+const WorkerButton = styled(Link)`
     font-size: 2rem;
     padding: 1.2rem 2.2rem;
     border-radius: 5px;
@@ -42,7 +43,7 @@ function CreateWorkerButton() {
     }
 
     return (
-        <WorkerButton onMouseEnter={workerButtonUp} onMouseLeave={workerButtonDown}><FontAwesomeIcon icon={faPlusSquare} />New Worker</WorkerButton>   
+        <WorkerButton to="/CreateWorker" onMouseEnter={workerButtonUp} onMouseLeave={workerButtonDown}><FontAwesomeIcon icon={faPlusSquare} />New Worker</WorkerButton>   
     )
 }
 

@@ -1,8 +1,10 @@
 import React from "react";
-import { withFormik, Form, Field } from "formik";
+import { withFormik, Form, Field ,formikBag} from "formik";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
 import styled from "styled-components";
+import axios from 'axios';
+
 
 const H5 = styled.h5`
   color: #b22222;
@@ -11,6 +13,7 @@ const H5 = styled.h5`
 const FormContainer = styled.div`
   min-width: 50em;
   max-width: 50em;
+  margin-top:70px;
   margin: auto;
   padding: 2em;
   display: flex;
@@ -62,6 +65,15 @@ function SignUp({ errors, touched }) {
   return (
     <Form className="form">
       <FormContainer>
+      <Label htmlFor="email">Username</Label>
+        <Field
+          id="email"
+          type="email"
+          autoComplete="off"
+          placeholder="Your Email"
+          name="email"
+        />
+        <H5>{touched.email && errors.email}</H5>
         <Label htmlFor="username">Username</Label>
         <Field
           id="username"
@@ -109,24 +121,12 @@ function SignUp({ errors, touched }) {
 export default withFormik({
   mapPropsToValues: () => {
     return {
+      email: "",
       username: "",
       password: "",
-      confirmPassword: "",
-      rememberPassword: false
+      
     };
-    // if(rememberPassword===true){
-    //     setToken(localStorage.getItem('token')
-    // }
-  },
-  handleSubmit(values) {
-    Swal.fire({
-      title: "Now Please Login",
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDOamKMfdxmxQlQsH4_tGp_gfuik8vLENLJl_HxrlswCNvF2Rw",
-      imageHeight: 100,
-      imageAlt: "userCity"
-    });
-    console.log(values);
+   
   },
   validationSchema: Yup.object().shape({
     username: Yup.string()
@@ -141,5 +141,31 @@ export default withFormik({
       [Yup.ref("password"), null],
       "Passwords must match"
     )
-  })
+  }),
+  handleSubmit(formikBag,values) {
+    //
+    console.log(values,'hey im a value you can be too')
+    axios
+    .post(`https://usemytechstuff.herokuapp.com/api/auth/register/`, values)
+    .then((response) => {
+      localStorage.setItem('token', response.data.payload);
+      console.log('does token data exist:', response.data.payload)
+      console.log(response, "hey its response here")
+      formikBag.props.history.push('/');
+      formikBag.props.setToken(response.data.payload)
+    })
+    .catch((e) => {
+      // console.log(e.response.data && response.data);
+    });
+    Swal.fire({
+      
+      title: "Now Please Login",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDOamKMfdxmxQlQsH4_tGp_gfuik8vLENLJl_HxrlswCNvF2Rw",
+      imageHeight: 100,
+      imageAlt: "userCity"
+    });
+    console.log(values);
+  },
+
 })(SignUp);

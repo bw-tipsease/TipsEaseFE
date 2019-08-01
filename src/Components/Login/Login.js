@@ -135,15 +135,16 @@ export default withFormik({
       .max(20, "Must be less than 20 characters")
       .required("This field is required"),
     password: Yup.string()
-      .min(3, "Must be 3 characters or more")
+      .min(2, "Must be 3 characters or more")
       .max(100, "Must be less than 100 characters")
       .required("Enter a password to continue")
     // passwordConfirmation: Yup.string()
     // .oneOf([Yup.ref('password'), null], 'Passwords must match'),
   }),
   handleSubmit(values, formikBag) {
+    console.log(values,"Login values")
     axios
-      .post(`http://localhost:4000/api/register`, values)
+      .post(`https://usemytechstuff.herokuapp.com/api/auth/login/`, values)
       .then((response) => {
         localStorage.setItem('token', response.data.payload);
         console.log('does token data exist:', response.data.payload)

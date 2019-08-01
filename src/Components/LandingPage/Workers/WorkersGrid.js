@@ -28,7 +28,7 @@ function WorkersGrid(props) {
   const classes = useStyles();
 
   useEffect(() => {
-    axios.get('https://tipsease-backend-new.herokuapp.com/api/tippers')
+    axios.get('https://tipsease-backend-new.herokuapp.com/api/tippees')
 
     .then(res => {
       console.log(res.data);
@@ -46,7 +46,7 @@ function WorkersGrid(props) {
         {workers.map(worker => 
           <Grid item xs={12} md={9} lg={6}>
           <Paper className={classes.paper}>
-          <WorkerCard key={worker.index} image='https://images.robertharding.com/previeww/RF/TI/HORIZONTAL/1178-4100.jpg' firstName={worker.first_name} lastName = {worker.last_name} modal={props.modal} toggleModal={props.toggleModal}/>
+          <WorkerCard id={worker.id} key={worker.index} tagline={worker.tagline} photo_url={worker.photo_url} firstName={worker.first_name} lastName = {worker.last_name} modal={props.modal} toggleModal={props.toggleModal}/>
           </Paper>
         </Grid>
         )}

@@ -1,8 +1,10 @@
-import React from "react";
+import React,{useState,useContext} from "react";
 import styled from "styled-components";
+import axios from 'axios'
 import Tip from './Tip'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { WorkersListContext } from "../../Context/Contexts";
 
 const WorkerCardContainer = styled.div`
   display: flex;
@@ -17,7 +19,7 @@ const WorkerImage = styled.div`
   height: 185px;
   width: 200px;
   border-radius: 5px;
-  background: url(${props => props.image});
+  background: url(${props => props.photo_url});
   background-size: cover;
   background-position: center;
   box-shadow: 0px 4px 12px 0px #383838;
@@ -103,20 +105,47 @@ const WorkerCloseButton = styled.button`
   }
 `;
 
-const WorkerCard = ({ image, firstName, lastName, role, timeEmployed, modal, toggleModal }) => {
+const WorkerCard = ({ Id,tagline,company,photo_url, firstName, lastName, role, timeEmployed, modal, toggleModal }) => {
+  const {workerList,setWorkerList} = useState(WorkersListContext);
+  function removeWorker(workerId) {
+    //DELETE /api/tippers/:id
+    axios.delete(`https://tipsease-backend-new.herokuapp.com/api/tippees/${workerId}`)
+    .then((res)=>{
+      axios.get(`https://tipsease-backend-new.herokuapp.com/api/tippees`)
+      .then(apiObject=>{
+         setWorkerList(apiObject.data)
+       })
+       .catch( err => {
+         console.log("Inside Error:", err);
+       })   
+    })
+    .catch( err => {
+      console.log("Outside Error:", err);
+    })    
+    /*let index;
+    workerList.map((worker, i) => {
+      if (worker.id === workerId) {
+        index = i;
+      }
+    });
+    workerList.splice(index, 1);
+    setWorkerList([...workerList]);*/
+  }
 
   return (
     <WorkerCardContainer>
-      <WorkerCloseButton><FontAwesomeIcon icon={faTimes} /></WorkerCloseButton>
+      <WorkerCloseButton onClick ={() =>{removeWorker(Id)}}><FontAwesomeIcon icon={faTimes} /></WorkerCloseButton>
       <WorkerName>{firstName} {lastName}</WorkerName>
       
       <WorkerProfile>
-      <WorkerImage image={image} />
+      <WorkerImage photo_url={photo_url} />
       <WorkerInfo>
-        <WorkerRole>Bartender</WorkerRole>
+        <WorkerRole>{company}</WorkerRole>
         <WorkerText>Employed for<br /><WorkerEmployment>1 year, 2 months</WorkerEmployment></WorkerText>
+        <WorkerText>{tagline}<br /></WorkerText>
         <Tip toggleModal={toggleModal} />
         </WorkerInfo>
+
       </WorkerProfile>
     </WorkerCardContainer>
   );
