@@ -5,25 +5,25 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 import styled from "styled-components";
-// import posed from "react-pose";
+import posed from "react-pose";
 
 const H5 = styled.h5`
   color: #b22222;
 `;
 
 const FormContainer = styled.div`
+  position: relative;
   min-width: 50em;
   max-width: 50em;
-  height:600px;
-  margin: auto;
+  margin: 50px;
   padding: 2em;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-content: center;
   min-height: 45em;
-  justify-content: space-evenly;
-  background-color: #4e5055;
+  justify-content: center;
+  background: #202020;
   box-shadow: 0px 12px 22px -1px #545309;
   border-radius: 10px;
   font-family: "Ubuntu", sans-serif;

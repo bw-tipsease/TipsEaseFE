@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import PrivateRoute from "./Components/SecretData/PrivateRoute"
 
 import Login from './Components/Login/Login'
-
+import {PropsContext} from './Components/Context/Contexts'
 import Home from './Components/LandingPage/Home'
 import { TokenContext } from './Components/Context/Contexts';
 import SignUp from './Components/SignUp/SignUp';
@@ -88,6 +88,7 @@ const Logout =styled.button`
 `
 function App() {
   const [token, setToken] = useState(false)
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     setToken(localStorage.getItem('token'))
@@ -136,6 +137,7 @@ function App() {
       <div>
       {/* export const TokenContext = createContext(); */}
         <TokenContext.Provider value={{token,setToken}}>
+        <PropsContext.Provider value={{modal,setModal}}>
         <PrivateRoute exact path='/' component={Home}
         //  token ={token} 
          />
@@ -146,6 +148,7 @@ function App() {
         <Route exact path='/TipForm' component={TipForm}/>
         <Route exact path='/CreateWorker' component={CreateWorker}/>
       
+        </PropsContext.Provider>
         </TokenContext.Provider>
       </div>
     </div>

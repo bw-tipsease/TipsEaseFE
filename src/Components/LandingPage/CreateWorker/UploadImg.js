@@ -13,9 +13,9 @@ export default class UploadImg extends Component {
     }
     fileUploadHandler = () =>{
         const fd = new FormData();
-        fd.append('image',this.state.selectedFile, this.state.selectedFile.name)
+        fd.append(this.state.selectedFile, this.state.selectedFile.name)
    axios.post('',fd, {onUploadProgress: progressEvent =>{
-    //    <h1>{Math.round(progressEvent.loaded / progressEvent.total* 100)+ "%"}</h1>
+       return(<h1>{Math.round(progressEvent.loaded / progressEvent.total* 100)+ "%"}</h1>)
 
    }})
    .then(res =>{
@@ -26,6 +26,7 @@ export default class UploadImg extends Component {
     render() {
         return (
             <div>
+               
                <input type="file" onChange={this.fileSelectedHandler}/> 
                <button onClick={this.fileUploadHandler}>Upload a Image</button>
             </div>

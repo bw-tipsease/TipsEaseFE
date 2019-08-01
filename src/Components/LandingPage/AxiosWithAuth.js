@@ -8,7 +8,7 @@ import axios from "axios";
       "Content-Type": "application/json",
       Authorization: `${token}`
     },
-    baseURL: "http://localhost:4000/api"
+    baseURL: "https://tipsease-backend-new.herokuapp.com/"
   });
 };
 export default AxiosWithAuth
