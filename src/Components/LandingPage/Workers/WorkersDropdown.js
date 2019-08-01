@@ -38,6 +38,7 @@ const WorkersDropdown = props => {
         background: '#e9e9e9',
         margin: '2.5rem',
     }
+    
     return (
         <div style={style}>
         <WorkersDropdownLabel>Sort by :</WorkersDropdownLabel>

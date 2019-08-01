@@ -7,12 +7,10 @@ import Swal from 'sweetalert2'
 import styled from 'styled-components'
 import { TweenMax } from "gsap/TweenMax";
 
-
 const H5 = styled.h5`
 color:	#B22222;
 font-size: 2rem;
 `
-
 const FormModal = styled.div`
   position: fixed;
   top: 0;
@@ -137,7 +135,6 @@ function TipForm({ touched, errors, toggleModal }) {
     </FormContainer>
  </Form> 
  </FormModal>
- 
   );
 }
 
@@ -154,6 +151,7 @@ export default withFormik({
     .min(1,"Must tip at least 1 dollar")
 
   }),
+
   handleSubmit(values, formikBag) {
     
 

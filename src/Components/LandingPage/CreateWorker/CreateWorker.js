@@ -7,8 +7,6 @@ function CreateWorker() {
         <div>
             <UploadImg/>
             <CreateForm/>
-            
-
         </div>
     )
 }
