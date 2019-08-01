@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Route, NavLink } from "react-router-dom";
 import PrivateRoute from "./Components/SecretData/PrivateRoute";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Login from "./Components/Login/Login";
-import { TweenMax } from "gsap/TweenMax";
 
 import Home from "./Components/LandingPage/Home";
 import { TokenContext } from "./Components/Context/Contexts";
@@ -56,15 +53,7 @@ const NavItems = styled.div`
   }
 
   @media (max-width: 800px) {
-    position: absolute;
-    flex-direction: column;
-    background: black;
-    transform: translateY(-240px);
-    top: 0;
-    right: 0;
-    justify-content: center;
-    height: 240px;
-    z-index: -1;
+    width: 70%;
   }
 `;
 
@@ -96,32 +85,6 @@ const NavCta = styled(NavItem)`
   }
 `;
 
-const MobileNavToggle = styled.button`
-  display: none;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  background: none;
-  border: none;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  svg {
-    font-size: 3rem;
-    color: #f3e367;
-  }
-
-  @media (max-width: 800px) {
-    display: flex;
-  }
-`;
-
 const Logout = styled.button`
   width: 75px;
   height: 50px;
@@ -134,24 +97,10 @@ const Logout = styled.button`
 function App() {
   const [token, setToken] = useState(false);
 
-  const [mobileNav, setMobileNav] = useState(false);
-
-  const mobileToggle = () => {
-    setMobileNav(!mobileNav);
-  };
-
   useEffect(() => {
     setToken(localStorage.getItem("token"));
     console.log("test");
   }, [token]);
-
-  useEffect(() => {
-    if (mobileNav === true) {
-      TweenMax.to('.nav-items', 0.3, {y: 240});
-    } else {
-      TweenMax.to('.nav-items', 0.3, {y: 0});
-    }
-  }, [mobileNav]);
 
 
   // console.log('Token u there brother?: ', token);
@@ -159,9 +108,6 @@ function App() {
     <div>
       <NavbarContainer>
         <NavLogo>tipsEase</NavLogo>
-        <MobileNavToggle className="mobile-nav-toggle" onClick={mobileToggle}>
-          <FontAwesomeIcon icon={faBars} />
-        </MobileNavToggle>
         <NavItems className="nav-items">
           <NavItem exact to="/">Home</NavItem>
           <NavItem to="/About">About</NavItem>

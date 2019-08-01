@@ -38,3 +38,7 @@ body {
 .active-cta {
   color: #f7eb95;
 }
+
+.show {
+  display: block;
+}

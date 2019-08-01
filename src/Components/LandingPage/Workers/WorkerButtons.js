@@ -8,6 +8,11 @@ const WorkerButtonsContainer = styled.div`
     justify-content: space-between;
     align-items: flex-end;
     width: 100%;
+
+    @media(max-width: 800px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 
