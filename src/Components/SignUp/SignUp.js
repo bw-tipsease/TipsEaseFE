@@ -4,6 +4,8 @@ import * as Yup from "yup";
 import Swal from "sweetalert2";
 import styled from "styled-components";
 import axios from 'axios';
+import posed from "react-pose";
+import serveImg from "../../imgs/adult-beverage-black-coffee-733761.jpg";
 
 
 const H5 = styled.h5`
@@ -11,10 +13,11 @@ const H5 = styled.h5`
 `;
 
 const FormContainer = styled.div`
+  position: relative;
   min-width: 50em;
   max-width: 50em;
-  margin-top:70px;
-  margin: auto;
+  align-content: center
+  margin: -130em auto;
   padding: 2em;
   display: flex;
   flex-wrap: wrap;
@@ -22,11 +25,32 @@ const FormContainer = styled.div`
   align-content: center;
   min-height: 65em;
   justify-content: space-evenly;
-  background-color: #4e5055;
+  background-color: #202020;
   box-shadow: 0px 12px 22px -1px #545309;
   border-radius: 10px;
   font-family: "Ubuntu", sans-serif;
 `;
+
+const Butt = posed.button({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 0.8,
+    boxShadow: "0px 0px 0px rgba(0,0,0,0)"
+  },
+  hover: {
+    scale: 1,
+    boxShadow: "0px 1px 10px #B1B7B7 "
+  },
+  press: {
+    scale: 1,
+    boxShadow: "0px 2px 5px rgba(0,0,0,0.1)"
+  },
+  focus: {
+    outline:0
+  }
+});
+
 const BTN =styled.button`
   background: none;
   color: #f3e367;
@@ -63,6 +87,8 @@ const Label = styled.label`
 
 function SignUp({ errors, touched }) {
   return (
+    <div className="signUpPage">
+      <img className="formPageImg" style={{ zIndex: -999 }} src={serveImg} />
     <Form className="form">
       <FormContainer>
       <Label htmlFor="email">Username</Label>
@@ -110,11 +136,12 @@ function SignUp({ errors, touched }) {
         </Label>
 
         <H5>{touched.rememberPassword && errors.rememberPassword}</H5>
-        <BTN className="formButt" type="submit">
+        <Butt className="formButt" type="submit">
           Sign Up
-        </BTN>
+        </Butt>
       </FormContainer>
     </Form>
+    </div>
   );
 }
 

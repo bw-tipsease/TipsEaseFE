@@ -133,9 +133,8 @@ const WorkerCard = ({ id,tagline,company,photo_url, firstName, lastName, role, t
       <WorkerProfile>
       <WorkerImage photo_url={photo_url} />
       <WorkerInfo>
-        <WorkerRole>{company}</WorkerRole>
+        <WorkerRole>{tagline}</WorkerRole>
         <WorkerText>Employed for<br /><WorkerEmployment>1 year, 2 months</WorkerEmployment></WorkerText>
-        <WorkerText>{tagline}<br /></WorkerText>
         <Tip toggleModal={toggleModal} />
         </WorkerInfo>
 

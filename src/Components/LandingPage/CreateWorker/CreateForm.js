@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import Swal from "sweetalert2";
 import axios from 'axios';
 import styled from "styled-components";
+import posed from "react-pose";
 
 const H2 = styled.h2`
   color: #b22222;
@@ -13,9 +14,9 @@ const FormContainer = styled.div`
 position: relative;
 min-width: 50em;
 max-width: 50em;
-align-content: center;
-margin: 10.0987em auto 0em auto;
-padding:.001em;
+align-content: center
+margin: 15em auto;
+padding: 2em;
 display: flex;
 flex-wrap: wrap;
 flex-direction: column;
@@ -28,12 +29,26 @@ border-radius: 10px;
 font-family: "Ubuntu", sans-serif;
 `;
 
-const Butt = styled.button`
-  width: 9em;
-  margin: 0 auto;
-  background-color: #f3e367;
-  border: 2px solid black;
-`;
+const Butt = posed.button({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 0.8,
+    margin: '2em 0 0 0',
+    boxShadow: "0px 0px 0px rgba(0,0,0,0)"
+  },
+  hover: {
+    scale: 1,
+    boxShadow: "0px 1px 10px #B1B7B7 "
+  },
+  press: {
+    scale: 1,
+    boxShadow: "0px 2px 5px rgba(0,0,0,0.1)"
+  },
+  focus: {
+    outline:0
+  }
+});
 
 const Input = styled.input`
   color: #f3e367;
@@ -42,6 +57,7 @@ const Input = styled.input`
 const Label = styled.label`
   color: #f3e367;
   font-size: 2.5em;
+  margin: 2em 0 0.5em 0;
 `;
 
 const CreateForm = props => {
@@ -78,6 +94,7 @@ const CreateForm = props => {
       <FormContainer>
         <Label>Select an Image</Label>
         <input
+        className='textInputField'
           id="image"
           type="file"
           name="image"
@@ -86,6 +103,7 @@ const CreateForm = props => {
         {/*<Butt onClick={fileUploadHandler}>Upload Image</Butt>*/}
         <Label htmlFor="first_name">First name:</Label>
         <Field
+          className='textInputField'
           id="first_name"
           type="text"
           autoComplete="off"
@@ -94,6 +112,7 @@ const CreateForm = props => {
         />
         <Label htmlFor="last_name">Last name:</Label>
         <Field
+        className='textInputField'
           id="last_name"
           type="text"
           autoComplete="off"
@@ -102,6 +121,7 @@ const CreateForm = props => {
         />
         <Label htmlFor="email">Email:</Label>
         <Field
+        className='textInputField'
           id="email"
           type="email"
           autoComplete="off"
@@ -110,6 +130,7 @@ const CreateForm = props => {
         />
         <Label htmlFor="tagline">Know Your Role?</Label>
         <Field
+        className='textInputField'
           id="tagline"
           component="select"
           name="tagline"
@@ -133,13 +154,14 @@ const CreateForm = props => {
         {/*<H5>{props.touched.name && props.errors.workDuration}</H5>*/}
         <Label htmlFor="start_date">When did you start?</Label>
         <Field
+        className='textInputField'
           id="start_date"
           type="number"
           autoComplete="off"
           placeholder="date"
           name="start_date"
         />
-        <Butt type="submit">Create Profile</Butt>
+        <Butt className='formButt' type="submit">Create Profile</Butt>
         <H2>{props.touched.name && props.errors.workDuration}</H2>
       </FormContainer>
     </Form>

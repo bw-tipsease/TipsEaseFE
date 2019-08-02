@@ -6,18 +6,18 @@ import { Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 import styled from "styled-components";
 import "../../App.css"
-// import posed from "react-pose";
+import posed from "react-pose";
+import serveImg from "../../imgs/adult-beverage-black-coffee-733761.jpg";
 
 const H5 = styled.h5`
   color: #b22222;
 `;
 
 const FormContainer = styled.div`
-  
+  position: relative;
   min-width: 50em;
   max-width: 50em;
-  
-  margin: 15em auto 0 auto;
+  margin: -130em auto;
   padding: 2em;
   display: flex;
   flex-wrap: wrap;
@@ -30,6 +30,27 @@ const FormContainer = styled.div`
   border-radius: 10px;
   font-family: "Ubuntu", sans-serif;
 `;
+
+const Butt = posed.button({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 0.8,
+    boxShadow: "0px 0px 0px rgba(0,0,0,0)"
+  },
+  hover: {
+    scale: 1,
+    boxShadow: "0px 1px 10px #B1B7B7 "
+  },
+  press: {
+    scale: 1,
+    boxShadow: "0px 2px 5px rgba(0,0,0,0.1)"
+  },
+  focus: {
+    outline:0
+  }
+});
+
 const BTN =styled.button`
   background: none;
   color: #f3e367;
@@ -88,6 +109,8 @@ function Login({ touched, errors }) {
   }
 
   return (
+    <div>
+      <img className="formPageImg" style={{ zIndex: -999 }} src={serveImg} />
     <Form className="form">
       <FormContainer>
         <Label htmlFor="username">Username</Label>
@@ -114,11 +137,12 @@ function Login({ touched, errors }) {
    <Label htmlFor = "rememberPassword">Let us remember your password?</Label>
     <Field id="rememberPassword" type="checkbox" name="rememberPassword"/>
     <H5>{touched.rememberPassword && errors.rememberPassword}</H5> */}
-        <BTN className="formBTN" type="submit">
+        <Butt className="formButt" type="submit">
           Login
-        </BTN>
+        </Butt>
       </FormContainer>
     </Form>
+    </div>
   );
 }
 
