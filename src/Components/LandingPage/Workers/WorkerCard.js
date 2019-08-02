@@ -44,7 +44,7 @@ const WorkerInfo = styled.div`
 const WorkerName = styled.h2`
   font-size: 3.4rem;
   margin: 0.5rem 0;
-  color: #f3e367;
+  color: #f4e676;
   font-family: 'Ubuntu', sans-serif;
   letter-spacing: 2px;
   width: 100%;
@@ -73,7 +73,7 @@ const WorkerProfile = styled.div`
 
 `;
 
-const WorkerText = styled.p`
+const WorkerText = styled.div`
   font-size: 1.8rem;
   text-align: left;
   line-height: 3.2rem;
@@ -94,7 +94,7 @@ const WorkerRole = styled(WorkerText)`
   letter-spacing: 1px;
 `;
 
-const WorkerEmployment = styled(WorkerText)`
+const WorkerEmployment = styled.p`
   color: white;
   font-size: 2.2rem;
   font-family: 'Varela Round', sans-serif;

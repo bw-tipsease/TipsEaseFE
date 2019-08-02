@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, NavLink } from "react-router-dom";
 import PrivateRoute from "./Components/SecretData/PrivateRoute";
 import Login from "./Components/Login/Login";
@@ -8,9 +8,7 @@ import Home from "./Components/LandingPage/Home";
 import { TokenContext } from "./Components/Context/Contexts";
 import SignUp from "./Components/SignUp/SignUp";
 import styled from "styled-components";
-import Swal from "sweetalert2";
 import TipForm from "./Components/LandingPage/Workers/TipForm";
-import TipModal from "./Components/LandingPage/Workers/TipModal";
 import "./App.css";
 
 
@@ -86,14 +84,18 @@ const NavItem = styled(NavLink)`
 `;
 
 const NavCta = styled(NavItem)`
-  color: #f3e367;
+  color: #f5e985;
+
+  :hover {
+    color: #f8eea4;
+  }
 `;
 
 
 const Logout = styled.button`
   background: none;
-  color: #f3e367;
-  border: 2px solid #f3e367;
+  color: #f5e985;
+  border: 2px solid #f5e985;
   padding: 0.8rem 1.5rem;
   font-size: 1.5rem;
   border-radius: 10px;

@@ -3,10 +3,7 @@ import {TokenContext} from '../Context/Contexts';
 import axios from "axios";
 import styled from "styled-components"
 import AxiosWithAuth from "./AxiosWithAuth"
-import CreateWorkerButton from './CreateWorker/CreateWorkerButton';
-import CreateWorker from './CreateWorker/CreateWorker';
 import WorkersGrid from './Workers/WorkersGrid';
-import WorkersDropdown from './Workers/WorkersDropdown';
 import WorkerButtons from './Workers/WorkerButtons';
 import TipForm from '../LandingPage/Workers/TipForm'
 
