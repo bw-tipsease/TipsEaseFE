@@ -105,13 +105,14 @@ const WorkerCloseButton = styled.button`
   }
 `;
 
-const WorkerCard = ({ Id,tagline,company,photo_url, firstName, lastName, role, timeEmployed, modal, toggleModal }) => {
-  const {workerList,setWorkerList} = useState(WorkersListContext);
-  function removeWorker(workerId) {
+const WorkerCard = ({ id,tagline,company,photo_url, firstName, lastName, role, timeEmployed, modal, toggleModal }) => {
+  const {workerList,setWorkerList} = useContext(WorkersListContext);
+  
+  function removeWorker() {
     //DELETE /api/tippers/:id
-    axios.delete(`https://tipsease-backend-new.herokuapp.com/api/tippees/${workerId}`)
+    axios.delete(`https://tipsease-be-test.herokuapp.com/api/tippees/${id}`)
     .then((res)=>{
-      axios.get(`https://tipsease-backend-new.herokuapp.com/api/tippees`)
+      axios.get(`https://tipsease-be-test.herokuapp.com/api/tippees`)
       .then(apiObject=>{
          setWorkerList(apiObject.data)
        })
@@ -122,19 +123,11 @@ const WorkerCard = ({ Id,tagline,company,photo_url, firstName, lastName, role, t
     .catch( err => {
       console.log("Outside Error:", err);
     })    
-    /*let index;
-    workerList.map((worker, i) => {
-      if (worker.id === workerId) {
-        index = i;
-      }
-    });
-    workerList.splice(index, 1);
-    setWorkerList([...workerList]);*/
   }
 
   return (
     <WorkerCardContainer>
-      <WorkerCloseButton onClick ={() =>{removeWorker(Id)}}><FontAwesomeIcon icon={faTimes} /></WorkerCloseButton>
+      <WorkerCloseButton onClick ={removeWorker}><FontAwesomeIcon icon={faTimes} /></WorkerCloseButton>
       <WorkerName>{firstName} {lastName}</WorkerName>
       
       <WorkerProfile>

@@ -1,6 +1,6 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import {WorkersListContext, FilterContext} from '../../Context/Contexts'
+import { WorkersListContext, FilterContext } from '../../Context/Contexts'
 const WorkersDropdownContainer = styled.select`
   font-size: 2rem;
   padding: 1rem;
@@ -25,9 +25,9 @@ const WorkersDropdownLabel = styled.div`
 const WorkersDropdownOption = styled.option``;
 
 const WorkersDropdown = () => {
-    const {filter,setFilter} = useContext(FilterContext);
- console.log(filter,"contextOBJ")
-    const style = {
+  const { filter, setFilter } = useContext(FilterContext);
+  console.log(filter, "contextOBJ")
+  const style = {
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center",
@@ -37,14 +37,14 @@ const WorkersDropdown = () => {
     borderRadius: "10px"
   };
   const handleChange = (e) => {
-   
+
     setFilter(e.target.value);
   };
 
   return (
     <div style={style}>
       <WorkersDropdownLabel>Sort by :</WorkersDropdownLabel>
-      <WorkersDropdownContainer onChange={(e) =>{handleChange(e)}}>
+      <WorkersDropdownContainer onChange={(e) => { handleChange(e) }}>
         <WorkersDropdownOption value="all">All</WorkersDropdownOption>
         <WorkersDropdownOption value="Bartender">
           Bartenders

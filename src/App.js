@@ -6,7 +6,7 @@ import PrivateRoute from "./Components/SecretData/PrivateRoute";
 import Login from "./Components/Login/Login";
 
 import Home from "./Components/LandingPage/Home";
-import { TokenContext,WorkersListContext,FilterContext } from "./Components/Context/Contexts";
+import { TokenContext, WorkersListContext, FilterContext } from "./Components/Context/Contexts";
 import SignUp from "./Components/SignUp/SignUp";
 import styled from "styled-components";
 import Swal from "sweetalert2";
@@ -126,45 +126,22 @@ const Logout = styled.button`
 `;
 function App() {
   const [token, setToken] = useState(false);
-  const[workerList, setWorkerList] = useState([])
+  const [workerList, setWorkerList] = useState([])
   const [filter, setFilter] = useState("all");
+
   useEffect(() => {
     setToken(localStorage.getItem("token"));
     console.log("test");
   }, [token]);
-  useEffect(()=>{
-    axios.get(`https://tipsease-backend-new.herokuapp.com/api/tippees`)
-    .then(apiObject=>{
-      setWorkerList(apiObject.data)
-    })
-    .catch( err => {
-      console.log("Error:", err);
-    })    
-  },[]);
-  function removeWorker(workerId) {
-    //DELETE /api/tippers/:id
-    axios.delete(`https://tipsease-backend-new.herokuapp.com/api/tippees/${workerId}`)
-    .then((res)=>{
-      axios.get(`https://tipsease-backend-new.herokuapp.com/api/tippees`)
-      .then(apiObject=>{
-         setWorkerList(apiObject.data)
-       })
-       .catch( err => {
-         console.log("Inside Error:", err);
-       })   
-    })
-    .catch( err => {
-      console.log("Outside Error:", err);
-    })    
-    /*let index;
-    workerList.map((worker, i) => {
-      if (worker.id === workerId) {
-        index = i;
-      }
-    });
-    workerList.splice(index, 1);
-    setWorkerList([...workerList]);*/
-  }
+  useEffect(() => {
+    axios.get(`https://tipsease-be-test.herokuapp.com/api/tippees`)
+      .then(apiObject => {
+        setWorkerList(apiObject.data)
+      })
+      .catch(err => {
+        console.log("Error:", err);
+      })
+  }, []);
 
   // console.log('Token u there brother?: ', token);
   return (
@@ -183,44 +160,44 @@ function App() {
               Login
             </NavCta>
           ) : (
-            <NavCta to="/login" activeClassName="active-cta">
-              <Logout
-                className="btn"
-                type="submit"
-                onClick={() => {
-                  localStorage.removeItem("token");
-                  setToken();
-                }}
-              >
-                Logout
+              <NavCta to="/login" activeClassName="active-cta">
+                <Logout
+                  className="btn"
+                  type="submit"
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    setToken();
+                  }}
+                >
+                  Logout
               </Logout>
-            </NavCta>
-          )}
+              </NavCta>
+            )}
         </NavItems>
       </NavbarContainer>
 
       <div>
         {/* export const TokenContext = createContext(); */}
         <TokenContext.Provider value={{ token, setToken }}>
-          <WorkersListContext.Provider value={{workerList}}>
-         <FilterContext.Provider value={{filter, setFilter}}>
-          <PrivateRoute
-            exact
-            path="/"
-            component={Home}
-            //  token ={token}
-          />
-          <Route exact path="/About" />
-          <Route exact path="/Team" />
-          <Route
-            exact
-            path="/login"
-            render={props => <Login {...props} setToken={setToken} />}
-          />
-          <Route exact path="/signup" component={SignUp} />
-          <Route path="/TipForm" component={TipForm} />
-          <Route exact path="/CreateWorker" component={CreateWorker}/>
-          </FilterContext.Provider>
+          <WorkersListContext.Provider value={{ workerList, setWorkerList }}>
+            <FilterContext.Provider value={{ filter, setFilter }}>
+              <PrivateRoute
+                exact
+                path="/"
+                component={Home}
+              //  token ={token}
+              />
+              <Route exact path="/About" />
+              <Route exact path="/Team" />
+              <Route
+                exact
+                path="/login"
+                render={props => <Login {...props} setToken={setToken} />}
+              />
+              <Route exact path="/signup" component={SignUp} />
+              <Route path="/TipForm" component={TipForm} />
+              <Route exact path="/CreateWorker" component={CreateWorker} />
+            </FilterContext.Provider>
           </WorkersListContext.Provider>
         </TokenContext.Provider>
       </div>

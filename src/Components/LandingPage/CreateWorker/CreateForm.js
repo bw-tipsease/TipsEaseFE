@@ -108,14 +108,18 @@ const CreateForm = props => {
           placeholder="example@gmail.com"
           name="email"
         />
-        <Label htmlFor="tagline">Your Tagline:</Label>
+        <Label htmlFor="tagline">Know Your Role?</Label>
         <Field
           id="tagline"
-          type="text"
-          autoComplete="off"
-          placeholder="Your tagline..."
+          component="select"
           name="tagline"
-        />
+        >
+          <option value="Bartender" selected>Bartender</option>
+          <option value="Server">Server</option>
+          <option value="Waiter">Waiter</option>
+          <option value="Valet">Valet</option>
+          <option value="Bellhop">Bellhop</option>
+        </Field>
         {/*<Label htmlFor="workType">What is your position?</Label>
         <Field id="workType" component="select" name="workType">
           <option value="Bartender" selected>
@@ -168,14 +172,7 @@ const formikCreateForm = withFormik({
   handleSubmit(values, { resetForm }) {
     function create_UUID() {
       var dt = new Date().getTime();
-      var uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
-        /[xy]/g,
-        function(c) {
-          var r = (dt + Math.random() * 16) % 16 | 0;
-          dt = Math.floor(dt / 16);
-          return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
-        }
-      );
+      var uuid = dt + Math.floor(Math.random()*100);
       return uuid;
     }
     console.log("Hi there i did the thing");
@@ -196,7 +193,7 @@ const formikCreateForm = withFormik({
       start_date: values.start_date
     }
     */
-    axios.put(`https://tipsease-backend-new.herokuapp.com/api/tippees/${uniqueId}`, {
+    axios.post(`https://tipsease-be-test.herokuapp.com/api/tippees/${uniqueId}`, {
       id: uniqueId,
       first_name: values.first_name,
       last_name: values.last_name,
@@ -236,10 +233,6 @@ const formikCreateForm = withFormik({
        .required("This field is required"),
      email: Yup.string()
        .email("Must be a valid email")
-       .required("This field is required"),
-     tagline: Yup.string()
-       .min(3, "Must be 3 characters or more")
-       .max(25, "Must be less than 25 characters")
        .required("This field is required"),
      start_Date: Yup.number()
     //   .min(1, "Must be 3 characters or more")

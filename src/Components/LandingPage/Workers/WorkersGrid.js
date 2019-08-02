@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { WorkersListContext, FilterContext } from '../../Context/Contexts'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -23,34 +24,40 @@ const useStyles = makeStyles(theme => ({
 
 function WorkersGrid(props) {
 
-  const [workers, setWorkers] = useState([]);
+  const {workerList, setWorkerList} = useContext(WorkersListContext);
+  const { filter, setFilter } = useContext(FilterContext);
 
   const classes = useStyles();
 
-  useEffect(() => {
-    axios.get('https://tipsease-backend-new.herokuapp.com/api/tippees')
+  /*useEffect(() => {
+    axios.get('https://tipsease-be-test.herokuapp.com/api/tippees')
 
-    .then(res => {
-      console.log(res.data);
-      setWorkers(res.data);
-    })
+      .then(res => {
+        console.log(res.data);
+        setWorkers(res.data);
+      })
 
-    .catch(err => {
-      console.log(err);
-    })
-  }, [])
+      .catch(err => {
+        console.log(err);
+      })
+  }, [])*/
 
   return (
     <div className={classes.root}>
       <Grid container spacing={5}>
-        {workers.map(worker => 
-          <Grid item xs={12} md={9} lg={6}>
-          <Paper className={classes.paper}>
-          <WorkerCard id={worker.id} key={worker.index} tagline={worker.tagline} photo_url={worker.photo_url} firstName={worker.first_name} lastName = {worker.last_name} modal={props.modal} toggleModal={props.toggleModal}/>
-          </Paper>
-        </Grid>
+        {workerList.map(worker => {
+          if (filter === 'all' || filter === worker.tagline) {
+            return (
+              <Grid item xs={12} md={9} lg={6}>
+                <Paper className={classes.paper}>
+                  <WorkerCard id={worker.id} key={worker.index} tagline={worker.tagline} photo_url={worker.photo_url} firstName={worker.first_name} lastName={worker.last_name} modal={props.modal} toggleModal={props.toggleModal} />
+                </Paper>
+              </Grid>
+            );
+          }
+        }
         )}
-        </Grid>
+      </Grid>
     </div>
   );
 }
