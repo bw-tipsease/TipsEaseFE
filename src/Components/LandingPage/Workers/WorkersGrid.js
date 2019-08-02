@@ -43,10 +43,10 @@ function WorkersGrid(props) {
   return (
     <div className={classes.root}>
       <Grid container spacing={5}>
-        {workers.map(worker => 
-          <Grid item xs={12} md={9} lg={6}>
+        {workers.map((worker, index) => 
+          <Grid key={index} item xs={12} md={9} lg={6}>
           <Paper className={classes.paper}>
-          <WorkerCard key={worker.index} image='https://images.robertharding.com/previeww/RF/TI/HORIZONTAL/1178-4100.jpg' firstName={worker.first_name} lastName = {worker.last_name} modal={props.modal} toggleModal={props.toggleModal}/>
+          <WorkerCard key={worker.id} image='https://images.robertharding.com/previeww/RF/TI/HORIZONTAL/1178-4100.jpg' firstName={worker.first_name} lastName = {worker.last_name} modal={props.modal} toggleModal={props.toggleModal}/>
           </Paper>
         </Grid>
         )}
